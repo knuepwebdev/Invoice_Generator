@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Invoices</title>
+    <style>
+      *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      /*MAIN STYLES*/
+      body {
+        float: left;
+        padding: .75em;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      /*HEADER*/
+      #company-info {
+        text-transform: none;
+      }
+      /*MAIN CONTENT*/
+      #left-column {
+        float: left;
+        max-width: 525px;
+        padding: 0 5em 0 5em;
+      }
+      #right-column {
+        width: 40%;
+        float: left;
+        margin: 4.25em 0 0 0;
+      }
+      #right-column h1 {
+        font-size: 2em;
+      }
+      #company-info {
+        margin: 1em 0 0 0;
+      }
+      #logo {
+        margin: 0;
+        font-size: 1em;
+        font-style: italic;
+        text-transform: uppercase;
+      }
+      #client-info, #shipping-info {
+        height: 8em;
+        border: 1px solid #111;
+      }
+      /*FOOTER*/
+
+
+    </style>
+  </head>
+  <body>
+    <div id="left-column">
+      <section id="company-info">    
+        <h2 id="logo" class="bold">national radiographic systems, inc.</h2>
+        <div>X-Ray Sales and Service</div>
+        <div>414 W Sycamore Ave</div>
+        <div>El Segundo, CA 90245</div>
+        <div>Phone: 310 322-9176 &bull; Fax: 310 322-9638</div>
+      </section>
+      <h3>sold to:</h3>
+      <p id="client-info">{{client_name}}</p>
+      <h3>shipped on</h3>
+      <p id="shipping-info">{{shipping_date}}</p>
+    </div>
+    <div id="right-column">
+      <h1>Invoice</h1><!-- <Invoice-Number> -->
+      <div>Please indicate invoice numbers on all remittances</div>
+      <h3>Page</h3>
+      <h3>Date</h3>
+      <h3>Your Purchase Order</h3>
+      <h3>Date</h3>
+      <h3>Terms of Payment: 30 Days Net</h3>
+      <h3>Our Reference Number</h3>
+    </div>
+    <div id="bottom">
+      <section>f.o.b. point</h3>
+      <h3>Carrier's name, freight remarks</h3>
+      <h3>shipped via</h3>
+      <h3>freight term</h3>
+      <h3>st. tax for</h3>
+      <h3>pco</h3>
+      <h3>tax determination</h3>
+      <table id="line-items">
+        <th>item no.</th>
+        <th>qty. ordered</th>
+        <th>qty. shipped</th>
+        <th>list number</th>
+        <th>description/serial no.</th>
+        <th></th>
+        <th>total</th>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <footer>
+      <div>Please remit to: <span class="bold">national radiographic systems, inc.</span></div>
+      <div>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</div>
+    </footer>
+  </body>
+</html>
