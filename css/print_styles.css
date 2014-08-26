@@ -1,0 +1,91 @@
+*, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+}
+/*MAIN STYLES*/        
+#container {
+  width: 900px;
+}
+body {
+  float: left;
+  font-family: Arial;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+h3, p {
+  font-size: .7em;
+  font-weight: normal;
+  letter-spacing: .5px;
+}
+.bold {
+  font-weight: bold;
+}
+/*HEADER*/
+#company-info {
+  line-height: 110%;
+  text-transform: none;
+}
+/*MAIN CONTENT*/
+#left-column {
+  float: left;
+  width: 58%;
+  padding: 1.25em 3em 0 4em;
+}
+#left-column h3 {
+  font-size: .75em;
+  margin: 1em .5em 0 0;
+}
+#logo {
+  margin: 0 0 .25em 0;
+  font-size: 1.25em;
+  font-style: italic;
+  text-transform: uppercase;
+}
+#client-info, #shipping-info {
+  height: 12.5em;
+  padding: 1em;
+  border: 1px solid #111;
+}
+#right-column {
+  width: 42%;
+  float: left;
+  padding: 6em 0 0 3.25em;
+}
+#right-column h1 {
+  padding: 0 0 2.75em 0;
+  font-size: 2em;
+}
+#right-column p {
+  padding: 1em 0;
+}
+#right-column h3 {
+  padding: .5em 0 .75em 0;
+}
+#right-column div:nth-child(2) {
+  height: 1.25em;
+  padding: 0 .25em;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.page, .po-number, .terms, .reference-number {
+  float: left;
+}
+.page, .po-number {
+  width: 60%;
+}
+.terms, .reference-number {
+  width: 100%;
+}
+.date {
+  width: 40%;
+  float: left;
+}
+.page div, .date div {
+  
+}
+/*END MAIN STYLES*/
+
+/*FOOTER*/
+
+/*END FOOTER*/

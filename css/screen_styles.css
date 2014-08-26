@@ -1,0 +1,122 @@
+*, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+}
+/*MAIN STYLES*/        
+#container {
+  width: 900px;
+}
+body, #left-column, #right-column, .page, .po-number, .terms, .reference-number, .date, #bottom, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #footer, footer {
+  float: left;
+}
+body {
+  font-family: Arial;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+h3, p {
+  font-size: .7em;
+  font-weight: normal;
+  letter-spacing: .5px;
+}
+.bold {
+  font-weight: bold;
+}
+/*HEADER*/
+#company-info {
+  line-height: 110%;
+  text-transform: none;
+}
+/*MAIN CONTENT*/
+#left-column {
+  width: 58%;
+  padding: 1.25em 3em 0 4em;
+}
+#left-column h3 {
+  font-size: .75em;
+  padding: 1em .5em 0 3em;
+}
+#logo {
+  margin: 0 0 .25em 0;
+  font-size: 1.25em;
+  font-style: italic;
+  text-transform: uppercase;
+}
+#client-info, #shipping-info {
+  height: 12.5em;
+  padding: 1em;
+  border: 1px solid #000;
+}
+#client-info {
+  position: absolute;
+  width: 424px;
+  top: 119px;
+  left: 56px;
+}
+#shipping-info {
+  position: absolute;
+  width: 424px;
+  top: 264.5px;
+  left: 56px;  
+}
+.overlap {
+  position:relative;
+  height: 124px;
+  top:-1px;
+  left:-1px;
+  width: 426px;
+  background-color:white;
+  border-radius: 25px;
+  padding: 1em;
+}
+#right-column {
+  width: 42%;
+  padding: 6em 0 0 3.25em;
+}
+#right-column h1 {
+  padding: 0 0 2.75em 0;
+  font-size: 2em;
+}
+#right-column p {
+  padding: 1em 0;
+}
+#right-column h3, #bottom h3 {
+  padding: .5em 0 .75em 0;
+}
+#right-column div:nth-child(2) {
+  height: 1.25em;
+  padding: 0 .25em;
+  border: 1px solid #000;
+  border-top: 0;
+  border-right: 0;
+}
+.page, .po-number {
+  width: 60%;
+}
+.terms, .reference-number {
+  width: 100%;
+}
+.date {
+  width: 40%;
+}
+#bottom div:nth-child(2) {
+  height: 1.5em;
+  padding: 0 .25em;
+}
+#fob-point, #carriers-name, #tax-determination {
+  width: 20%;
+  border: 1px solid #000;
+  border-left: 0;
+}
+#shipped-via, #freight-term, #st-tax, #pco {
+  width: 10%;
+  border: 1px solid #000;
+  border-left: 0;
+}
+
+/*END MAIN STYLES*/
+
+/*FOOTER*/
+
+/*END FOOTER*/
