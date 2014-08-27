@@ -82,16 +82,24 @@
       </div>
       <table id="line-items">
         <tr>
-          <th id="item">item no.</th>
-          <th id="quantity">quantity</th>
-          <th id="list-number">list number</th>
-          <th id="description">description/serial no.</th>
-          <th id="total">total</th>
+          <th class="item">item no.</th>
+          <th class="quantity">quantity</th>
+          <th class="list-number">list number</th>
+          <th class="description">description/serial no.</th>
+          <th class="subtotal"></th>
+          <th class="total">total</th>
         </tr>
       </table>
+      <!-- empty divs with borders -->
+      <div class="filler item"></div>
+      <div class="filler quantity"></div>
+      <div class="filler list-number"></div>
+      <div class="filler description"></div>
+      <div class="filler subtotal"></div>
+      <div class="filler total"></div>
       <footer>
-        <div>Please remit to: <span class="bold">national radiographic systems, inc.</span></div>
-        <div>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</div>
+        <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
+        <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>
       </footer>
     </div>
   </body>

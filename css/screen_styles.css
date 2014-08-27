@@ -6,7 +6,7 @@
 #container {
   width: 900px;
 }
-body, #left-column, #right-column, .page, .po-number, .terms, .reference-number, .date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #footer, footer {
+body, #container, #left-column, #right-column, .page, .po-number, .terms, .reference-number, .date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, .filler, footer, footer p {
   float: left;
 }
 body {
@@ -151,32 +151,34 @@ h3, p, #line-items th {
 }
 #line-items th {
   height: 2em;
-  padding: .5em;
+  padding: 1em;
 }
-#item, #quantity, #list-number, #total {
+.item, .quantity {
+  width: 7.5%;
+}
+.list-number, .subtotal, .total {
   width: 15%;
 }
-#description {
+.description {
   width: 40%;
 }
-#item, #quantity, #list-number, #description, #total {
+.item, .quantity, .list-number, .description, .subtotal, .total {
   border: 1px solid #000;
   border-top: 0;  
   border-left: 0;
 }
-#tax-determination, #total {
+#tax-determination, .total {
   border-right: 0;
 }
-/*<table id="line-items">
-          <tr>
-            <th id="item">item no.</th>
-            <th id="quantity">quantity</th>
-            <th id="list-number">list number</th>
-            <th id="description">description/serial no.</th>
-            <th id="total">total</th>
-          </tr>
-        </table>*/
+.filler {
+  height: 600px;
+}
 /*END LINE ITEMS*/
 /*FOOTER*/
-
+footer {
+  padding: 1em 0;
+}
+footer p {
+  padding: 1em 0;
+}
 /*END FOOTER*/
