@@ -27,30 +27,30 @@
         <p>Please indicate invoice numbers on all remittances</p>
         <div class="page">
           <h3>Page</h3>
-          <div>{{page}}</div>
+          <div><!-- {{page}} --></div>
         </div>
         <div class="date">
           <h3>Date</h3>
-          <div>{{date}}</div>
+          <div><!-- {{date}} --></div>
         </div>
         <div class="po-number">
           <h3>Your Purchase Order</h3>
-          <div>{{PO number}}</div>
+          <div><!-- {{PO number}} --></div>
         </div>
         <div class="date">
           <h3>Date</h3>
-          <div>{{date}}</div>
+          <div><!-- {{date}} --></div>
         </div>
         <div class="terms">
           <h3>Terms of Payment: 30 Days Net</h3>
-          <div>{{terms}}</div>
+          <div><!-- {{terms}} --></div>
         </div>
         <div class="reference-number">
           <h3>Our Reference Number</h3>
-          <div>{{referenceNumber}}</div>
+          <div><!-- {{referenceNumber}} --></div>
         </div>
       </div>
-      <div id="bottom">
+      <div id="extra-fields">
         <div id="fob-point">
           <h3>f.o.b. point</h3>
           <div></div>
@@ -79,19 +79,16 @@
           <h3>tax determination</h3>
           <div></div>
         </div>
-        <table id="line-items">
-          <th>item no.</th>
-          <th>qty. ordered</th>
-          <th>qty. shipped</th>
-          <th>list number</th>
-          <th>description/serial no.</th>
-          <th></th>
-          <th>total</th>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
       </div>
+      <table id="line-items">
+        <tr>
+          <th id="item">item no.</th>
+          <th id="quantity">quantity</th>
+          <th id="list-number">list number</th>
+          <th id="description">description/serial no.</th>
+          <th id="total">total</th>
+        </tr>
+      </table>
       <footer>
         <div>Please remit to: <span class="bold">national radiographic systems, inc.</span></div>
         <div>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</div>

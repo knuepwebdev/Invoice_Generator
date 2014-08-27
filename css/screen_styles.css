@@ -3,11 +3,10 @@
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
 }
-/*MAIN STYLES*/        
 #container {
   width: 900px;
 }
-body, #left-column, #right-column, .page, .po-number, .terms, .reference-number, .date, #bottom, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #footer, footer {
+body, #left-column, #right-column, .page, .po-number, .terms, .reference-number, .date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #footer, footer {
   float: left;
 }
 body {
@@ -15,7 +14,7 @@ body {
   font-size: 14px;
   text-transform: uppercase;
 }
-h3, p {
+h3, p, #line-items th {
   font-size: .7em;
   font-weight: normal;
   letter-spacing: .5px;
@@ -28,10 +27,10 @@ h3, p {
   line-height: 110%;
   text-transform: none;
 }
-/*MAIN CONTENT*/
+/*LEFT COLUMN*/
 #left-column {
   width: 58%;
-  padding: 1.25em 3em 0 4em;
+  padding: 1.25em 3em 1em 4em;
 }
 #left-column h3 {
   font-size: .75em;
@@ -70,9 +69,11 @@ h3, p {
   border-radius: 25px;
   padding: 1em;
 }
+/*END LEFT COLUMN*/
+/*RIGHT COLUMN*/
 #right-column {
   width: 42%;
-  padding: 6em 0 0 3.25em;
+  padding: 6em 0 1em 3.25em;
 }
 #right-column h1 {
   padding: 0 0 2.75em 0;
@@ -81,7 +82,7 @@ h3, p {
 #right-column p {
   padding: 1em 0;
 }
-#right-column h3, #bottom h3 {
+#right-column h3, #extra-fields h3 {
   padding: .5em 0 .75em 0;
 }
 #right-column div:nth-child(2) {
@@ -100,23 +101,82 @@ h3, p {
 .date {
   width: 40%;
 }
-#bottom div:nth-child(2) {
-  height: 1.5em;
+/*END RIGHT COLUMN */
+/*EXTRA FIELDS*/
+#extra-fields {
+  width: 100%;
+  padding: 1em 0 0 0;
+}
+#extra-fields div {
+  height: 3em;
+}
+#extra-fields div:nth-child(2) {
   padding: 0 .25em;
+}
+#fob-point, #carriers-name, #tax-determination, #shipped-via, #freight-term, #st-tax, #pco {
+  border: 1px solid #000;
+  border-left: 0;
 }
 #fob-point, #carriers-name, #tax-determination {
   width: 20%;
-  border: 1px solid #000;
-  border-left: 0;
 }
 #shipped-via, #freight-term, #st-tax, #pco {
   width: 10%;
+}
+#fob-point h3 {
+  width: 40%;
+}
+#carriers-name h3 {
+  width: 55%;
+}
+#shipped-via h3, #st-tax h3 {
+  width: 80%;
+}
+#freight-term h3 {
+  width: 92%;
+}
+#pco h3 {
+  width: 30%;
+}
+#tax-determination h3 {
+  width: 65%;
+}
+#fob-point h3, #carriers-name h3, #shipped-via h3, #freight-term h3, #st-tax h3, #pco h3, #tax-determination h3 {
+  margin: 0 auto;
+}
+/*END EXTRA FIELDS*/
+/*LINE ITEMS*/
+#line-items {
+  width: 100%;
+}
+#line-items th {
+  height: 2em;
+  padding: .5em;
+}
+#item, #quantity, #list-number, #total {
+  width: 15%;
+}
+#description {
+  width: 40%;
+}
+#item, #quantity, #list-number, #description, #total {
   border: 1px solid #000;
+  border-top: 0;  
   border-left: 0;
 }
-
-/*END MAIN STYLES*/
-
+#tax-determination, #total {
+  border-right: 0;
+}
+/*<table id="line-items">
+          <tr>
+            <th id="item">item no.</th>
+            <th id="quantity">quantity</th>
+            <th id="list-number">list number</th>
+            <th id="description">description/serial no.</th>
+            <th id="total">total</th>
+          </tr>
+        </table>*/
+/*END LINE ITEMS*/
 /*FOOTER*/
 
 /*END FOOTER*/
