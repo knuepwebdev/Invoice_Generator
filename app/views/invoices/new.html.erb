@@ -1,4 +1,41 @@
-<h1>New Invoice</h1>
-<h1>New Invoice</h1>
-<h1>New Invoice</h1>
-<%= render partial: 'invoice' %>
+<div ng-controller="InvoicesCtrl">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="hospitalName" class="col-sm-2 control-label">Hospital Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="hospitalName" placeholder="Hospital Name" ng-model="hospitalName">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="hospitalStreet" class="col-sm-2 control-label">Street</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="hospitalStreet" placeholder="Street" ng-model="hospitalStreet">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="hospitalCity" class="col-sm-2 control-label">City</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="hospitalCity" placeholder="City" ng-model="hospitalCity">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="hospitalState" class="col-sm-2 control-label">State</label>
+      <div class="col-sm-2">
+        <%= render partial: 'states' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="hospitalZipcode" class="col-sm-2 control-label">Zipcode</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="hospitalZipcode" placeholder="Zipcode" ng-model="hospitalZipcode">
+      </div>
+    </div>  
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Save</button>
+      </div>
+    </div>
+  </form>
+
+  <%= render partial: 'invoice' %>
+</div>

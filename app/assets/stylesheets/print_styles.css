@@ -50,13 +50,15 @@ h3, p, #line-items th {
 #client-info {
   position: absolute;
   width: 424px;
-  top: 119px;
+  height: 124px;
+  top: 416px;
   left: 56px;
 }
 #shipping-info {
   position: absolute;
   width: 424px;
-  top: 264.5px;
+  height: 124px;
+  top: 562.5px;
   left: 56px;  
 }
 .overlap {
