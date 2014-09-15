@@ -1,5 +1,18 @@
 <div ng-controller="InvoicesCtrl">
-  <form class="form-horizontal" role="form">
+  <%= form_for @invoice_creator, html: {class:"form-horizontal", role: "form"} do |form| %>
+    <div class="form-group">
+      <label for="invoiceNumber" class="col-sm-2 control-label">Invoice Number</label>
+      <div class="col-sm-2">
+        <%= form.text_field :invoice_number, class: "form-control", id: "invoiceNumber", placeholder: "Invoice #" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="invoiceDate" class="col-sm-2 control-label">Invoice Date</label>
+      <div class="col-sm-2">
+        <%= form.text_field :invoice_date, class: "form-control", id: "invoiceDate", placeholder: "Date" %>
+      </div>
+    </div>          
+    <h1>Hospital</h1>
     <div class="form-group">
       <label for="hospitalName" class="col-sm-2 control-label">Hospital Name</label>
       <div class="col-sm-6">
@@ -34,8 +47,7 @@
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-default">Save</button>
       </div>
-    </div>
-  </form>
-
+    </div>      
+  <% end %>
   <%= render partial: 'invoice' %>
 </div>
