@@ -15,8 +15,8 @@ class InvoiceCreator
   end
 
   def create_invoice
-    Invoice.create(
-      number: invoice_number
-    )
+    invoice = Invoice.new(number: invoice_number)
+    invoice.service_report = ServiceReport.create(number: 11)
+    invoice.save
   end
 end
