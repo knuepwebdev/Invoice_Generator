@@ -1,6 +1,6 @@
 <div class="form-group">
-  <label for=<%= field %> class="col-sm-2 control-label"><%= field.gsub('_', ' ') %></label>
+  <label for=<%= field %> class="col-sm-2 control-label"><%= field.spacerize %></label>
   <div class="col-sm-2">
-    <%= form_group.text_field :invoice_number, class: "form-control", id: "invoiceNumber", placeholder: "Invoice #" %>
+    <%= form_group.text_field :invoice_number, class: "form-control", id: "invoiceNumber", placeholder: "Invoice #", ng_model: field.camelize(:lower) %>
   </div>
 </div>
