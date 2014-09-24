@@ -1,7 +1,11 @@
 <div ng-controller="InvoicesCtrl">
-  <%= form_for @invoice_creator, html: {class:"form-horizontal", role: "form"} do |form| %>
-    <%= render partial: 'form_group', locals: {field: 'invoice_number', width: '2'}, object: form %>
-    <%= render partial: 'form_group', locals: {field: 'hospital_name', width: '4'}, object: form %>
+  <%= form_for @invoice_creator, html: {class: "form-horizontal", role: "form"} do |form| %>
+    <% InvoiceFormData::INVOICE_FORM_FIELDS.each do |section, fields| %>
+      <h1><%= section %></h1>
+      <% fields.each do |field| %>
+        <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form %>  
+      <% end %>
+    <% end %>
     <%= form.submit 'Save' %>
   <% end %>
   <%= render partial: 'invoice' %>
