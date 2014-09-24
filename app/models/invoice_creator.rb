@@ -2,7 +2,7 @@ class InvoiceCreator
   extend ActiveModel::Naming
   include ActiveModel::Conversion
   include ActiveModel::Validations
-  attr_reader :invoice_number, :invoice_date, :service_report_number, :service_report_date
+  attr_reader :invoice_number, :invoice_date, :hospital_name, :service_report_number, :service_report_date
 
   def initialize(hash)
     hash.each do |key, value|
@@ -16,7 +16,7 @@ class InvoiceCreator
 
   def create_invoice
     invoice = Invoice.new(number: invoice_number)
-    invoice.service_report = ServiceReport.create(number: 11)
+    invoice.service_report = ServiceReport.create(number: '11')
     invoice.save
   end
 end
