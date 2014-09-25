@@ -6,7 +6,7 @@
     <div>Los Angeles, CA 90244</div>
   </section>
   <h3>sold to:</h3>
-  <div id="client-info"></div>
+  <!-- <div id="client-info"></div> -->
   <div class="overlap">
     <div>ATTN: Accounts Payable</div>
     <div>{{hospitalName}}</div>
@@ -14,7 +14,7 @@
     <div>{{hospitalCity}}, {{hospitalState}} {{hospitalZipcode}}</div>
   </div>
   <h3>shipped to:</h3>
-  <div id="shipping-info">{{shipping_date}}</div>
+  <!-- <div id="shipping-info">{{shipping_date}}</div> -->
   <div class="overlap"></div>
 </div>
 <div id="right-column">
@@ -26,7 +26,7 @@
   </div>
   <div class="date">
     <h3>Date</h3>
-    <div><!-- {{date}} --></div>
+    <div>{{invoiceDate}}</div>
   </div>
   <div class="po-number">
     <h3>Your Purchase Order</h3>
@@ -89,7 +89,10 @@
 <div class="filler item"></div>
 <div class="filler quantity"></div>
 <div class="filler list-number"></div>
-<div class="filler description"></div>
+<div class="filler description">
+  <div>Service Report: #{{serviceReportNumber}}, {{serviceReportDate}}</div>
+  <div>{{xRayMachineMake}} {{xRayMachineModel}}</div>
+</div>
 <div class="filler subtotal"></div>
 <div class="filler total"></div>
 <footer>
