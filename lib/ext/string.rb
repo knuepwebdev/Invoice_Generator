@@ -1,5 +1,6 @@
 class String
   def spacerize
-    gsub('_', ' ') 
+    capitalized_words = split('_').map {|word| word.capitalize}
+    capitalized_words.join(' ')
   end
 end

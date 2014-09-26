@@ -9,13 +9,16 @@
   <!-- <div id="client-info"></div> -->
   <div class="overlap">
     <div>ATTN: Accounts Payable</div>
-    <div>{{hospitalName}}</div>
-    <div>{{hospitalStreet}}</div>
-    <div>{{hospitalCity}}, {{hospitalState}} {{hospitalZipcode}}</div>
+    <div>{{clientName}}</div>
+    <div>{{clientStreet}}</div>
+    <div>{{clientCityStateZip}}</div>
   </div>
   <h3>shipped to:</h3>
   <!-- <div id="shipping-info">{{shipping_date}}</div> -->
-  <div class="overlap"></div>
+  <div class="overlap">
+    <div>{{hospitalDepartment}}</div>
+    <div>{{hospitalRoom}}</div>
+  </div>
 </div>
 <div id="right-column">
   <h1>Invoice {{invoiceNumber}}</h1>
@@ -91,9 +94,14 @@
 <div class="filler list-number"></div>
 <div class="filler description">
   <div>Service Report: #{{serviceReportNumber}}, {{serviceReportDate}}</div>
-  <div>{{xRayMachineMake}} {{xRayMachineModel}}</div>
+  <div>{{machineMake}} {{machineModel}}</div>
+  <div>Labor: {{labor}} hours at ${{laborHourlyRate}}/hour</div>
+  <div>Travel: {{travel}} hours at ${{travelHourlyRate}}</div>
 </div>
-<div class="filler subtotal"></div>
+<div class="filler subtotal">
+  <div>${{labor * laborHourlyRate}}</div>
+  <div>${{travel * travelHourlyRate}}</div>
+</div>
 <div class="filler total"></div>
 <footer>
   <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>

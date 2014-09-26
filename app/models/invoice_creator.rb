@@ -2,7 +2,7 @@ class InvoiceCreator
   extend ActiveModel::Naming
   include ActiveModel::Conversion
   include ActiveModel::Validations
-  attr_reader :invoice_number, :invoice_date, :hospital_name, :hospital_street, :hospital_city, :hospital_state, :hospital_zipcode, :service_report_number, :service_report_date, :x_ray_machine_make, :x_ray_machine_model, :labor, :travel
+  attr_reader :invoice_number, :invoice_date, :client_name, :client_street, :client_city_state_zip, :hospital_department, :hospital_room, :service_report_number, :service_report_date, :machine_make, :machine_model, :labor, :labor_hourly_rate, :travel, :travel_hourly_rate, :mileage, :mileage_hourly_rate, :part
 
   def initialize(hash)
     hash.each do |key, value|
