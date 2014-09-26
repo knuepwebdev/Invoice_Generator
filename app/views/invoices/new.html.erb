@@ -1,12 +1,21 @@
 <div ng-controller="InvoicesCtrl">
   <%= form_for @invoice_creator, html: {class: "form-horizontal", role: "form"} do |form| %>
-    <% InvoiceFormData::INVOICE_FORM_FIELDS.each do |section, fields| %>
-      <h1><%= section %></h1>
-      <% fields.each do |field| %>
-        <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form %>  
-      <% end %>
-    <% end %>
+    <%= render partial: 'invoice_form', object: form %>   
     <%= form.submit 'Save' %>
   <% end %>
-  <%= render partial: 'invoice' %>
+  <%= render partial: 'invoice_preview' %>
 </div>
+
+
+<!-- <div ng-controller="InvoicesCtrl"> -->
+  <%#= form_for @invoice_creator, html: {class: "form-horizontal", role: "form"} do |form| %>
+    <%# InvoiceFormData::INVOICE_FORM_FIELDS.each do |section, fields| %>
+      <!-- <h1><%#= section %></h1> -->
+      <%# fields.each do |field| %>
+        <%#= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form %>  
+      <%# end %>
+    <%# end %>
+    <%#= form.submit 'Save' %>
+  <%# end %>
+  <%#= render partial: 'invoice' %>
+<!-- </div> -->

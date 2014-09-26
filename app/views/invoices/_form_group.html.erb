@@ -1,5 +1,4 @@
 <div class="form-group">
-  <label for=<%= field %> class="col-sm-2 control-label"><%= field.spacerize %></label>
   <div class="col-sm-<%= width %>">
     <%= form_group.text_field field, class: "form-control", id: field.camelize(:lower), placeholder: field.spacerize, ng_model: field.camelize(:lower) %>
   </div>

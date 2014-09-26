@@ -63,7 +63,7 @@ h3, p, #line-items th {
 }
 .overlap {
   position:relative;
-  height: 124px;
+  /*height: 124px;*/
   top:-1px;
   left:-1px;
   width: 426px;
