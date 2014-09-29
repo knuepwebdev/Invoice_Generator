@@ -30,7 +30,7 @@
   </div>
 </div>
 <div id="right-column">
-  <h1>Invoice {{invoiceNumber}}</h1>
+  <h1>Invoice</h1><%= render partial: 'inline_text_field', locals: {attribute: 'invoice_number'}, object: invoice_form, as: :form %>
   <p>Please indicate invoice numbers on all remittances</p>
   <div class="page">
     <h3>Page</h3>
@@ -116,7 +116,11 @@
   </div>
   <div>
     <%= render partial: 'inline_text_field', locals: {attribute: :labor}, object: invoice_form, as: :form %>
-    <%= render partial: 'inline_text_field', locals: {attribute: :hourly_rate}, object: invoice_form, as: :form %>
+    <%= render partial: 'inline_text_field', locals: {attribute: :labor_hourly_rate}, object: invoice_form, as: :form %>
+  </div>
+  <div>
+    <%= render partial: 'inline_text_field', locals: {attribute: :travel}, object: invoice_form, as: :form %>
+    <%= render partial: 'inline_text_field', locals: {attribute: :travel_hourly_rate}, object: invoice_form, as: :form %>      
   </div>
 </div>
 <div class="filler subtotal"></div>

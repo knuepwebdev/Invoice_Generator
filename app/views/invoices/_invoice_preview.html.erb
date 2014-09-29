@@ -94,9 +94,13 @@
 <div class="filler description">
   <div>Service Report: #{{serviceReportNumber}}, {{serviceReportDate}}</div>
   <div>{{xRayMachineMake}} {{xRayMachineModel}}</div>
-  <div>Labor: {{labor}} hours at ${{hourlyRate}}/hour</div>
+  <div>Labor: {{labor}} hours at ${{laborHourlyRate}}/hour</div>
+  <div>Travel: {{travel}} hours at ${{travelHourlyRate}}</div>
 </div>
-<div class="filler subtotal">${{labor * hourlyRate}}</div>
+<div class="filler subtotal">
+  <div>${{labor * laborHourlyRate}}</div>
+  <div>${{travel * travelHourlyRate}}</div>
+</div>
 <div class="filler total"></div>
 <footer>
   <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
