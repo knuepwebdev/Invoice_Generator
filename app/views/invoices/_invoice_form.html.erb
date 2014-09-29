@@ -106,11 +106,18 @@
 <div class="filler quantity"></div>
 <div class="filler list-number"></div>
 <div class="filler description">
-  <div>
-    <%= invoice_form.text_field :service_report_number, ng_model: 'service_report_number'.camelize(:lower) %>
+  <div> 
+    <%= render partial: 'inline_text_field', locals: {attribute: :service_report_number}, object: invoice_form, as: :form %>
     <%= render partial: 'datepicker', locals: {attribute: 'service_report_date'}, object: invoice_form, as: 'form' %>
   </div>
-  <div>{{xRayMachineMake}} {{xRayMachineModel}}</div>
+  <div>
+    <%= render partial: 'inline_text_field', locals: {attribute: :x_ray_machine_make}, object: invoice_form, as: :form %> 
+    <%= render partial: 'inline_text_field', locals: {attribute: :x_ray_machine_model}, object: invoice_form, as: :form %>
+  </div>
+  <div>
+    <%= render partial: 'inline_text_field', locals: {attribute: :labor}, object: invoice_form, as: :form %>
+    <%= render partial: 'inline_text_field', locals: {attribute: :hourly_rate}, object: invoice_form, as: :form %>
+  </div>
 </div>
 <div class="filler subtotal"></div>
 <div class="filler total"></div>
