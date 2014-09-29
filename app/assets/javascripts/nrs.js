@@ -1,5 +1,4 @@
 $(function() {
-  $('#invoiceDate').addClass('datepicker');
-  $('#serviceReportDate').addClass('datepicker');
-  $('.datepicker').datepicker();
+  $('#service_report_date').datepicker();
+  $('#invoice_date').datepicker();
 });

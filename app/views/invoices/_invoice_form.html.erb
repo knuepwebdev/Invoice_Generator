@@ -1,30 +1,18 @@
-<!-- make this a hash so that the sections are not hardcoded into the erb -->
-<!-- module InvoiceFormData
-  INVOICE_FORM_FIELDS = [
-    {field_name: 'invoice_number', width: '2'},
-    {field_name: 'invoice_date', width: '2'}
-    {field_name: 'client_name', width: '4'},
-    {field_name: 'client_street', width: '4'},
-    {field_name: 'client_city', width: '4'},
-    {field_name: 'client_state', width: '2'},
-    {field_name: 'client_zipcode', width: '2'}
-    {field_name: 'service_report_number', width: '2'},
-    {field_name: 'service_report_date', width: '2'},
-    {field_name: 'x_ray_machine_make', width: '4'},
-    {field_name: 'x_ray_machine_model', width: '4'},
-    {field_name: 'labor', width: '1'},
-    {field_name: 'travel', width: '1'}
-  ]
-  
-end -->
-
-
 <div id="left-column">
   <section id="company-info">    
-    <h2 id="logo" class="bold">national radiographic systems, inc.</h2>
-    <div>X-Ray Sales and Service</div>
-    <div>212 Main St</div>
-    <div>Los Angeles, CA 90244</div>
+    <h2 id="logo" class="bold"><%= InvoiceFormData::COMPANY[:name] %></h2>
+    <div><%= InvoiceFormData::COMPANY[:tagline] %></div>
+    <div><%= InvoiceFormData::COMPANY[:street] %></div>
+    <div>
+      <%= InvoiceFormData::COMPANY[:city] %>
+      <%= InvoiceFormData::COMPANY[:state] %>
+      <%= InvoiceFormData::COMPANY[:zip_code] %>
+    </div>
+    <div>
+      Phone <%= InvoiceFormData::COMPANY[:phone] %>
+      &bull;
+      Fax <%= InvoiceFormData::COMPANY[:fax] %>
+    </div>
   </section>
   <h3>sold to:</h3>
   <!-- <div id="client-info"></div> -->
@@ -32,32 +20,37 @@ end -->
     <div>ATTN: Accounts Payable</div>
     <!--either make a directive which inserts a textfield into #client-name -->
     <!-- or, use a view helper on the backend -->
-    <% InvoiceForm::CLIENT_DATA.each do |field| %>
+    <% InvoiceFormData::CLIENT_DATA.each do |field| %>
       <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: invoice_form %>  
     <% end %>
   </div>
   <h3>shipped to:</h3>
-  <!-- <div id="shipping-info">{{shipping_date}}</div> -->
-  <div class="overlap"></div>
+  <div class="overlap">
+    <div><%= invoice_form.text_area :shipping_data, ng_model: 'shipping_data'.camelize(:lower) %></div>
+  </div>
 </div>
 <div id="right-column">
   <h1>Invoice {{invoiceNumber}}</h1>
   <p>Please indicate invoice numbers on all remittances</p>
   <div class="page">
     <h3>Page</h3>
-    <div><!-- {{page}} --></div>
+    <div>
+      <%= InvoiceFormData::INVOICE_FORM_FIELDS[:pages] %>
+      of
+      <%= InvoiceFormData::INVOICE_FORM_FIELDS[:pages] %>
+    </div>
   </div>
   <div class="date">
     <h3>Date</h3>
-    <div>{{invoiceDate}}</div>
+    <div><%= render partial: 'datepicker', locals: {attribute: 'invoice_date'}, object: invoice_form, as: 'form' %></div>
   </div>
   <div class="po-number">
     <h3>Your Purchase Order</h3>
-    <div><!-- {{PO number}} --></div>
+    <div></div>
   </div>
   <div class="date">
     <h3>Date</h3>
-    <div><!-- {{date}} --></div>
+    <div><!-- {{poNumberDate}} --></div>
   </div>
   <div class="terms">
     <h3>Terms of Payment: 30 Days Net</h3>
@@ -113,7 +106,10 @@ end -->
 <div class="filler quantity"></div>
 <div class="filler list-number"></div>
 <div class="filler description">
-  <div>Service Report: #{{serviceReportNumber}}, {{serviceReportDate}}</div>
+  <div>
+    <%= invoice_form.text_field :service_report_number, ng_model: 'service_report_number'.camelize(:lower) %>
+    <%= render partial: 'datepicker', locals: {attribute: 'service_report_date'}, object: invoice_form, as: 'form' %>
+  </div>
   <div>{{xRayMachineMake}} {{xRayMachineModel}}</div>
 </div>
 <div class="filler subtotal"></div>
