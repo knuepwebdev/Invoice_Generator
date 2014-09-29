@@ -21,12 +21,13 @@
     <!--either make a directive which inserts a textfield into #client-name -->
     <!-- or, use a view helper on the backend -->
     <% InvoiceFormData::CLIENT_DATA.each do |field| %>
-      <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: invoice_form %>  
+      <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: invoice_form, as: :form %>  
     <% end %>
   </div>
   <h3>shipped to:</h3>
   <div class="overlap">
-    <div><%= invoice_form.text_area :shipping_data, ng_model: 'shipping_data'.camelize(:lower) %></div>
+    <div><%= render partial: 'form_group', locals: {field: 'hospital_department', width: 6}, object: invoice_form, as: :form %></div>
+    <div><%= render partial: 'form_group', locals: {field: 'hospital_room', width: 6}, object: invoice_form, as: :form %></div>
   </div>
 </div>
 <div id="right-column">
@@ -108,7 +109,7 @@
 <div class="filler description">
   <div> 
     <%= render partial: 'inline_text_field', locals: {attribute: :service_report_number}, object: invoice_form, as: :form %>
-    <%= render partial: 'datepicker', locals: {attribute: 'service_report_date'}, object: invoice_form, as: 'form' %>
+    <%= render partial: 'datepicker', locals: {attribute: 'service_report_date'}, object: invoice_form, as: :form %>
   </div>
   <div>
     <%= render partial: 'inline_text_field', locals: {attribute: :x_ray_machine_make}, object: invoice_form, as: :form %> 
