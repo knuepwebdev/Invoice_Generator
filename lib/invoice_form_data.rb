@@ -44,18 +44,28 @@ module InvoiceFormData
     {field_name: 'machine_make', width: '4'},
     {field_name: 'machine_model', width: '4'}
   ]
-    
 
-  # INVOICE_FORM_FIELDS = [
-  #   {field_name: 'invoice_number', width: '2'},
-  #   {field_name: 'invoice_date', width: '2'},
-  #   {field_name: 'pages', width: '2'},
-  #   {field_name: 'service_report_number', width: '2'},
-  #   {field_name: 'service_report_date', width: '2'},
-  #   {field_name: 'x_ray_machine_make', width: '4'},
-  #   {field_name: 'x_ray_machine_model', width: '4'},
-  #   {field_name: 'labor', width: '1'},
-  #   {field_name: 'travel', width: '1'}
-  # ]
+  DESCRIPTION = {
+    service_report: [
+      {field: 'service_report_number'},
+      {field: 'service_report_date'}  
+    ],
+    machine: [
+      {field: 'machine_make'},
+      {field: 'machine_model'}  
+    ],
+    labor: [
+      {field: 'labor'},
+      {field: 'labor_hourly_rate'}  
+    ],
+    travel: [
+      {field: 'travel'},
+      {field: 'travel_hourly_rate'}
+    ],
+    mileage: [
+      {field: 'mileage'},
+      {field: 'mileage_hourly_rate'}
+    ]
+  }    
   
 end

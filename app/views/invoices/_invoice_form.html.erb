@@ -15,7 +15,6 @@
     </div>
   </section>
   <h3>sold to:</h3>
-  <!-- <div id="client-info"></div> -->
   <div class="overlap">
     <div>ATTN: Accounts Payable</div>
     <% InvoiceFormData::CLIENT_DATA.each do |field| %>
@@ -67,18 +66,11 @@
 <div class="filler quantity"></div>
 <div class="filler list-number"></div>
 <div class="filler description">
-  <div> 
-    <%= render partial: 'inline_text_field', locals: {attribute: :service_report_number}, object: invoice_form, as: :form %>
-    <%= render partial: 'datepicker', locals: {attribute: 'service_report_date'}, object: invoice_form, as: :form %>
-  </div>
-  <div>
-    <%= render partial: 'inline_text_field', locals: {attribute: :labor}, object: invoice_form, as: :form %>
-    <%= render partial: 'inline_text_field', locals: {attribute: :labor_hourly_rate}, object: invoice_form, as: :form %>
-  </div>
-  <div>
-    <%= render partial: 'inline_text_field', locals: {attribute: :travel}, object: invoice_form, as: :form %>
-    <%= render partial: 'inline_text_field', locals: {attribute: :travel_hourly_rate}, object: invoice_form, as: :form %>      
-  </div>
+  <% InvoiceFormData::DESCRIPTION.each do |section, array| %>
+    <% array.each do |attribute| %>
+      <%= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: invoice_form, as: :form %>
+    <% end %>
+  <% end %>
 </div>
 <div class="filler subtotal"></div>
 <div class="filler total"></div>
