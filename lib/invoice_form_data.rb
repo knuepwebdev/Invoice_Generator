@@ -28,6 +28,16 @@ module InvoiceFormData
 
   ]
 
+  EXTRA_FIELDS = [
+    {id: 'fob-point', heading: 'f.o.b. point'},
+    {id: 'carriers-name', heading: "Carrier's name"},
+    {id: 'shipped-via', heading: 'shipped via'},
+    {id: 'freight-term', heading: 'freight term'},
+    {id: 'st-tax', heading: 'st. tax for'},
+    {id: 'pco', heading: 'pco'},
+    {id: 'tax-determination', heading: 'tax determination'},
+  ]
+
   SERVICE_REPORT = [
     {field_name: 'number', width: '4'},
     {field_name: 'date', width: '4'},

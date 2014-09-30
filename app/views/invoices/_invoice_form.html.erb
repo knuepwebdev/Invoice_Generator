@@ -18,8 +18,6 @@
   <!-- <div id="client-info"></div> -->
   <div class="overlap">
     <div>ATTN: Accounts Payable</div>
-    <!--either make a directive which inserts a textfield into #client-name -->
-    <!-- or, use a view helper on the backend -->
     <% InvoiceFormData::CLIENT_DATA.each do |field| %>
       <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: invoice_form, as: :form %>  
     <% end %>
@@ -50,34 +48,9 @@
   <% end %>
 </div>
 <div id="extra-fields">
-  <div id="fob-point">
-    <h3>f.o.b. point</h3>
-    <div></div>
-  </div>
-  <div id="carriers-name">
-    <h3>Carrier's name</h3>
-    <div></div>
-  </div>
-  <div id="shipped-via">
-    <h3>shipped via</h3>
-    <div></div>
-  </div>
-  <div id="freight-term"> 
-    <h3>freight term</h3>
-    <div></div>
-  </div>
-  <div id="st-tax"> 
-    <h3>st. tax for</h3>
-    <div></div>
-  </div>
-  <div id="pco">
-    <h3>pco</h3>
-    <div></div>
-  </div>
-  <div id="tax-determination">
-    <h3>tax determination</h3>
-    <div></div>
-  </div>
+  <% InvoiceFormData::EXTRA_FIELDS.each do |container| %>
+    <%= render partial: 'extra_field', locals: {id: container[:id], heading: container[:heading]} %>
+  <% end %>
 </div>
 <table id="line-items">
   <tr>
