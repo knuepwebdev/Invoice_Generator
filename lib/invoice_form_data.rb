@@ -19,6 +19,21 @@ module InvoiceFormData
   INVOICE_FORM_FIELDS = {
     pages: 1, width: '2',
   }
+
+  RIGHT_COLUMN = [
+    {id: 'po-number', heading: 'Your Purchase Order'},
+    {id: 'date', heading: 'Date'},
+    {id: 'terms', heading: 'Terms of Payment: 30 Days Net'},
+    {id: 'reference-number', heading: 'Our Reference Number'}
+
+  ]
+
+  SERVICE_REPORT = [
+    {field_name: 'number', width: '4'},
+    {field_name: 'date', width: '4'},
+    {field_name: 'machine_make', width: '4'},
+    {field_name: 'machine_model', width: '4'}
+  ]
     
 
   # INVOICE_FORM_FIELDS = [
@@ -34,4 +49,3 @@ module InvoiceFormData
   # ]
   
 end
-

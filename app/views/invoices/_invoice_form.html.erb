@@ -45,22 +45,9 @@
     <h3>Date</h3>
     <div><%= render partial: 'datepicker', locals: {attribute: 'invoice_date'}, object: invoice_form, as: 'form' %></div>
   </div>
-  <div class="po-number">
-    <h3>Your Purchase Order</h3>
-    <div></div>
-  </div>
-  <div class="date">
-    <h3>Date</h3>
-    <div><!-- {{poNumberDate}} --></div>
-  </div>
-  <div class="terms">
-    <h3>Terms of Payment: 30 Days Net</h3>
-    <div><!-- {{terms}} --></div>
-  </div>
-  <div class="reference-number">
-    <h3>Our Reference Number</h3>
-    <div><!-- {{referenceNumber}} --></div>
-  </div>
+  <% InvoiceFormData::RIGHT_COLUMN.each do |container| %>
+    <%= render partial: 'container', locals: {id: container[:id], heading: container[:heading]} %>   
+  <% end %>
 </div>
 <div id="extra-fields">
   <div id="fob-point">
@@ -110,10 +97,6 @@
   <div> 
     <%= render partial: 'inline_text_field', locals: {attribute: :service_report_number}, object: invoice_form, as: :form %>
     <%= render partial: 'datepicker', locals: {attribute: 'service_report_date'}, object: invoice_form, as: :form %>
-  </div>
-  <div>
-    <%= render partial: 'inline_text_field', locals: {attribute: :x_ray_machine_make}, object: invoice_form, as: :form %> 
-    <%= render partial: 'inline_text_field', locals: {attribute: :x_ray_machine_model}, object: invoice_form, as: :form %>
   </div>
   <div>
     <%= render partial: 'inline_text_field', locals: {attribute: :labor}, object: invoice_form, as: :form %>
