@@ -75,6 +75,7 @@
     <h2>Parts?</h2>
     <select ng-model="selectedOption"
             ng-options="option for option in options"></select>
+    <div toggle-parts="selectedOption"></div>
     <%#= form.select :part, options_for_select(['no', 'yes']) %>
   </div>
 </div>
