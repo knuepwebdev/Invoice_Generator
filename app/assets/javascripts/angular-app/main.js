@@ -4,7 +4,7 @@ angular.module('nrs')
       state: 'CA'
     };
   })
-  .controller('InvoicesCtrl', function($scope, Address) {
+  .controller('InvoicesCtrl', ['$scope', 'Address', function($scope, Address) {
     $scope.hospitalState = Address.state;
-  });
-
+    $scope.options = ['No', 'Yes'];
+  }]);

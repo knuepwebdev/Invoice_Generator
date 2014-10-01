@@ -73,7 +73,9 @@
   <% end %>
   <div id='parts'>
     <h2>Parts?</h2>
-    <%= form.select :part, options_for_select(['no', 'yes']) %>
+    <select ng-model="selectedOption"
+            ng-options="option for option in options"></select>
+    <%#= form.select :part, options_for_select(['no', 'yes']) %>
   </div>
 </div>
 <div class="filler subtotal"></div>
