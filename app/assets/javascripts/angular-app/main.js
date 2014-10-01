@@ -7,3 +7,4 @@ angular.module('nrs')
   .controller('InvoicesCtrl', function($scope, Address) {
     $scope.hospitalState = Address.state;
   });
+

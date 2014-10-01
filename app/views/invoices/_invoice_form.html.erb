@@ -18,17 +18,17 @@
   <div class="overlap">
     <div>ATTN: Accounts Payable</div>
     <% InvoiceFormData::CLIENT_DATA.each do |field| %>
-      <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: invoice_form, as: :form %>  
+      <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form, as: :form %>  
     <% end %>
   </div>
   <h3>shipped to:</h3>
   <div class="overlap">
-    <div><%= render partial: 'form_group', locals: {field: 'hospital_department', width: 6}, object: invoice_form, as: :form %></div>
-    <div><%= render partial: 'form_group', locals: {field: 'hospital_room', width: 6}, object: invoice_form, as: :form %></div>
+    <div><%= render partial: 'form_group', locals: {field: 'hospital_department', width: 6}, object: form, as: :form %></div>
+    <div><%= render partial: 'form_group', locals: {field: 'hospital_room', width: 6}, object: form, as: :form %></div>
   </div>
 </div>
 <div id="right-column">
-  <h1>Invoice</h1><%= render partial: 'inline_text_field', locals: {attribute: 'invoice_number'}, object: invoice_form, as: :form %>
+  <h1>Invoice</h1><%= render partial: 'inline_text_field', locals: {attribute: 'invoice_number'}, object: form, as: :form %>
   <p>Please indicate invoice numbers on all remittances</p>
   <div class="page">
     <h3>Page</h3>
@@ -40,7 +40,7 @@
   </div>
   <div class="date">
     <h3>Date</h3>
-    <div><%= render partial: 'datepicker', locals: {attribute: 'invoice_date'}, object: invoice_form, as: 'form' %></div>
+    <div><%= render partial: 'datepicker', locals: {attribute: 'invoice_date'}, object: form, as: 'form' %></div>
   </div>
   <% InvoiceFormData::RIGHT_COLUMN.each do |container| %>
     <%= render partial: 'container', locals: {id: container[:id], heading: container[:heading]} %>   
@@ -68,9 +68,13 @@
 <div class="filler description">
   <% InvoiceFormData::DESCRIPTION.each do |section, array| %>
     <% array.each do |attribute| %>
-      <%= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: invoice_form, as: :form %>
+      <%= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>
     <% end %>
   <% end %>
+  <div id='parts'>
+    <h2>Parts?</h2>
+    <%= form.select :part, options_for_select(['no', 'yes']) %>
+  </div>
 </div>
 <div class="filler subtotal"></div>
 <div class="filler total"></div>
