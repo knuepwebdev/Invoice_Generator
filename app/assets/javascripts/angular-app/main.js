@@ -11,11 +11,20 @@ angular.module('nrs')
   }])
   .directive('toggleParts', [function() {
     function link(scope, element, attrs) {
+      function showElement() {
+        // Dynamically set name attribute on textfield
+        element.removeClass('hidden');
+      }
+
+      function hideElement() {
+        element.addClass('hidden');
+      }
+
       scope.$watch(attrs.toggleParts, function(value) {
         if (value === 'No') {
-          console.log(value);
+          hideElement();
         } else {
-          console.log(value);
+          showElement();
         }
       });
     }
