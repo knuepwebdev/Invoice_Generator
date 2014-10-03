@@ -71,13 +71,19 @@
       <%= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>
     <% end %>
   <% end %>
-  <div>
-    <h2>Parts?</h2>
+  <div class="form-group">
+    <label for="select_parts">Parts?</label>
     <select ng-model="selectedOption"
-            ng-options="option for option in options"></select>
-    <input toggle-parts="selectedOption" id='parts'/>
-    <%#= form.select :part, options_for_select(['no', 'yes']) %>
+            ng-options="option for option in options"
+            id="select_parts"
+            class="form-control"></select>
+  </div>    
+  <div toggle-parts="selectedOption">
+    <input type="text" ng-model="partNumber" placeholder="Part Number"/>
+    <input type="text" ng-model="partName" placeholder="Part Name"/>
+    <div><button type="button" class="btn btn-success">+</button></div>
   </div>
+    <%#= form.select :part, options_for_select(['no', 'yes']) %>
 </div>
 <div class="filler subtotal"></div>
 <div class="filler total"></div>
