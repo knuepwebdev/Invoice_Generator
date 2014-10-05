@@ -8,7 +8,16 @@ angular.module('nrs')
     $scope.hospitalState = Address.state;
     $scope.options = ['No', 'Yes'];
     $scope.selectedOption = 'No';
-    // $scope.numberOfParts = 0;
+    $scope.parts = [
+      {partNumber: '', partName: ''}
+    ];
+
+    $scope.addPart = function() {
+      $scope.parts.push({});
+    }
+    $scope.removePart = function(index) {
+      $scope.parts.splice(index, 1);
+    }
   }])
   .directive('toggleParts', [function() {
     function link(scope, element, attrs) {

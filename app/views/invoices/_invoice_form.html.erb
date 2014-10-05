@@ -78,12 +78,14 @@
             id="select_parts"
             class="form-control"></select>
   </div>    
-  <div toggle-parts="selectedOption">
-    <input type="text" ng-model="partNumber" placeholder="Part Number"/>
-    <input type="text" ng-model="partName" placeholder="Part Name"/>
-    <div><button type="button" class="btn btn-success">+</button></div>
-  </div>
-    <%#= form.select :part, options_for_select(['no', 'yes']) %>
+  <ul>
+    <li toggle-parts="selectedOption" ng-repeat="part in parts track by $index">
+      <button type="button" class="btn btn-danger"ng-click="removePart($index);">-</button>
+      <input type="text" ng-model="part.partNumber" name="invoice_creator[parts][part{{$index + 1}}][partNumber]" placeholder="Part Number"/>
+      <input type="text" ng-model="part.partName" name="invoice_creator[parts][part{{$index + 1}}][partName]" placeholder="Part Name"/>
+    </li>
+  </ul>
+  <div><button type="button" class="btn btn-success"ng-click="addPart();">+</button></div>
 </div>
 <div class="filler subtotal"></div>
 <div class="filler total"></div>
