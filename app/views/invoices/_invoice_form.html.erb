@@ -72,20 +72,50 @@
     <% end %>
   <% end %>
   <div class="form-group">
+    <label for="select_travel">Travel?</label>
+    <select ng-model="travel_included"
+            ng-options="option for option in options"
+            id="select_travel"
+            class="form-control">
+    </select>
+    <div toggler="travel_included">    
+      <% InvoiceFormData::TRAVEL.each do |attribute| %>
+        <%= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>  
+      <% end %>
+    </div>    
+  </div>
+  <div class="form-group">
+    <label for="select_mileage">Mileage?</label>
+    <select ng-model="mileage_included"
+            ng-options="option for option in options"
+            id="select_mileage"
+            class="form-control">
+    </select>
+    <div toggler="mileage_included">    
+      <% InvoiceFormData::MILEAGE.each do |attribute| %>
+        <%= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>  
+      <% end %>
+    </div>    
+  </div>          
+  <div class="form-group">
     <label for="select_parts">Parts?</label>
-    <select ng-model="selectedOption"
+    <select ng-model="parts_included"
             ng-options="option for option in options"
             id="select_parts"
             class="form-control"></select>
-  </div>    
-  <ul>
-    <li toggle-parts="selectedOption" ng-repeat="part in parts track by $index">
-      <button type="button" class="btn btn-danger"ng-click="removePart($index);">-</button>
-      <input type="text" ng-model="part.partNumber" name="invoice_creator[parts][part{{$index + 1}}][partNumber]" placeholder="Part Number"/>
-      <input type="text" ng-model="part.partName" name="invoice_creator[parts][part{{$index + 1}}][partName]" placeholder="Part Name"/>
-    </li>
-  </ul>
-  <div><button type="button" class="btn btn-success"ng-click="addPart();">+</button></div>
+  </div>
+  <div toggler="parts_included">    
+    <ul>
+      <li ng-repeat="part in parts track by $index">
+        <button type="button" class="btn btn-danger"ng-click="removePart($index);">-</button>
+        <input type="text" ng-model="part.number" name="invoice_creator[parts][part{{$index + 1}}][number]" placeholder="Part Number"/>
+        <input type="text" ng-model="part.name" name="invoice_creator[parts][part{{$index + 1}}][name]" placeholder="Part Name"/>
+        <input type="text" ng-model="part.price" name="invoice_creator[parts][part{{$index + 1}}][price]" placeholder="Part Price"/>
+      </li>
+    </ul>
+    <div><button type="button" class="btn btn-success"ng-click="addPart();">+</button></div>
+    <input type="text" name="invoice_creator[parts][tax_rate]" placeholder="Tax Rate"/> %
+  </div>
 </div>
 <div class="filler subtotal"></div>
 <div class="filler total"></div>

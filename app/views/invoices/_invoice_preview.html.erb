@@ -96,7 +96,14 @@
   <div>Service Report: #{{serviceReportNumber}}, {{serviceReportDate}}</div>
   <div>{{machineMake}} {{machineModel}}</div>
   <div>Labor: {{labor}} hours at ${{laborHourlyRate}}/hour</div>
-  <div>Travel: {{travel}} hours at ${{travelHourlyRate}}</div>
+  <div toggler='travel_included'>Travel: {{travel}} hours at ${{travelHourlyRate}}/hour</div>
+  <div toggler='mileage_included'>Mileage: {{mileage}} miles at {{mileageRate}} cents/mile</div>
+  <div>
+    <h1>parts:</h1>
+    <ul>
+      <li ng-repeat="part in parts"></li>
+    </ul>
+  </div>
 </div>
 <div class="filler subtotal">
   <div>${{labor * laborHourlyRate}}</div>

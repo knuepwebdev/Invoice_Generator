@@ -7,7 +7,9 @@ angular.module('nrs')
   .controller('InvoicesCtrl', ['$scope', 'Address', function($scope, Address) {
     $scope.hospitalState = Address.state;
     $scope.options = ['No', 'Yes'];
-    $scope.selectedOption = 'No';
+    $scope.parts_included = 'No';
+    $scope.travel_included = 'No';
+    $scope.mileage_included = 'No';
     $scope.parts = [
       {partNumber: '', partName: ''}
     ];
@@ -19,10 +21,9 @@ angular.module('nrs')
       $scope.parts.splice(index, 1);
     }
   }])
-  .directive('toggleParts', [function() {
+  .directive('toggler', [function() {
     function link(scope, element, attrs) {
       function showElement() {
-        // Dynamically set name attribute on textfield
         element.removeClass('hidden');
       }
 
@@ -30,7 +31,7 @@ angular.module('nrs')
         element.addClass('hidden');
       }
 
-      scope.$watch(attrs.toggleParts, function(value) {
+      scope.$watch(attrs.toggler, function(value) {
         if (value === 'No') {
           hideElement();
         } else {

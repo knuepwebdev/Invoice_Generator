@@ -57,15 +57,16 @@ module InvoiceFormData
     labor: [
       {field: 'labor'},
       {field: 'labor_hourly_rate'}  
-    ],
-    travel: [
-      {field: 'travel'},
-      {field: 'travel_hourly_rate'}
-    ],
-    mileage: [
-      {field: 'mileage'},
-      {field: 'mileage_hourly_rate'}
     ]
-  }    
+  }
+
+  TRAVEL = [
+    {field: 'travel'},
+    {field: 'travel_hourly_rate'}
+  ]
+  MILEAGE = [
+    {field: 'mileage'},
+    {field: 'mileage_rate'}
+  ]  
   
 end
