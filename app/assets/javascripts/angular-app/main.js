@@ -10,9 +10,7 @@ angular.module('nrs')
     $scope.parts_included = 'No';
     $scope.travel_included = 'No';
     $scope.mileage_included = 'No';
-    $scope.parts = [
-      {partNumber: '', partName: ''}
-    ];
+    $scope.parts = [{}];
 
     $scope.addPart = function() {
       $scope.parts.push({});

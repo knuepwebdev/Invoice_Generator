@@ -91,24 +91,38 @@
 <!-- empty divs with borders -->
 <div class="filler item"></div>
 <div class="filler quantity"></div>
-<div class="filler list-number"></div>
+<div class="filler list-number">
+  <ul toggler='parts_included' id='part-numbers'>
+    <li ng-repeat="part in parts" id="part-number-{{$index + 1}}">{{part.number}}</li>
+  </ul>
+</div>
 <div class="filler description">
   <div>Service Report: #{{serviceReportNumber}}, {{serviceReportDate}}</div>
   <div>{{machineMake}} {{machineModel}}</div>
   <div id='labor'>Labor: {{labor}} hours at ${{laborHourlyRate}}/hour</div>
   <div toggler='travel_included' id='travel'>Travel: {{travel}} hours at ${{travelHourlyRate}}/hour</div>
   <div toggler='mileage_included' id='mileage'>Mileage: {{mileage}} miles at ${{mileageRate}}/mile</div>
-  <div>
+  <div toggler='parts_included'>
     <h1>parts:</h1>
     <ul>
-      <li ng-repeat="part in parts"></li>
+      <li ng-repeat="part in parts track by $index"
+          id="part-name-{{$index + 1}}">
+        {{part.name}}
+      </li>
     </ul>
+    <div>Sales Tax {{taxRate}}%</div>
   </div>
 </div>
 <div class="filler subtotal">
   <div id='subtotal-labor'>${{labor * laborHourlyRate}}</div>
   <div toggler="travel_included" id='subtotal-travel'>${{travel * travelHourlyRate}}</div>
   <div toggler="mileage_included" id='subtotal-mileage'>${{mileage * mileageRate}}</div>
+  <ul toggler="parts_included" id='subtotal-parts'>
+    <li ng-repeat="part in parts track by $index"
+        id="part{{$index + 1}}-subtotal">
+      ${{part.quantity * part.price}}
+    </li>
+  </ul>
 </div>
 <div class="filler total"></div>
 <footer>

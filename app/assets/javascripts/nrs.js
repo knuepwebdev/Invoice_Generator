@@ -15,5 +15,24 @@ $(function() {
     if ( $('#select_mileage').val() === '1') {
       $('#subtotal-mileage').offset({top: $('#mileage').offset().top});
     }
-  });  
+  });
+
+  $('#select_parts').change(function() {
+    if ($('#select_parts').val() === '1') {
+      alignListItems();
+    }
+  });
+
+  $('#add-part').click(function() {
+    alignListItems();
+  });
+
+  function alignListItems() {
+    console.log('alignListItems');
+    $('#part-numbers').children('li').each(function(index) {
+      var top = $('#part-name-' + (index + 1)).offset().top;
+      $('#part-number-' + (index + 1)).offset({top: top});   
+      $('#part' + (index + 1) + '-subtotal').offset({top: top});   
+    });
+  }
 });

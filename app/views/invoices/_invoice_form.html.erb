@@ -108,13 +108,14 @@
     <ul>
       <li ng-repeat="part in parts track by $index">
         <button type="button" class="btn btn-danger"ng-click="removePart($index);">-</button>
+        <input type="text" ng-model="part.quantity" name="invoice_creator[parts][part{{$index + 1}}][quantity]" placeholder="Quantity"/>
         <input type="text" ng-model="part.number" name="invoice_creator[parts][part{{$index + 1}}][number]" placeholder="Part Number"/>
         <input type="text" ng-model="part.name" name="invoice_creator[parts][part{{$index + 1}}][name]" placeholder="Part Name"/>
         <input type="text" ng-model="part.price" name="invoice_creator[parts][part{{$index + 1}}][price]" placeholder="Part Price"/>
       </li>
     </ul>
-    <div><button type="button" class="btn btn-success"ng-click="addPart();">+</button></div>
-    <input type="text" name="invoice_creator[parts][tax_rate]" placeholder="Tax Rate"/> %
+    <div><button type="button" id="add-part" class="btn btn-success"ng-click="addPart();">+</button></div>
+    <input type="text" ng-model="taxRate" name="invoice_creator[parts][tax_rate]" placeholder="Tax Rate"/> %
   </div>
 </div>
 <div class="filler subtotal"></div>
