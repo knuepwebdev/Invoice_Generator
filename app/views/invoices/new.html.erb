@@ -2,7 +2,6 @@
   <%= form_for @invoice_creator,
       html: {class: "form-horizontal", role: "form"} do |form| %>
     <%= render partial: 'invoice_form', object: form, as: :form %>   
-    <%= form.submit 'Save' %>
+    <%= form.submit 'Save', id: 'save' %>
   <% end %>
-  <%= render partial: 'invoice_preview' %>
 </div>

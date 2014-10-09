@@ -7,7 +7,7 @@
   #container {
     width: 900px;
   }
-  body, #container, #left-column, #right-column, .page, #po-number, #terms, #reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, .filler, footer, footer p {
+  body, #container, #left-column, #right-column, .page, #po-number, #terms, #reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
     float: left;
   }
   body {
