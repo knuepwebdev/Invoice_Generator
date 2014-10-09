@@ -48,6 +48,24 @@ angular.module('nrs')
              $scope.calculateParts() +
              $scope.calculateTax();
     };
+    $scope.updateParts = function() {
+      if ($scope.parts_included === 'No') {
+        clearParts();
+      }
+    }
+    $scope.clearTravel = function() {
+      if ($scope.travel_included === 'No') {
+        $scope.travel = 0;
+      }
+    };
+    function clearParts() {
+      $scope.parts = [{quantity: '', price: ''}];
+    }
+    $scope.clearMileage = function() {
+      if ($scope.mileage_included === 'No') {
+        $scope.mileage = 0; 
+      }
+    }
   }])
   .directive('toggler', [function() {
     function link(scope, element, attrs) {

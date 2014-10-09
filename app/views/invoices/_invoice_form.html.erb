@@ -74,6 +74,7 @@
   <div class="form-group">
     <label for="select_travel">Travel?</label>
     <select ng-model="travel_included"
+            ng-change="clearTravel();"
             ng-options="option for option in options"
             id="select_travel"
             class="form-control">
@@ -88,6 +89,7 @@
     <label for="select_mileage">Mileage?</label>
     <select ng-model="mileage_included"
             ng-options="option for option in options"
+            ng-change="clearMileage();"
             id="select_mileage"
             class="form-control">
     </select>
@@ -101,6 +103,7 @@
     <label for="select_parts">Parts?</label>
     <select ng-model="parts_included"
             ng-options="option for option in options"
+            ng-change="updateParts();"
             id="select_parts"
             class="form-control"></select>
   </div>
