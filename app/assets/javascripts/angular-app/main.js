@@ -10,14 +10,44 @@ angular.module('nrs')
     $scope.parts_included = 'No';
     $scope.travel_included = 'No';
     $scope.mileage_included = 'No';
-    $scope.parts = [{}];
+    $scope.parts = [{quantity: '', price: ''}];
 
     $scope.addPart = function() {
       $scope.parts.push({});
-    }
+    };
     $scope.removePart = function(index) {
       $scope.parts.splice(index, 1);
-    }
+    };
+    $scope.calculateLabor = function() {
+      return (isNaN($scope.labor * $scope.laborHourlyRate) ? 0 : $scope.labor * $scope.laborHourlyRate);
+    };
+    $scope.calculateTravel = function() {
+      return (isNaN($scope.travel * $scope.travelHourlyRate) ? 0 : $scope.travel * $scope.travelHourlyRate);
+    };
+    $scope.calculateMileage = function() {
+      return (isNaN($scope.mileage * $scope.mileageRate) ? 0 : $scope.mileage * $scope.mileageRate);
+    };
+    $scope.calculateParts = function() {
+      var sum = 0;
+      angular.forEach($scope.parts, function(part, index) {
+        sum += (part.quantity * part.price);
+      });
+      return (isNaN(sum) ? 0 : sum); 
+    };
+    $scope.calculateTax = function() {
+      var tax = 0;
+      angular.forEach($scope.parts, function(part, index) {
+        tax += (part.quantity * part.price * $scope.taxRate * 0.01);
+      });
+      return (isNaN(tax) ? 0 : tax);
+    };
+    $scope.calculateTotal = function() {
+      return $scope.calculateLabor() +
+             $scope.calculateTravel() +
+             $scope.calculateMileage() +
+             $scope.calculateParts() +
+             $scope.calculateTax();
+    };
   }])
   .directive('toggler', [function() {
     function link(scope, element, attrs) {

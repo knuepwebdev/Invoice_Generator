@@ -1,9 +1,6 @@
 $(function() {
   $('#invoice_creator_service_report_date').datepicker();
   $('#invoice_date').datepicker();
-
-  // align labor data
-  $('#subtotal-labor').offset({top: $('#labor').offset().top});
   //align travel data
   $('#select_travel').change(function() {
     if ( $('#select_travel').val() === '1') {
@@ -26,13 +23,27 @@ $(function() {
   $('#add-part').click(function() {
     alignListItems();
   });
-
+  $('input').click(function() {
+    alignLabor();
+    positionTotal();    
+  });
+  
+  function alignLabor() {
+    $('#subtotal-labor').offset({top: $('#labor').offset().top});
+  }
   function alignListItems() {
-    console.log('alignListItems');
     $('#part-numbers').children('li').each(function(index) {
       var top = $('#part-name-' + (index + 1)).offset().top;
+      var taxTop = $('#input-tax').offset().top;
+      $('#part-quantity-' + (index + 1)).offset({top: top});   
       $('#part-number-' + (index + 1)).offset({top: top});   
       $('#part' + (index + 1) + '-subtotal').offset({top: top});   
+      $('#total-tax').offset({top: taxTop});   
     });
+  }
+
+  function positionTotal() {
+    var top = $('#subtotal-amount').offset().top + 100;
+    $('#total-amount').offset({top: top});
   }
 });

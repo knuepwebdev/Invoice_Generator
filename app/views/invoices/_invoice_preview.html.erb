@@ -90,7 +90,14 @@
 </table>
 <!-- empty divs with borders -->
 <div class="filler item"></div>
-<div class="filler quantity"></div>
+<div class="filler quantity">
+  <ul toggler="parts_included">
+    <li ng-repeat="part in parts track by $index"
+        id="part-quantity-{{$index + 1}}">
+      {{part.quantity}}
+    </li>
+  </ul>
+</div>
 <div class="filler list-number">
   <ul toggler='parts_included' id='part-numbers'>
     <li ng-repeat="part in parts" id="part-number-{{$index + 1}}">{{part.number}}</li>
@@ -110,21 +117,27 @@
         {{part.name}}
       </li>
     </ul>
-    <div>Sales Tax {{taxRate}}%</div>
+    <div id="input-tax">Sales Tax {{taxRate}}%</div>
   </div>
 </div>
-<div class="filler subtotal">
-  <div id='subtotal-labor'>${{labor * laborHourlyRate}}</div>
-  <div toggler="travel_included" id='subtotal-travel'>${{travel * travelHourlyRate}}</div>
-  <div toggler="mileage_included" id='subtotal-mileage'>${{mileage * mileageRate}}</div>
-  <ul toggler="parts_included" id='subtotal-parts'>
-    <li ng-repeat="part in parts track by $index"
-        id="part{{$index + 1}}-subtotal">
-      ${{part.quantity * part.price}}
-    </li>
-  </ul>
+<div id="subtotal-column" class="filler subtotal">
+  <div id='subtotal-labor'>{{ calculateLabor() | currency}}</div>
+  <div toggler="travel_included" id='subtotal-travel'>
+    {{ calculateTravel() | currency}}</div>
+  <div toggler="mileage_included" id='subtotal-mileage'>
+    {{ calculateMileage() | currency}}</div>
+  <div toggler="parts_included">
+    <ul id='subtotal-parts'>
+      <li ng-repeat="part in parts track by $index"
+          id="part{{$index + 1}}-subtotal">
+        {{ (part.quantity * part.price) | currency}}
+      </li>
+    </ul>
+    <div id="total-tax">{{calculateTax() | currency}}</div>
+  </div>
+  <div id='subtotal-amount'>{{calculateTotal() | currency}}</div>
 </div>
-<div class="filler total"></div>
+<div id="total-amount" class="filler total">{{calculateTotal() | currency}}</div>
 <footer>
   <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
   <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>

@@ -178,6 +178,13 @@ h1 {
 .filler {
   height: 600px;
 }
+#subtotal-amount {
+  border-top: 1px solid #000;
+  margin-top: 2em;
+}
+#total-tax {
+  padding-bottom: 1.5em;
+}
 /*END LINE ITEMS*/
 /*FOOTER*/
 footer {
