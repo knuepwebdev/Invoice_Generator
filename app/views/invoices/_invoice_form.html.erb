@@ -20,6 +20,8 @@
     <% InvoiceFormData::CLIENT_DATA.each do |field| %>
       <%= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form, as: :form %>  
     <% end %>
+    <%= render partial: 'states' %>
+    <%= render partial: 'form_group', locals: {field: 'zipcode', width: 4}, object: form, as: :form %>  
   </div>
   <h3>shipped to:</h3>
   <div class="overlap">

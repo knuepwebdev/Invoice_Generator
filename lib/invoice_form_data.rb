@@ -11,9 +11,9 @@ module InvoiceFormData
   }
 
   CLIENT_DATA = [
-    {field_name: 'client_name', width: '4'},
-    {field_name: 'client_street', width: '4'},
-    {field_name: 'client_city_state_zip', width: '4'}
+    {field_name: 'client_name', width: 8},
+    {field_name: 'street', width: 8},
+    {field_name: 'city', width: 8}
   ]
 
   INVOICE_FORM_FIELDS = {
