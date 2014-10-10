@@ -1,4 +1,5 @@
 NrsInvoices::Application.routes.draw do
-  resources :invoices, only: [:new, :index]
-  resource :invoice_creator, only: [:create]
+  namespace :api, defaults: { format: :json } do
+    
+  end
 end
