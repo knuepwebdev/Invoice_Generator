@@ -1,5 +1,17 @@
-angular.module('nrs', ['ngRoute'])
+//= depend_on_asset 'dashboard.html'
+//  declares an explicit asset dependency 
+
+angular.module('nrs', ['ngRoute', 'nrsControllers'])
   .config(['$routeProvider',
     function($routeProvider) {
-
-    }]);
+      $routeProvider
+        .when('/', {
+          templateUrl: "<%= asset_path('dashboard.html') %>",
+          controller: 'DashboardCtrl'
+        })
+        .when('/invoices/new', {
+          templateUrl: "<%= asset_path('new_invoice.html.erb') %>",
+          controller: 'InvoicesCtrl'
+        });
+    }
+  ]);
