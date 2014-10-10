@@ -1,4 +1,4 @@
-angular.module('nrs')
+angular.module('nrsControllers')
   .factory('Address', function() {
     return {
       state: 'CA'
