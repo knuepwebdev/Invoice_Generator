@@ -1,16 +1,30 @@
-angular.module('nrs')
+angular.module('invoice')
   .factory('Address', function() {
     return {
       state: 'CA'
     };
   })
-  .controller('InvoicesCtrl', ['$scope', 'Address', function($scope, Address) {
+  .controller('InvoicesCtrl', ['$scope', 'formData', 'Invoice', 'invoiceAttributes', 'Address', 'ResourceRequester',function($scope, formData, Invoice, invoiceAttributes, Address, ResourceRequester) {
     $scope.hospitalState = Address.state;
     $scope.options = ['No', 'Yes'];
     $scope.parts_included = 'No';
     $scope.travel_included = 'No';
     $scope.mileage_included = 'No';
     $scope.parts = [{quantity: '', price: ''}];
+    $scope.formData = formData;
+    $scope.attrs = invoiceAttributes;
+    $scope.invoice = Invoice.datas;
+    $scope.getData = function(attr, data) {
+      console.log('$scope.getData');
+      Invoice.setProperty(attr, data);
+      console.log('end $scope.getData');
+    };
+
+    $scope.save = function(invoice) {
+      console.log('save');
+      console.log(invoice);
+      ResourceRequester.save(invoice);
+    };
 
     $scope.addPart = function() {
       $scope.parts.push({});

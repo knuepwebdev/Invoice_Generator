@@ -1,7 +1,0 @@
-<div ng-controller="InvoicesCtrl">
-  <%= form_for @invoice_creator,
-      html: {class: "form-horizontal", role: "form"} do |form| %>
-    <%= render partial: 'invoice_form', object: form, as: :form %>   
-    <%= form.submit 'Save', id: 'save' %>
-  <% end %>
-</div>
