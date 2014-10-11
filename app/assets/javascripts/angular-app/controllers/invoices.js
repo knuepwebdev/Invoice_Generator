@@ -4,7 +4,7 @@ angular.module('invoice')
       state: 'CA'
     };
   })
-  .controller('InvoicesCtrl', ['$scope', 'formData', 'Address', function($scope, formData, Address) {
+  .controller('InvoicesCtrl', ['$scope', 'formData', 'Address', 'Invoice',function($scope, formData, Address, Invoice) {
     $scope.hospitalState = Address.state;
     $scope.options = ['No', 'Yes'];
     $scope.parts_included = 'No';
@@ -12,6 +12,14 @@ angular.module('invoice')
     $scope.mileage_included = 'No';
     $scope.parts = [{quantity: '', price: ''}];
     $scope.formData = formData;
+    
+    Invoice.all()
+      .then(function(invoices) {
+          // $scope.allInvoices = invoices;
+          console.log('restantular retrieved invoices');
+          console.log(invoices);
+      });
+
 
     $scope.addPart = function() {
       $scope.parts.push({});
