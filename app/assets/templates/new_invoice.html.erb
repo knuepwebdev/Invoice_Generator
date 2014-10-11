@@ -19,12 +19,7 @@
       <h3>sold to:</h3>
       <div class="overlap">
         <div>ATTN: Accounts Payable</div>
-        CLIENT_DATA = [
-          {field_name: 'client_name', width: 8},
-          {field_name: 'street', width: 8},
-          {field_name: 'city', width: 8}
-        ]
-        <textfield></textfield>
+        <nrs-textfield data=formData.clientData></nrs-textfield>
         <% InvoiceFormData::CLIENT_DATA.each do |field| %>
           <%#= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form, as: :form %>  
         <% end %>

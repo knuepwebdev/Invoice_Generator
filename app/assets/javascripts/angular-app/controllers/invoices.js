@@ -4,13 +4,14 @@ angular.module('invoice')
       state: 'CA'
     };
   })
-  .controller('InvoicesCtrl', ['$scope', 'Address', function($scope, Address) {
+  .controller('InvoicesCtrl', ['$scope', 'formData', 'Address', function($scope, formData, Address) {
     $scope.hospitalState = Address.state;
     $scope.options = ['No', 'Yes'];
     $scope.parts_included = 'No';
     $scope.travel_included = 'No';
     $scope.mileage_included = 'No';
     $scope.parts = [{quantity: '', price: ''}];
+    $scope.formData = formData;
 
     $scope.addPart = function() {
       $scope.parts.push({});
