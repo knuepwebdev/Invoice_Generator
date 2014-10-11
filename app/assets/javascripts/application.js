@@ -15,4 +15,6 @@
 //= require jquery-ui/datepicker
 //= require angular
 //= require angular-route
+//= require lodash
+//= require restangular
 //= require_tree .
