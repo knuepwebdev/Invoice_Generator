@@ -1,4 +1,4 @@
-nrsControllers = angular.module('nrsControllers', []);
-nrsControllers.controller('DashboardCtrl', function() {
+angular.module('invoice', [])
+  .controller('DashboardCtrl', function() {
 
-});
+  });

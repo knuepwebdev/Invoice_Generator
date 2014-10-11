@@ -1,4 +1,4 @@
-angular.module('nrsControllers')
+angular.module('invoice')
   .factory('Address', function() {
     return {
       state: 'CA'

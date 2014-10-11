@@ -1,7 +1,142 @@
-<h1>New Invoice</h1>
-
-<%#= form_for @invoice_creator,
-    html: {class: "form-horizontal", role: "form"} do |form| %>
-
-<%# end %>
-
+<div ng-controller='InvoicesCtrl'>
+  <form class='form-horizontal'>
+    <div id="left-column">
+      <section id="company-info">    
+        <h2 id="logo" class="bold"><%= InvoiceFormData::COMPANY[:name] %></h2>
+        <div><%= InvoiceFormData::COMPANY[:tagline] %></div>
+        <div><%= InvoiceFormData::COMPANY[:street] %></div>
+        <div>
+          <%= InvoiceFormData::COMPANY[:city] %>
+          <%= InvoiceFormData::COMPANY[:state] %>
+          <%= InvoiceFormData::COMPANY[:zip_code] %>
+        </div>
+        <div>
+          Phone <%= InvoiceFormData::COMPANY[:phone] %>
+          &bull;
+          Fax <%= InvoiceFormData::COMPANY[:fax] %>
+        </div>
+      </section>
+      <h3>sold to:</h3>
+      <div class="overlap">
+        <div>ATTN: Accounts Payable</div>
+        CLIENT_DATA = [
+          {field_name: 'client_name', width: 8},
+          {field_name: 'street', width: 8},
+          {field_name: 'city', width: 8}
+        ]
+        <textfield></textfield>
+        <% InvoiceFormData::CLIENT_DATA.each do |field| %>
+          <%#= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form, as: :form %>  
+        <% end %>
+        <%#= render partial: 'states' %>
+        <%#= render partial: 'form_group', locals: {field: 'zipcode', width: 4}, object: form, as: :form %>  
+      </div>
+      <h3>shipped to:</h3>
+      <div class="overlap">
+        <div><%#= render partial: 'form_group', locals: {field: 'hospital_department', width: 6}, object: form, as: :form %></div>
+        <div><%#= render partial: 'form_group', locals: {field: 'hospital_room', width: 6}, object: form, as: :form %></div>
+      </div>
+    </div>
+    <div id="right-column">
+      <h1>Invoice</h1><%#= render partial: 'inline_text_field', locals: {attribute: 'invoice_number'}, object: form, as: :form %>
+      <p>Please indicate invoice numbers on all remittances</p>
+      <div class="page">
+        <h3>Page</h3>
+        <div>
+          <%= InvoiceFormData::INVOICE_FORM_FIELDS[:pages] %>
+          of
+          <%= InvoiceFormData::INVOICE_FORM_FIELDS[:pages] %>
+        </div>
+      </div>
+      <div class="date">
+        <h3>Date</h3>
+        <div><%#= render partial: 'datepicker', locals: {attribute: 'invoice_date'}, object: form, as: 'form' %></div>
+      </div>
+      <% InvoiceFormData::RIGHT_COLUMN.each do |container| %>
+        <%#= render partial: 'container', locals: {id: container[:id], heading: container[:heading]} %>   
+      <% end %>
+    </div>
+    <div id="extra-fields">
+      <% InvoiceFormData::EXTRA_FIELDS.each do |container| %>
+        <%#= render partial: 'extra_field', locals: {id: container[:id], heading: container[:heading]} %>
+      <% end %>
+    </div>
+    <table id="line-items">
+      <tr>
+        <th class="item">item no.</th>
+        <th class="quantity">quantity</th>
+        <th class="list-number">list number</th>
+        <th class="description">description/serial no.</th>
+        <th class="subtotal"></th>
+        <th class="total">total</th>
+      </tr>
+    </table>
+    <!-- empty divs with borders -->
+    <div class="filler item"></div>
+    <div class="filler quantity"></div>
+    <div class="filler list-number"></div>
+    <div class="filler description">
+      <% InvoiceFormData::DESCRIPTION.each do |section, array| %>
+        <% array.each do |attribute| %>
+          <%#= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>
+        <% end %>
+      <% end %>
+      <div class="form-group">
+        <label for="select_travel">Travel?</label>
+        <select ng-model="travel_included"
+                ng-change="clearTravel();"
+                ng-options="option for option in options"
+                id="select_travel"
+                class="form-control">
+        </select>
+        <div toggler="travel_included">    
+          <% InvoiceFormData::TRAVEL.each do |attribute| %>
+            <%#= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>  
+          <% end %>
+        </div>    
+      </div>
+      <div class="form-group">
+        <label for="select_mileage">Mileage?</label>
+        <select ng-model="mileage_included"
+                ng-options="option for option in options"
+                ng-change="clearMileage();"
+                id="select_mileage"
+                class="form-control">
+        </select>
+        <div toggler="mileage_included">    
+          <% InvoiceFormData::MILEAGE.each do |attribute| %>
+            <%#= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>  
+          <% end %>
+        </div>    
+      </div>          
+      <div class="form-group">
+        <label for="select_parts">Parts?</label>
+        <select ng-model="parts_included"
+                ng-options="option for option in options"
+                ng-change="updateParts();"
+                id="select_parts"
+                class="form-control"></select>
+      </div>
+      <div toggler="parts_included">    
+        <ul>
+          <li ng-repeat="part in parts track by $index">
+            <button type="button" class="btn btn-danger"ng-click="removePart($index);">-</button>
+            <input type="text" ng-model="part.quantity" name="invoice_creator[parts][part{{$index + 1}}][quantity]" placeholder="Quantity"/>
+            <input type="text" ng-model="part.number" name="invoice_creator[parts][part{{$index + 1}}][number]" placeholder="Part Number"/>
+            <input type="text" ng-model="part.name" name="invoice_creator[parts][part{{$index + 1}}][name]" placeholder="Part Name"/>
+            <input type="text" ng-model="part.price" name="invoice_creator[parts][part{{$index + 1}}][price]" placeholder="Part Price"/>
+          </li>
+        </ul>
+        <div><button type="button" id="add-part" class="btn btn-success"ng-click="addPart();">+</button></div>
+        <input type="text" ng-model="taxRate" name="invoice_creator[parts][tax_rate]" placeholder="Tax Rate"/> %
+      </div>
+    </div>
+    <div class="filler subtotal"></div>
+    <div class="filler total"></div>
+    <footer>
+      <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
+      <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>
+    </footer>
+    
+  </form>
+</div>
