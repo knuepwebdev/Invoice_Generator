@@ -2,8 +2,8 @@
 //= depend_on_asset 'new_invoice.html'
 
 angular.module('nrs', ['ngRoute', 'invoice', 'restangular'])
-  .config(['$routeProvider', '$locationProvider', 'RestangularProvider',
-    function($routeProvider, $locationProvider, RestangularProvider) {
+  .config(['$routeProvider', '$locationProvider', '$httpProvider', 'RestangularProvider',
+    function($routeProvider, $locationProvider, $httpProvider, RestangularProvider) {
       $routeProvider
         .when('/invoices/new', {
           templateUrl: "<%= asset_path('new_invoice.html') %>",
@@ -17,6 +17,8 @@ angular.module('nrs', ['ngRoute', 'invoice', 'restangular'])
           redirectTo: '/'
         });
       $locationProvider.html5Mode(true);
+      $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = 
+        $("meta[name=\"csrf-token\"]").attr("content");
       RestangularProvider.setBaseUrl('/api/v1/');
       // RestangularProvider.setExtraFields(['name']);
       // RestangularProvider.setResponseExtractor(function(response, operation) {

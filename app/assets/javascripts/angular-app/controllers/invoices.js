@@ -12,14 +12,9 @@ angular.module('invoice')
     $scope.mileage_included = 'No';
     $scope.parts = [{quantity: '', price: ''}];
     $scope.formData = formData;
-    
-    Invoice.all()
-      .then(function(invoices) {
-          // $scope.allInvoices = invoices;
-          console.log('restantular retrieved invoices');
-          console.log(invoices);
-      });
-
+    $scope.save = function(invoice) {
+      Invoice.save(invoice);
+    };
 
     $scope.addPart = function() {
       $scope.parts.push({});
