@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 20140916115940) do
 
   create_table "invoices", force: true do |t|
     t.integer  "service_report_id"
-    t.string   "number"
+    t.string   "name"
+    t.string   "street"
+    t.string   "city"
     t.date     "date"
     t.decimal  "total"
     t.datetime "created_at"

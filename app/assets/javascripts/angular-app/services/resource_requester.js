@@ -3,6 +3,8 @@ angular.module('invoice')
     var ResourceRequester = {
       all: Restangular.all('invoices').getList,
       save: function(invoice) {
+        console.log('ResourceRequester');
+        console.log(invoice);
         Restangular.all('invoices').post(invoice)
       }
     };

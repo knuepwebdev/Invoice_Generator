@@ -14,7 +14,7 @@ module Api
 
       private
       def invoice_params
-        params.require(:invoice).permit(:number)
+        params.require(:invoice).permit(:name, :street, :city)
       end 
     end
   end
