@@ -4,7 +4,7 @@ angular.module('invoice')
       state: 'CA'
     };
   })
-  .controller('InvoicesCtrl', ['$scope', 'formData', 'Address', 'Invoice',function($scope, formData, Address, Invoice) {
+  .controller('InvoicesCtrl', ['$scope', 'formData', 'Invoice', 'invoiceAttributes', 'Address', 'ResourceRequester',function($scope, formData, Invoice, invoiceAttributes, Address, ResourceRequester) {
     $scope.hospitalState = Address.state;
     $scope.options = ['No', 'Yes'];
     $scope.parts_included = 'No';
@@ -12,8 +12,12 @@ angular.module('invoice')
     $scope.mileage_included = 'No';
     $scope.parts = [{quantity: '', price: ''}];
     $scope.formData = formData;
+    $scope.attrs = invoiceAttributes;
+    $scope.invoice = Invoice;
+    $scope.getData = Invoice.setProperty;
+
     $scope.save = function(invoice) {
-      Invoice.save(invoice);
+      ResourceRequester.save(invoice);
     };
 
     $scope.addPart = function() {

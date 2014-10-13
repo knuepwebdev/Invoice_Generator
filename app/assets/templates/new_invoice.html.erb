@@ -1,26 +1,30 @@
-<div ng-controller='InvoicesCtrl'>
+<div ng-controller='InvoicesCtrl as ctrl'>
   <form class='form-horizontal'>
     <div id="left-column">
       <section id="company-info">    
-        <h2 id="logo" class="bold"><%= InvoiceFormData::COMPANY[:name] %></h2>
-        <div><%= InvoiceFormData::COMPANY[:tagline] %></div>
-        <div><%= InvoiceFormData::COMPANY[:street] %></div>
+        <h2 id="logo" class="bold">{{formData.company.name}}</h2>
+        <div>{{formData.company.tagline}}</div>
+        <div>{{formData.company.street}}</div>
         <div>
-          <%= InvoiceFormData::COMPANY[:city] %>
-          <%= InvoiceFormData::COMPANY[:state] %>
-          <%= InvoiceFormData::COMPANY[:zip_code] %>
+          {{formData.company.city}}
+          {{formData.company.state}}
+          {{formData.company.zip_code}}
         </div>
         <div>
-          Phone <%= InvoiceFormData::COMPANY[:phone] %>
+          Phone {{formData.company.phone}}
           &bull;
-          Fax <%= InvoiceFormData::COMPANY[:fax] %>
+          Fax {{formData.company.fax}}
         </div>
       </section>
       <h3>sold to:</h3>
       <div class="overlap">
-        <div>ATTN: Accounts Payable</div>
-        <nrs-textfield data=formData.clientData></nrs-textfield>
-        <input ng-model="invoice.number" />
+
+        <div>ATTN: Accounts Payable</div>    
+        <nrs-textfield ng-repeat="field in formData.clientData track by $index"
+                       data=field
+                       index=$index
+                       get-data="getData(attrs.client[$index], field.name)">
+        </nrs-textfield>
         <% InvoiceFormData::CLIENT_DATA.each do |field| %>
           <%#= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form, as: :form %>  
         <% end %>
