@@ -16,7 +16,7 @@ class InvoiceCreator
 
   def create_invoice
     puts 'create_invoice'
-    puts @client
+    puts self
     puts 'end create_invoice'
     Hospital.create(
       name: @client['name']

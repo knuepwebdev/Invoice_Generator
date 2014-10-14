@@ -13,10 +13,10 @@ angular.module('invoice')
     $scope.parts = [{quantity: '', price: ''}];
     $scope.formData = formData;
     $scope.attrs = invoiceAttributes;
-    $scope.invoice = Invoice.datas;
-    $scope.getData = function(attr, data) {
+    $scope.invoice = Invoice;
+    $scope.getData = function(data) {
       console.log('$scope.getData');
-      Invoice.setProperty(attr, data);
+      Invoice.setProperty(data);
       console.log('end $scope.getData');
     };
 
