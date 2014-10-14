@@ -2,20 +2,22 @@ angular.module('invoice')
   .factory('Invoice', function() {    
     function setProperty(attr, data) {
       var prop = attr;
-      
-      if (Invoice.datas.invoice.hasOwnProperty(prop)) {
-        Invoice.datas.invoice[prop] = data; 
-        console.log(Invoice.datas);
-      } else {
-        Invoice.datas.invoice[prop] = data;
-        console.log(Invoice.datas);
-      }
+      Invoice.datas.invoice.client[prop] = data; 
+      console.log(Invoice.datas);
     };
 
     var Invoice = {
       setProperty: setProperty,
       datas: {
-        invoice: {}
+        invoice: {
+          client: {
+            name: '', 
+            street: '',
+            city: '',
+            state: '',
+            zipcode: ''
+          }
+        }
       }
     };
 

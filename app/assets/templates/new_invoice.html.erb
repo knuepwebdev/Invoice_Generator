@@ -18,13 +18,15 @@
       </section>
       <h3>sold to:</h3>
       <div class="overlap">
-
         <div>ATTN: Accounts Payable</div>    
-        <nrs-textfield ng-repeat="field in formData.clientData track by $index"
-                       data=field
-                       index=$index
-                       get-data="getData(attrs.client[$index], field.name)">
-        </nrs-textfield>
+        <div class="form-group">
+          <div class="col-sm-8">
+            <input class="form-control"
+                   placeholder="Hospital"
+                   ng-model="invoice.client.name"
+                   ng-change="getData('name', invoice.client.name)" />
+          </div>
+        </div>
         <% InvoiceFormData::CLIENT_DATA.each do |field| %>
           <%#= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form, as: :form %>  
         <% end %>
