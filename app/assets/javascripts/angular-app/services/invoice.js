@@ -1,7 +1,18 @@
+// function setProperty(key, value, path) {
+ // ng-change="getData({
+ //            key: 'name',
+ //            value: invoice.data.client.name,
+ //            path: invoice.data.client })" />
+
 angular.module('invoice')
   .factory('Invoice', function() {    
-    function setProperty(key, value, path) {
-      path[key] = value;
+    function setProperty(data) {
+      console.log('path: ' + data.path);
+      console.log('key: ' + data.key);
+      console.log('value: ' + data.value);
+
+      // data.path[data.key] = data.value;
+      // path[key] = value;
       console.log('Invoice service');
       console.log(Invoice);
       console.log('*END Invoice service');
