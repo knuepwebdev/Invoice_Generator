@@ -25,22 +25,24 @@
           <div class="col-sm-8">
             <input class="form-control"
                    placeholder="Hospital"
-                   ng-model="invoice.datas.invoice.client.name"
+                   ng-model="invoice.data.client.name"
                    ng-change="getData('name',
-                              invoice.datas.invoice.client.name,
-                              invoice.datas.invoice.client)" />
+                              invoice.data.client.name,
+                              invoice.data.client)" />
           </div>
         </div>
-        <h1>getData params</h1>
-        <div>{{invoice.datas.invoice.client}}</div>
         <div class="form-group">
           <div class="col-sm-8">
             <input class="form-control"
                    placeholder="Street"
-                   ng-model="invoice.client.address.street"
-                   ng-change="getData('client.address.street', invoice.client.address.street)" />
+                   ng-model="invoice.data.client.contact.street",
+                   ng-change="getData('street',
+                              invoice.data.client.contact.street,
+                              invoice.data.client.contact)" />
           </div>
         </div>
+        <h1>getData params</h1>
+        <div>{{invoice.data.client.contact.street}}</div>
         <% InvoiceFormData::CLIENT_DATA.each do |field| %>
           <%#= render partial: 'form_group', locals: {field: field[:field_name], width: field[:width]}, object: form, as: :form %>  
         <% end %>
