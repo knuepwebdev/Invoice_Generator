@@ -83,8 +83,22 @@
       </div>
     </div>
     <div id="right-column">
-      <h1>Invoice</h1><%#= render partial: 'inline_text_field', locals: {attribute: 'invoice_number'}, object: form, as: :form %>
-      <p>Please indicate invoice numbers on all remittances</p>
+      <h1 id='invoice'>Invoice</h1>
+        <div id="invoice-number" class="form-group">
+          <div class="col-sm-6">
+            <input class="form-control"
+                   placeholder='#'
+                   ng-model="invoice.invoice.number",
+                   ng-change="getData({
+                                key: 'number',
+                                value: invoice.invoice.number,
+                                path: invoice.invoice })" />
+          </div>
+        </div>      
+      <%#= render partial: 'inline_text_field', locals: {attribute: 'invoice_number'}, object: form, as: :form %>
+      <%#= form.text_field attribute, ng_model: attribute.to_s.camelize(:lower), placeholder: attribute.to_s.spacerize %>
+
+      <p id="notice">Please indicate invoice numbers on all remittances</p>
       <div class="page">
         <h3>Page</h3>
         <div>
