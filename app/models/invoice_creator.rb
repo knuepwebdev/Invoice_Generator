@@ -14,6 +14,11 @@ class InvoiceCreator
     puts self.inspect
     puts 'end create_invoice'
     invoice_format = InvoiceFormat.new(@invoice)
+    invoice = Invoice.new(
+      number: invoice_format.number
+    )
+      # hospital belongs_to :service_report
+      # service_report has_one :hospital
     hospital = Hospital.new(
       name: invoice_format.hospital_name,
       department: invoice_format.hospital_department,

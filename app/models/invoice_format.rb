@@ -2,6 +2,9 @@ class InvoiceFormat
   def initialize(invoice_format)
     @invoice_format = invoice_format
   end
+  def number
+    @invoice_format['number']
+  end
   def hospital_name
     @invoice_format['client']['name']
   end
