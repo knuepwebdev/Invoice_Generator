@@ -10,7 +10,7 @@ module Api
       def create
         invoice_creator = InvoiceCreator.new(invoice_creator_params)
         invoice_creator.create
-          #Create an invoice
+          #Return invoice as JSON
         invoice = Invoice.new
         respond_with :api, :v1, invoice
       end
@@ -18,6 +18,7 @@ module Api
       private
       def invoice_creator_params
         params.require(:invoice).permit(
+          :number,
           client: [
             :name,
             :hospital_room,
