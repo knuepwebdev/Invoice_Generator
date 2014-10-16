@@ -30,25 +30,15 @@
                                 path: invoice.invoice.client })" />
           </div>
         </div>
-        <div class="form-group">
+        <!-- begin ng-repeat -->
+        <div ng-repeat="attr in attrs.client.contact" class="form-group">
           <div class="col-sm-8">
             <input class="form-control"
-                   placeholder="Street"
-                   ng-model="invoice.invoice.client.contact.street",
+                   placeholder={{attr}}
+                   ng-model="invoice.invoice.client.contact[attr]",
                    ng-change="getData({
-                                key: 'street',
-                                value: invoice.invoice.client.contact.street,
-                                path: invoice.invoice.client.contact })" />
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-8">
-            <input class="form-control"
-                   placeholder="City"
-                   ng-model="invoice.invoice.client.contact.city"
-                   ng-change="getData({
-                                key: 'city',
-                                value: invoice.invoice.client.contact.city,
+                                key: attr,
+                                value: invoice.invoice.client.contact[attr],
                                 path: invoice.invoice.client.contact })" />
           </div>
         </div>
@@ -79,28 +69,17 @@
       </div>
       <h3>shipped to:</h3>
       <div class="overlap">
-        <div class="form-group">
+        <div ng-repeat="attr in attrs.client.fields" class="form-group">
           <div class="col-sm-6">
             <input class="form-control"
-                   placeholder="Hospital Department"
-                   ng-model="invoice.invoice.client.department",
+                   placeholder={{spacerize(attr)}}
+                   ng-model="invoice.invoice.client[attr]",
                    ng-change="getData({
-                                key: 'department',
-                                value: invoice.invoice.client.department,
+                                key: attr,
+                                value: invoice.invoice.client[attr],
                                 path: invoice.invoice.client })" />
           </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-6">
-            <input class="form-control"
-                   placeholder="Hospital Room"
-                   ng-model="invoice.invoice.client.room",
-                   ng-change="getData({
-                                key: 'room',
-                                value: invoice.invoice.client.room,
-                                path: invoice.invoice.client })" />
-          </div>
-        </div>
+        </div>        
       </div>
     </div>
     <div id="right-column">

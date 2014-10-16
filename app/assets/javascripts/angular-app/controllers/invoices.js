@@ -13,6 +13,14 @@ angular.module('invoice')
     $scope.parts = [{quantity: '', price: ''}];
     $scope.formData = formData;
     $scope.attrs = invoiceAttributes;
+    $scope.spacerize = function(attr) {
+      capitalized = [];
+      attr.split('_').forEach(function(word, index, words) {
+        capitalized_word = word.charAt(0).toUpperCase() + word.slice(1);
+        capitalized.push(capitalized_word);
+      });
+      return capitalized.join(' ');
+    };
     $scope.invoice = Invoice;
     $scope.unitedStates = UnitedStates;
     $scope.getData = function(data) {

@@ -20,8 +20,8 @@ module Api
         params.require(:invoice).permit(
           client: [
             :name,
-            :department,
-            :room,
+            :hospital_room,
+            :hospital_department,
             contact: [
               :street,
               :city,
