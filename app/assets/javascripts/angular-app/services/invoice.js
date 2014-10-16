@@ -19,7 +19,8 @@ angular.module('invoice')
     };
 
     var Invoice = {
-      setProperty: setProperty
+      setProperty: setProperty,
+      invoice: {}
     };
 
     console.log('Invoice factory returning Invoice');
