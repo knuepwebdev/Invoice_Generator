@@ -79,8 +79,28 @@
       </div>
       <h3>shipped to:</h3>
       <div class="overlap">
-        <div><%#= render partial: 'form_group', locals: {field: 'hospital_department', width: 6}, object: form, as: :form %></div>
-        <div><%#= render partial: 'form_group', locals: {field: 'hospital_room', width: 6}, object: form, as: :form %></div>
+        <div class="form-group">
+          <div class="col-sm-6">
+            <input class="form-control"
+                   placeholder="Hospital Department"
+                   ng-model="invoice.invoice.client.department",
+                   ng-change="getData({
+                                key: 'department',
+                                value: invoice.invoice.client.department,
+                                path: invoice.invoice.client })" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6">
+            <input class="form-control"
+                   placeholder="Hospital Room"
+                   ng-model="invoice.invoice.client.room",
+                   ng-change="getData({
+                                key: 'room',
+                                value: invoice.invoice.client.room,
+                                path: invoice.invoice.client })" />
+          </div>
+        </div>
       </div>
     </div>
     <div id="right-column">

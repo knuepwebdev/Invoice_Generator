@@ -22,7 +22,9 @@ class InvoiceCreator
     puts self.inspect
     puts 'end create_invoice'
     hospital = Hospital.new(
-      name: @client['name']
+      name: @client['name'],
+      department: @client['department'],
+      room: @client['room']
     )
     hospital.build_contact(
       street: @client['contact']['street'],
