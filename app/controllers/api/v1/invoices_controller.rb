@@ -9,7 +9,7 @@ module Api
 
       def create
         invoice_creator = InvoiceCreator.new(invoice_creator_params)
-        invoice_creator.create_invoice
+        invoice_creator.create
           #Create an invoice
         invoice = Invoice.new
         respond_with :api, :v1, invoice
@@ -17,7 +17,20 @@ module Api
 
       private
       def invoice_creator_params
-        params.require(:invoice).permit(client: [:name, :street, :city, :state, :zipcode])
+        params.require(:invoice).permit(
+          client: [
+            :name,
+            contact: [
+              :street,
+              :city,
+              :zipcode,
+              state: [
+                :abbreviation,
+                :name
+              ]
+            ]
+          ]
+        )
       end 
     end
   end
