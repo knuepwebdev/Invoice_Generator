@@ -6,10 +6,10 @@ class InvoiceFormat
     @invoice_format['client']['name']
   end
   def hospital_department
-    @invoice_format['client']['department']
+    @invoice_format['client']['hospital_department']
   end
   def hospital_room
-    @invoice_format['client']['room']
+    @invoice_format['client']['hospital_room']
   end
   def hospital_street
     @invoice_format['client']['contact']['street']
