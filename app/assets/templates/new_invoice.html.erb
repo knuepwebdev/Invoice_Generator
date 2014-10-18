@@ -95,17 +95,10 @@
                                 path: invoice.invoice })" />
           </div>
         </div>      
-      <%#= render partial: 'inline_text_field', locals: {attribute: 'invoice_number'}, object: form, as: :form %>
-      <%#= form.text_field attribute, ng_model: attribute.to_s.camelize(:lower), placeholder: attribute.to_s.spacerize %>
-
       <p id="notice">Please indicate invoice numbers on all remittances</p>
       <div class="page">
         <h3>Page</h3>
-        <div>
-          <%= InvoiceFormData::INVOICE_FORM_FIELDS[:pages] %>
-          of
-          <%= InvoiceFormData::INVOICE_FORM_FIELDS[:pages] %>
-        </div>
+        <div>{{formData.numberOfPages}} of {{formData.numberOfPages}}</div>
       </div>
       <div class="date">
         <h3>Date</h3>
@@ -119,9 +112,10 @@
       </div>
     </div>
     <div id="extra-fields">
-      <% InvoiceFormData::EXTRA_FIELDS.each do |container| %>
-        <%#= render partial: 'extra_field', locals: {id: container[:id], heading: container[:heading]} %>
-      <% end %>
+        <div ng-repeat="field in formData.extraFields" id="{{field.id}}">
+          <h3>{{field.heading}}</h3>
+          <div></div>
+        </div>
     </div>
     <table id="line-items">
       <tr>
