@@ -14,7 +14,13 @@ angular.module('invoice')
       zip_code: '90245',
       phone: '310-322-7796',
       fax: '310-322-9638'
-    }
+    },
+    rightColumn: [
+      {id: 'po-number', heading: 'Your Purchase Order'},
+      {id: 'date', heading: 'Date'},
+      {id: 'terms', heading: 'Terms of Payment: 30 Days Net'},
+      {id: 'reference-number', heading: 'Our Reference Number'}
+    ]
   });
 
 

@@ -113,9 +113,10 @@
           <my-datepicker type="text" id="invoice-date" ng-model="invoice.invoice.date" />
         </div>
       </div>
-      <% InvoiceFormData::RIGHT_COLUMN.each do |container| %>
-        <%#= render partial: 'container', locals: {id: container[:id], heading: container[:heading]} %>   
-      <% end %>
+      <div ng-repeat="field in formData.rightColumn" id="{{field.id}}">
+        <h3>{{ field.heading }}</h3>
+        <div></div>
+      </div>
     </div>
     <div id="extra-fields">
       <% InvoiceFormData::EXTRA_FIELDS.each do |container| %>
