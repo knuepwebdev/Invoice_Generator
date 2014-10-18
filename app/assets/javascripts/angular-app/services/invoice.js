@@ -20,7 +20,9 @@ angular.module('invoice')
 
     var Invoice = {
       setProperty: setProperty,
-      invoice: {}
+      invoice: {
+        date: new Date(2014, 10, 1)
+      }
     };
 
     console.log('Invoice factory returning Invoice');
