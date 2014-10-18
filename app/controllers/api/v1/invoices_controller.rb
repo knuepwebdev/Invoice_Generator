@@ -19,6 +19,7 @@ module Api
       def invoice_creator_params
         params.require(:invoice).permit(
           :number,
+          :date,
           client: [
             :name,
             :hospital_room,
