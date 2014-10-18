@@ -15,7 +15,8 @@ class InvoiceCreator
     puts 'end create_invoice'
     invoice_format = InvoiceFormat.new(@invoice)
     invoice = Invoice.new(
-      number: invoice_format.number
+      number: invoice_format.number,
+      date: invoice_format.date
     )
       # hospital belongs_to :service_report
       # service_report has_one :hospital

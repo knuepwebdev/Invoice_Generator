@@ -110,12 +110,8 @@
       <div class="date">
         <h3>Date</h3>
         <div>
-          Date Of Birth:
-          <my-datepicker type="text" ng-model="user.dateOfBirth" />
-          <br>
-          Current user's date of birth:
-          <span id="dateOfBirthDisplay">{{invoice.invoice.date}}</span>
-      </div>
+          <my-datepicker type="text" id="invoice-date" ng-model="invoice.invoice.date" />
+        </div>
       </div>
       <% InvoiceFormData::RIGHT_COLUMN.each do |container| %>
         <%#= render partial: 'container', locals: {id: container[:id], heading: container[:heading]} %>   

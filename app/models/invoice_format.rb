@@ -5,6 +5,9 @@ class InvoiceFormat
   def number
     @invoice_format['number']
   end
+  def date
+    @invoice_format['date']
+  end
   def hospital_name
     @invoice_format['client']['name']
   end
