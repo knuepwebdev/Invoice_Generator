@@ -20,6 +20,16 @@ angular.module('invoice')
       {id: 'date', heading: 'Date'},
       {id: 'terms', heading: 'Terms of Payment: 30 Days Net'},
       {id: 'reference-number', heading: 'Our Reference Number'}
+    ],
+    numberOfPages: '1',
+    extraFields: [
+      {id: 'fob-point', heading: 'f.o.b. point'},
+      {id: 'carriers-name', heading: "Carrier's name"},
+      {id: 'shipped-via', heading: 'shipped via'},
+      {id: 'freight-term', heading: 'freight term'},
+      {id: 'st-tax', heading: 'st. tax for'},
+      {id: 'pco', heading: 'pco'},
+      {id: 'tax-determination', heading: 'tax determination'}
     ]
   });
 
