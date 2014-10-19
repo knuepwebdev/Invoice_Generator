@@ -179,6 +179,10 @@
     border-top: 0;  
     border-left: 0;
   }
+  .description .small {
+    width: 50%;
+    float: left;
+  }
   #tax-determination, .total {
     border-right: 0;
   }
