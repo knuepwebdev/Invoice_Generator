@@ -132,11 +132,49 @@
     <div class="filler quantity"></div>
     <div class="filler list-number"></div>
     <div class="filler description">
-      <% InvoiceFormData::DESCRIPTION.each do |section, array| %>
-        <% array.each do |attribute| %>
-          <%#= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>
-        <% end %>
-      <% end %>
+    <input class="form-control"
+           placeholder='Service Report Number'
+           ng-model="invoice.invoice.service_report.number"
+           ng-change="getData({
+                        key: 'number',
+                        value: invoice.invoice.service_report.number,
+                        path: invoice.invoice.service_report })" />
+    <input class="form-control"
+           placeholder='Service Report Date'
+           ng-model="invoice.invoice.service_report.date"
+           ng-change="getData({
+                        key: 'date',
+                        value: invoice.invoice.service_report.date,
+                        path: invoice.invoice.service_report })" />
+    <input class="form-control"
+           placeholder='Machine Make'
+           ng-model="invoice.invoice.service_report.machine_make"
+           ng-change="getData({
+                        key: 'machine_make',
+                        value: invoice.invoice.service_report.machine_make,
+                        path: invoice.invoice.service_report })" />
+    <input class="form-control"
+           placeholder='Machine Model'
+           ng-model="invoice.invoice.service_report.machine_model"
+           ng-change="getData({
+                        key: 'machine_model',
+                        value: invoice.invoice.service_report.machine_model,
+                        path: invoice.invoice.service_report })" />
+    <input class="form-control"
+           placeholder='Labor Time'
+           ng-model="invoice.invoice.service_report.labor"
+           ng-change="getData({
+                        key: 'labor',
+                        value: invoice.invoice.service_report.labor,
+                        path: invoice.invoice.service_report })" />
+    <input class="form-control"
+           placeholder='Hourly Rate'
+           ng-model="invoice.invoice.service_report.labor_rate"
+           ng-change="getData({
+                        key: 'labor_rate',
+                        value: invoice.invoice.service_report.labor_rate,
+                        path: invoice.invoice.service_report })" />                                                            
+
       <div class="form-group">
         <label for="select_travel">Travel?</label>
         <select ng-model="travel_included"
