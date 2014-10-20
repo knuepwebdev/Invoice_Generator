@@ -103,7 +103,7 @@
       <div class="date">
         <h3>Date</h3>
         <div>
-          <my-datepicker type="text" id="invoice-date" ng-model="invoice.invoice.date" />
+          <my-datepicker type="text" id="invoice-date" ng-model="invoice.invoice.date"></my-datepicker>
         </div>
       </div>
       <div ng-repeat="field in formData.rightColumn" id="{{field.id}}">
@@ -139,13 +139,16 @@
                         key: 'number',
                         value: invoice.invoice.service_report.number,
                         path: invoice.invoice.service_report })" />
-    <input class="small form-control"
+    <my-datepicker type="text"
+                   id="service-report-date"
+                   ng-model="invoice.invoice.service_report.date"></my-datepicker>    
+    <!-- <input class="small form-control"
            placeholder='Service Report Date'
            ng-model="invoice.invoice.service_report.date"
            ng-change="getData({
                         key: 'date',
                         value: invoice.invoice.service_report.date,
-                        path: invoice.invoice.service_report })" />
+                        path: invoice.invoice.service_report })" /> -->
     <input class="small form-control"
            placeholder='Machine Make'
            ng-model="invoice.invoice.service_report.machine_make"
