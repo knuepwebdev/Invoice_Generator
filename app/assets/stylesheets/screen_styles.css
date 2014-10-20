@@ -99,13 +99,22 @@
     border-top: 0;
     border-right: 0;
   }
+  #invoice-date {
+    width: 50%;
+  }
   div#invoice-number.form-group {
     width: 60%;
     float: left;
     border: none;
   }
+  .date div#date-input-container {
+    height: 2em;
+  }
   .page, #po-number {
     width: 60%;
+  }
+  .date h3 {
+    padding-bottom:;
   }
   #terms, #reference-number {
     width: 100%;
