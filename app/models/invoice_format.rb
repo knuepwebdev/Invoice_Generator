@@ -28,5 +28,23 @@ class InvoiceFormat
   end
   def hospital_zipcode
     @invoice_format['client']['contact']['zipcode']
-  end         
+  end
+  def service_report_number
+    @invoice_format['service_report']['number']
+  end
+  def service_report_date
+    @invoice_format['service_report']['date']
+  end
+  def machine_make
+    @invoice_format['service_report']['machine_make']
+  end
+  def machine_model
+    @invoice_format['service_report']['machine_model']
+  end
+    def labor
+    @invoice_format['service_report']['labor']
+  end
+    def labor_rate
+    @invoice_format['service_report']['labor_rate']
+  end             
 end

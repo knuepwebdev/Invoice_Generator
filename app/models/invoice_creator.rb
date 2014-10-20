@@ -14,21 +14,29 @@ class InvoiceCreator
     puts self.inspect
     puts 'end create_invoice'
     invoice_format = InvoiceFormat.new(@invoice)
-    invoice = Invoice.new(
+    service_report = ServiceReport.new(
+      number: invoice_format.service_report_number,
+      date: invoice_format.service_report_date,
+      machine_make: invoice_format.machine_make,
+      machine_model: invoice_format.machine_model,
+      labor: invoice_format.labor,
+      labor_rate: invoice_format.labor_rate
+    )
+    service_report.invoice = Invoice.new(
       number: invoice_format.number,
       date: invoice_format.date
     )
       # hospital belongs_to :service_report
       # service_report has_one :hospital
-    hospital = Hospital.new(
+    service_report.hospital = Hospital.new(
       name: invoice_format.hospital_name,
       department: invoice_format.hospital_department,
       room: invoice_format.hospital_room)
-    hospital.build_contact(
+    service_report.hospital.contact = Contact.new(
       street: invoice_format.hospital_street,
       city: invoice_format.hospital_city,
       state: invoice_format.hospital_state,
       zipcode: invoice_format.hospital_zipcode)
-    hospital.save
+    service_report.save
   end
 end
