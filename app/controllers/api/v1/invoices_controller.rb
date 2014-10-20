@@ -40,7 +40,11 @@ module Api
             :machine_make,
             :machine_model,
             :labor,
-            :labor_rate
+            :labor_rate,
+            :travel,
+            :travel_rate,
+            :mileage,
+            :mileage_rate                        
           ]
         )
       end 

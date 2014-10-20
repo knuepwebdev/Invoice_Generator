@@ -142,13 +142,6 @@
     <my-datepicker type="text"
                    id="service-report-date"
                    ng-model="invoice.invoice.service_report.date"></my-datepicker>    
-    <!-- <input class="small form-control"
-           placeholder='Service Report Date'
-           ng-model="invoice.invoice.service_report.date"
-           ng-change="getData({
-                        key: 'date',
-                        value: invoice.invoice.service_report.date,
-                        path: invoice.invoice.service_report })" /> -->
     <input class="small form-control"
            placeholder='Machine Make'
            ng-model="invoice.invoice.service_report.machine_make"
@@ -176,8 +169,7 @@
            ng-change="getData({
                         key: 'labor_rate',
                         value: invoice.invoice.service_report.labor_rate,
-                        path: invoice.invoice.service_report })" />                                                            
-
+                        path: invoice.invoice.service_report })" />                                                     
       <div class="form-group">
         <label for="select_travel">Travel?</label>
         <select ng-model="travel_included"
@@ -186,10 +178,14 @@
                 id="select_travel"
                 class="form-control">
         </select>
-        <div toggler="travel_included">    
-          <% InvoiceFormData::TRAVEL.each do |attribute| %>
+        <div toggler="travel_included">
+          <input ng-repeat="attr in formData.travel"
+                 ng-model="invoice.invoice.service_report[attr.field]"
+                 placeholder="{{attr.field}}">    
+          
+          <%#= form.text_field attribute, ng_model: attribute.to_s.camelize(:lower), placeholder: attribute.to_s.spacerize %>
+
             <%#= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>  
-          <% end %>
         </div>    
       </div>
       <div class="form-group">

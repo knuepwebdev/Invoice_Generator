@@ -20,7 +20,11 @@ class InvoiceCreator
       machine_make: invoice_format.machine_make,
       machine_model: invoice_format.machine_model,
       labor: invoice_format.labor,
-      labor_rate: invoice_format.labor_rate
+      labor_rate: invoice_format.labor_rate,
+      travel: invoice_format.travel,
+      travel_rate: invoice_format.travel_rate,
+      mileage: invoice_format.mileage,
+      mileage_rate: invoice_format.mileage_rate            
     )
     service_report.invoice = Invoice.new(
       number: invoice_format.number,
