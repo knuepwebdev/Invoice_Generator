@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141016025711) do
   end
 
   create_table "hospitals", force: true do |t|
+    t.integer  "service_report_id"
     t.string   "name"
     t.string   "department"
     t.string   "room"
@@ -44,7 +45,15 @@ ActiveRecord::Schema.define(version: 20141016025711) do
 
   create_table "service_reports", force: true do |t|
     t.string   "number"
-    t.date     "service_date"
+    t.date     "date"
+    t.string   "machine_make"
+    t.string   "machine_model"
+    t.integer  "labor"
+    t.integer  "labor_rate"
+    t.integer  "travel"
+    t.integer  "travel_rate"
+    t.integer  "mileage"
+    t.integer  "mileage_rate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

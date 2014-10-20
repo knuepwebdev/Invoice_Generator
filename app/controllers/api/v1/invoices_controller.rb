@@ -33,6 +33,14 @@ module Api
                 :name
               ]
             ]
+          ],
+          service_report: [
+            :number,
+            :date,
+            :machine_make,
+            :machine_model,
+            :labor,
+            :labor_rate
           ]
         )
       end 
