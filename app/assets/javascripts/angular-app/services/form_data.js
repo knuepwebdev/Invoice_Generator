@@ -44,5 +44,13 @@ angular.module('invoice')
         {field: 'labor'},
         {field: 'labor_hourly_rate'}  
       ]
-    }    
+    },
+    travel: [
+      {field: 'travel'},
+      {field: 'travel_rate'}
+    ],
+    mileage: [
+      {field: 'mileage'},
+      {field: 'mileage_rate'}
+    ]      
   });
