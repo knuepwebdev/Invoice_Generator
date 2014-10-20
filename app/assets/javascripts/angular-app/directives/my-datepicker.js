@@ -6,7 +6,7 @@ angular.module("invoice").directive('myDatepicker', function ($parse) {
       compile: function (element, attrs) {
          var modelAccessor = $parse(attrs.ngModel);
 
-         var html = "<input type='text' id='" + attrs.id + "' >" +
+         var html = "<input type='text' placeholder='Date' id='" + attrs.id + "' >" +
             "</input>";
 
          var newElem = $(html);
@@ -28,14 +28,7 @@ angular.module("invoice").directive('myDatepicker', function ($parse) {
                onClose: processChange,
                onSelect: processChange
             });
-
-            scope.$watch(modelAccessor, function (val) {
-               var date = new Date(val);
-               element.datepicker("setDate", date);
-            });
-
          };
-
       }
    };
 });
