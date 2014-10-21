@@ -10,7 +10,6 @@ angular.module('invoice')
     $scope.parts_included = 'No';
     $scope.travel_included = 'No';
     $scope.mileage_included = 'No';
-    $scope.parts = [{quantity: '', price: ''}];
     $scope.formData = formData;
     $scope.attrs = invoiceAttributes;
     $scope.spacerize = function(attr) {
@@ -36,10 +35,10 @@ angular.module('invoice')
     };
 
     $scope.addPart = function() {
-      $scope.parts.push({});
+      $scope.invoice.invoice.parts.push({});
     };
     $scope.removePart = function(index) {
-      $scope.parts.splice(index, 1);
+      $scope.invoice.invoice.parts.splice(index, 1);
     };
     $scope.calculateLabor = function() {
       return (isNaN($scope.labor * $scope.laborHourlyRate) ? 0 : $scope.labor * $scope.laborHourlyRate);

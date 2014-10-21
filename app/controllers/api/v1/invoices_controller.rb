@@ -45,7 +45,8 @@ module Api
             :travel_rate,
             :mileage,
             :mileage_rate                        
-          ]
+          ],
+          parts: [:quantity, :price, :number, :name]
         )
       end 
     end

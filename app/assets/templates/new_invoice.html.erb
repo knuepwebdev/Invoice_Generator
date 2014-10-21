@@ -170,7 +170,7 @@
                         key: 'labor_rate',
                         value: invoice.invoice.service_report.labor_rate,
                         path: invoice.invoice.service_report })" />                                                     
-      <div class="form-group">
+      <div>
         <label for="select_travel">Travel?</label>
         <select ng-model="travel_included"
                 ng-change="clearTravel();"
@@ -181,47 +181,58 @@
         <div toggler="travel_included">
           <input ng-repeat="attr in formData.travel"
                  ng-model="invoice.invoice.service_report[attr.field]"
+                 class="small form-control"
                  placeholder="{{attr.field}}">    
-          
-          <%#= form.text_field attribute, ng_model: attribute.to_s.camelize(:lower), placeholder: attribute.to_s.spacerize %>
-
-            <%#= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>  
         </div>    
       </div>
-      <div class="form-group">
+      <div>
         <label for="select_mileage">Mileage?</label>
         <select ng-model="mileage_included"
                 ng-options="option for option in options"
                 ng-change="clearMileage();"
                 id="select_mileage"
                 class="form-control">
-        </select>
-        <div toggler="mileage_included">    
-          <% InvoiceFormData::MILEAGE.each do |attribute| %>
-            <%#= render partial: 'inline_text_field', locals: {attribute: attribute[:field]}, object: form, as: :form %>  
-          <% end %>
+        </select>         
+        <div toggler="mileage_included">              
+          <input ng-repeat="attr in formData.mileage"
+                 ng-model="invoice.invoice.service_report[attr.field]"
+                 class="small form-control"
+                 placeholder="{{attr.field}}">              
         </div>    
       </div>          
-      <div class="form-group">
+      <div>
         <label for="select_parts">Parts?</label>
         <select ng-model="parts_included"
                 ng-options="option for option in options"
                 ng-change="updateParts();"
                 id="select_parts"
                 class="form-control"></select>
-      </div>
+      </div>     
       <div toggler="parts_included">    
         <ul>
-          <li ng-repeat="part in parts track by $index">
+          <li ng-repeat="part in invoice.invoice.parts track by $index">
             <button type="button" class="btn btn-danger"ng-click="removePart($index);">-</button>
-            <input type="text" ng-model="part.quantity" name="invoice_creator[parts][part{{$index + 1}}][quantity]" placeholder="Quantity"/>
-            <input type="text" ng-model="part.number" name="invoice_creator[parts][part{{$index + 1}}][number]" placeholder="Part Number"/>
-            <input type="text" ng-model="part.name" name="invoice_creator[parts][part{{$index + 1}}][name]" placeholder="Part Name"/>
-            <input type="text" ng-model="part.price" name="invoice_creator[parts][part{{$index + 1}}][price]" placeholder="Part Price"/>
+            <input type="text"
+                   ng-model="invoice.invoice.parts[$index]['quantity']"
+                   placeholder="Quantity"/>
+            <input type="text"
+                   ng-model="invoice.invoice.parts[$index]['number']"
+                   placeholder="Part Number"/>
+            <input type="text"
+                   ng-model="invoice.invoice.parts[$index]['name']"
+                   placeholder="Part Name"/>
+            <input type="text"
+                   ng-model="invoice.invoice.parts[$index]['price']"
+                   placeholder="Price"/>
           </li>
         </ul>
-        <div><button type="button" id="add-part" class="btn btn-success"ng-click="addPart();">+</button></div>
-        <input type="text" ng-model="taxRate" name="invoice_creator[parts][tax_rate]" placeholder="Tax Rate"/> %
+        <div>
+          <button type="button"
+                  id="add-part"
+                  class="btn btn-success"
+                  ng-click="addPart();">+</button>
+        </div>
+        <input type="text" ng-model="taxRate" name="invoice.invoice.parts[tax_rate]" placeholder="Tax Rate"/> %
       </div>
     </div>
     <div class="filler subtotal"></div>

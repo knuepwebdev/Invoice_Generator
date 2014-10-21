@@ -20,7 +20,9 @@ angular.module('invoice')
 
     var Invoice = {
       setProperty: setProperty,
-      invoice: {}
+      invoice: {
+        parts: [{quantity: '', price: ''}]
+      }
     };
 
     console.log('Invoice factory returning Invoice');
