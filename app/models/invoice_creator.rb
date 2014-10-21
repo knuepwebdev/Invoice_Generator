@@ -24,7 +24,8 @@ class InvoiceCreator
       travel: invoice_format.travel,
       travel_rate: invoice_format.travel_rate,
       mileage: invoice_format.mileage,
-      mileage_rate: invoice_format.mileage_rate            
+      mileage_rate: invoice_format.mileage_rate,
+      sales_tax: invoice_format.sales_tax          
     )
 
 

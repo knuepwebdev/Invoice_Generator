@@ -71,4 +71,7 @@ class InvoiceFormat
   def part_number(index)
     @invoice_format['parts'][index]['number']
   end     
+  def sales_tax
+    @invoice_format['service_report']['sales_tax']
+  end    
 end

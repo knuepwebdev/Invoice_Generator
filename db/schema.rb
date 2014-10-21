@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20141021171223) do
     t.integer  "travel_rate"
     t.integer  "mileage"
     t.integer  "mileage_rate"
+    t.decimal  "sales_tax"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
