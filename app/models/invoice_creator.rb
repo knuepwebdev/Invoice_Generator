@@ -27,14 +27,14 @@ class InvoiceCreator
       mileage_rate: invoice_format.mileage_rate            
     )
 
-    @invoice['parts'].each do |part|
-      service_report.parts.new(
-        quantity: invoice_format.part_quantity,
-        name: invoice_format.part_name,
-        price: invoice_format.part_price,
-        number: invoice_format.part_number,
-      )
 
+    @invoice['parts'].each_index do |index|
+      service_report.parts.new(
+        quantity: invoice_format.part_quantity(index),
+        price: invoice_format.part_price(index),
+        name: invoice_format.part_name(index),
+        number: invoice_format.part_number(index)
+      )
     end
     
     service_report.invoice = Invoice.new(

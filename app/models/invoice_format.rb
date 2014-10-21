@@ -41,22 +41,34 @@ class InvoiceFormat
   def machine_model
     @invoice_format['service_report']['machine_model']
   end
-    def labor
+  def labor
     @invoice_format['service_report']['labor']
   end
-    def labor_rate
+  def labor_rate
     @invoice_format['service_report']['labor_rate']
   end
   def travel
     @invoice_format['service_report']['travel']
   end
-    def travel_rate
+  def travel_rate
     @invoice_format['service_report']['travel_rate']
   end
-    def mileage
+  def mileage
     @invoice_format['service_report']['mileage']
   end
-    def mileage_rate
+  def mileage_rate
     @invoice_format['service_report']['mileage_rate']
-  end                 
+  end                
+  def part_quantity(index)
+    @invoice_format['parts'][index]['quantity']
+  end
+  def part_price(index)
+    @invoice_format['parts'][index]['price']
+  end
+  def part_name(index)
+    @invoice_format['parts'][index]['name']
+  end
+  def part_number(index)
+    @invoice_format['parts'][index]['number']
+  end     
 end
