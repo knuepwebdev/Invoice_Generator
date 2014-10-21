@@ -35,7 +35,9 @@ angular.module('invoice')
     };
 
     $scope.addPart = function() {
-      $scope.invoice.invoice.parts.push({});
+      if ($scope.invoice.invoice.parts.length < 3) { 
+        $scope.invoice.invoice.parts.push({});
+      }
     };
     $scope.removePart = function(index) {
       $scope.invoice.invoice.parts.splice(index, 1);
