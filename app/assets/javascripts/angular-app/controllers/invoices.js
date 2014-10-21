@@ -31,11 +31,18 @@ angular.module('invoice')
     $scope.save = function(invoice) {
       console.log('save');
       console.log(invoice);
+      $scope.$broadcast('show-errors-check-validity');
+      if ($scope.invoiceForm.$invalid) {
+        console.log('**FORM IS INVALID***');
+        return;  //don't save because form is invalid
+      }
       ResourceRequester.save(invoice);
     };
 
     $scope.addPart = function() {
-      $scope.invoice.invoice.parts.push({});
+      if ($scope.invoice.invoice.parts.length < 3) { 
+        $scope.invoice.invoice.parts.push({});
+      }
     };
     $scope.removePart = function(index) {
       $scope.invoice.invoice.parts.splice(index, 1);

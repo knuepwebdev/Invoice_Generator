@@ -23,6 +23,9 @@
   .bold {
     font-weight: bold;
   }
+  .has-error .form-control {
+    border-width: 3px;
+  }
   /*HEADER*/
   #company-info {
     line-height: 110%;
@@ -257,4 +260,5 @@
     padding: 1em 0;
   }
   /*END FOOTER*/
+  /*FORM VALIDATIONS*/
 }
