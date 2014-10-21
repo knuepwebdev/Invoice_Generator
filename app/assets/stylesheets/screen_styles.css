@@ -209,6 +209,32 @@
     -webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   }
+  #btn-remove-part {
+    width: 9%;
+  }
+  .part-row {
+    padding: .75em .25em;
+  }
+  .part-quantity {
+    width: 25%;
+    margin-left: 2.5em;
+  }
+  .part-number {
+    width: 25%;
+  }
+  .part-name {
+    width: 60%;
+  }
+  .part-price {
+    width: 20%;
+  }
+  #sales-tax {
+    width: 20%;
+    margin: .75em .75em .75em 2.5em;    
+  }
+  #btn-add-part {
+    margin: .75em .25em;
+  }   
   #tax-determination, .total {
     border-right: 0;
   }

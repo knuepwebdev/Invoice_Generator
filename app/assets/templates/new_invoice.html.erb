@@ -210,29 +210,35 @@
       </div>     
       <div toggler="parts_included">    
         <ul>
-          <li ng-repeat="part in invoice.invoice.parts track by $index">
-            <button type="button" class="btn btn-danger"ng-click="removePart($index);">-</button>
-            <input type="text"
-                   ng-model="invoice.invoice.parts[$index]['quantity']"
-                   placeholder="Quantity"/>
+          <li ng-repeat="part in invoice.invoice.parts track by $index"
+              class="part-row">
+            <button type="button" id="btn-remove-part" class="btn btn-danger"ng-click="removePart($index);">-</button>
             <input type="text"
                    ng-model="invoice.invoice.parts[$index]['number']"
+                   class="part-number"
                    placeholder="Part Number"/>
             <input type="text"
                    ng-model="invoice.invoice.parts[$index]['name']"
+                   class="part-name"
                    placeholder="Part Name"/>
             <input type="text"
+                   ng-model="invoice.invoice.parts[$index]['quantity']"
+                   class="part-quantity"
+                   placeholder="Quantity"/>                   
+            <input type="text"
                    ng-model="invoice.invoice.parts[$index]['price']"
+                   class="part-price"
                    placeholder="Price"/>
           </li>
         </ul>
+        <input type="text" ng-model="invoice.invoice.service_report.sales_tax" id="sales-tax" placeholder="Tax Rate"/> %        
         <div>
           <button type="button"
-                  id="add-part"
+                  id="btn-add-part"
                   class="btn btn-success"
-                  ng-click="addPart();">+</button>
+                  ng-click="addPart();">Add Part</button>
         </div>
-        <input type="text" ng-model="invoice.invoice.service_report.sales_tax" placeholder="Tax Rate"/> %
+
       </div>
     </div>
     <div class="filler subtotal"></div>
