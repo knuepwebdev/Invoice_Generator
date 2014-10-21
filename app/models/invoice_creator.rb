@@ -26,12 +26,22 @@ class InvoiceCreator
       mileage: invoice_format.mileage,
       mileage_rate: invoice_format.mileage_rate            
     )
+
+    @invoice['parts'].each do |part|
+      service_report.parts.new(
+        quantity: invoice_format.part_quantity,
+        name: invoice_format.part_name,
+        price: invoice_format.part_price,
+        number: invoice_format.part_number,
+      )
+
+    end
+    
     service_report.invoice = Invoice.new(
       number: invoice_format.number,
       date: invoice_format.date
     )
-      # hospital belongs_to :service_report
-      # service_report has_one :hospital
+      # Hospital.find_or_create_by(name: ...)
     service_report.hospital = Hospital.new(
       name: invoice_format.hospital_name,
       department: invoice_format.hospital_department,

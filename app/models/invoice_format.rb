@@ -51,7 +51,7 @@ class InvoiceFormat
     @invoice_format['service_report']['travel']
   end
     def travel_rate
-    @invoice_format['service_report']['travel_hourly_rate']
+    @invoice_format['service_report']['travel_rate']
   end
     def mileage
     @invoice_format['service_report']['mileage']
