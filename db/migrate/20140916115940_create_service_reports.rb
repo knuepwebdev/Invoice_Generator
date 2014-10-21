@@ -11,6 +11,7 @@ class CreateServiceReports < ActiveRecord::Migration
       t.integer :travel_rate
       t.integer :mileage
       t.integer :mileage_rate            
+      t.decimal :sales_tax
       t.timestamps
     end
   end
