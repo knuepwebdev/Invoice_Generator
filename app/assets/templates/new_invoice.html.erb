@@ -1,5 +1,5 @@
 <div ng-controller='InvoicesCtrl as ctrl'>
-  <form novalidate class='form-horizontal' name="invoice_form">
+  <form novalidate class='form-horizontal' name="invoiceForm">
     <div id="left-column">
       <section id="company-info">    
         <h2 id="logo" class="bold">{{formData.company.name}}</h2>
@@ -22,6 +22,7 @@
         <div class="form-group">
           <div class="col-sm-8">
             <input class="form-control"
+                   name="name" 
                    placeholder="Hospital"
                    ng-model="invoice.invoice.client.name"
                    required
@@ -85,10 +86,13 @@
     </div>
     <div id="right-column">
       <h1 id='invoice'>Invoice</h1>
+      <div>{{invoice_form.invoice-number.$invalid}}</div>
         <div id="invoice-number" class="form-group">
-          <div class="col-sm-6">
+          <div class="col-sm-6"
+               ng-class="{ 'has-error': invoiceForm.invoiceNumber.$invalid }" class="form-group">
             <input class="form-control"
                    placeholder='#'
+                   name="invoiceNumber"
                    ng-model="invoice.invoice.number"
                    required
                    ng-minlength=4

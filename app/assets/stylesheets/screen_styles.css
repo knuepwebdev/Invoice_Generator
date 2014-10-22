@@ -258,10 +258,4 @@
   }
   /*END FOOTER*/
   /*FORM VALIDATIONS*/
-    .form-horizontal input.ng-invalid.ng-dirty {
-    border: 2px solid red;
-  }
-  .form-horizontal input.ng-valid.ng-dirty {
-    border: 2px solid green;
-  }
 }
