@@ -31,6 +31,11 @@ angular.module('invoice')
     $scope.save = function(invoice) {
       console.log('save');
       console.log(invoice);
+      $scope.$broadcast('show-errors-check-validity');
+      if ($scope.invoiceForm.$invalid) {
+        console.log('**FORM IS INVALID***');
+        return;  //don't save because form is invalid
+      }
       ResourceRequester.save(invoice);
     };
 
