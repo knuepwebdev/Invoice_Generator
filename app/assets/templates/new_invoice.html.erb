@@ -89,7 +89,7 @@
       <div>{{invoice_form.invoice-number.$invalid}}</div>
         <div id="invoice-number" class="form-group">
           <div class="col-sm-6"
-               ng-class="{ 'has-error': invoiceForm.invoiceNumber.$invalid }" class="form-group">
+               ng-class="{ 'has-error': invoiceForm.invoiceNumber.$invalid && invoiceForm.invoiceNumber.$dirty}" class="form-group">
             <input class="form-control"
                    placeholder='#'
                    name="invoiceNumber"
