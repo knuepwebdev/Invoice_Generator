@@ -53,5 +53,6 @@ class InvoiceCreator
       state: invoice_format.hospital_state,
       zipcode: invoice_format.hospital_zipcode)
     service_report.save
+    service_report.invoice
   end
 end

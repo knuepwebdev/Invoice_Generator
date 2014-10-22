@@ -9,9 +9,7 @@ module Api
 
       def create
         invoice_creator = InvoiceCreator.new(invoice_creator_params)
-        invoice_creator.create
-          #Return invoice as JSON
-        invoice = Invoice.new
+        invoice = invoice_creator.create
         respond_with :api, :v1, invoice
       end
 

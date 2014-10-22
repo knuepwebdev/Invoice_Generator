@@ -1,0 +1,144 @@
+<div id="left-column">
+  <section id="company-info">    
+    <h2 id="logo" class="bold">national radiographic systems, inc.</h2>
+    <div>X-Ray Sales and Service</div>
+    <div>212 Main St</div>
+    <div>Los Angeles, CA 90244</div>
+  </section>
+  <h3>sold to:</h3>
+  <!-- <div id="client-info"></div> -->
+  <div class="overlap">
+    <div>ATTN: Accounts Payable</div>
+    <div>{{clientName}}</div>
+    <div>{{clientStreet}}</div>
+    <div>{{clientCityStateZip}}</div>
+  </div>
+  <h3>shipped to:</h3>
+  <!-- <div id="shipping-info">{{shipping_date}}</div> -->
+  <div class="overlap">
+    <div>{{hospitalDepartment}}</div>
+    <div>{{hospitalRoom}}</div>
+  </div>
+</div>
+<div id="right-column">
+  <h1>Invoice {{invoiceNumber}}</h1>
+  <p>Please indicate invoice numbers on all remittances</p>
+  <div class="page">
+    <h3>Page</h3>
+    <div><!-- {{page}} --></div>
+  </div>
+  <div class="date">
+    <h3>Date</h3>
+    <div>{{invoiceDate}}</div>
+  </div>
+  <div class="po-number">
+    <h3>Your Purchase Order</h3>
+    <div><!-- {{PO number}} --></div>
+  </div>
+  <div class="date">
+    <h3>Date</h3>
+    <div><!-- {{date}} --></div>
+  </div>
+  <div class="terms">
+    <h3>Terms of Payment: 30 Days Net</h3>
+    <div><!-- {{terms}} --></div>
+  </div>
+  <div class="reference-number">
+    <h3>Our Reference Number</h3>
+    <div><!-- {{referenceNumber}} --></div>
+  </div>
+</div>
+<div id="extra-fields">
+  <div id="fob-point">
+    <h3>f.o.b. point</h3>
+    <div></div>
+  </div>
+  <div id="carriers-name">
+    <h3>Carrier's name</h3>
+    <div></div>
+  </div>
+  <div id="shipped-via">
+    <h3>shipped via</h3>
+    <div></div>
+  </div>
+  <div id="freight-term"> 
+    <h3>freight term</h3>
+    <div></div>
+  </div>
+  <div id="st-tax"> 
+    <h3>st. tax for</h3>
+    <div></div>
+  </div>
+  <div id="pco">
+    <h3>pco</h3>
+    <div></div>
+  </div>
+  <div id="tax-determination">
+    <h3>tax determination</h3>
+    <div></div>
+  </div>
+</div>
+<table id="line-items">
+  <tr>
+    <th class="item">item no.</th>
+    <th class="quantity">quantity</th>
+    <th class="list-number">list number</th>
+    <th class="description">description/serial no.</th>
+    <th class="subtotal"></th>
+    <th class="total">total</th>
+  </tr>
+</table>
+<!-- empty divs with borders -->
+<div class="filler item"></div>
+<div class="filler quantity">
+  <ul toggler="parts_included">
+    <li ng-repeat="part in parts track by $index"
+        id="part-quantity-{{$index + 1}}">
+      {{part.quantity}}
+    </li>
+  </ul>
+</div>
+<div class="filler list-number">
+  <ul toggler='parts_included' id='part-numbers'>
+    <li ng-repeat="part in parts" id="part-number-{{$index + 1}}">{{part.number}}</li>
+  </ul>
+</div>
+<div class="filler description">
+  <div>Service Report: #{{serviceReportNumber}}, {{serviceReportDate}}</div>
+  <div>{{machineMake}} {{machineModel}}</div>
+  <div id='labor'>Labor: {{labor}} hours at ${{laborHourlyRate}}/hour</div>
+  <div toggler='travel_included' id='travel'>Travel: {{travel}} hours at ${{travelHourlyRate}}/hour</div>
+  <div toggler='mileage_included' id='mileage'>Mileage: {{mileage}} miles at ${{mileageRate}}/mile</div>
+  <div toggler='parts_included'>
+    <h1>parts:</h1>
+    <ul>
+      <li ng-repeat="part in parts track by $index"
+          id="part-name-{{$index + 1}}">
+        {{part.name}}
+      </li>
+    </ul>
+    <div id="input-tax">Sales Tax {{taxRate}}%</div>
+  </div>
+</div>
+<div id="subtotal-column" class="filler subtotal">
+  <div id='subtotal-labor'>{{ calculateLabor() | currency}}</div>
+  <div toggler="travel_included" id='subtotal-travel'>
+    {{ calculateTravel() | currency}}</div>
+  <div toggler="mileage_included" id='subtotal-mileage'>
+    {{ calculateMileage() | currency}}</div>
+  <div toggler="parts_included">
+    <ul id='subtotal-parts'>
+      <li ng-repeat="part in parts track by $index"
+          id="part{{$index + 1}}-subtotal">
+        {{ (part.quantity * part.price) | currency}}
+      </li>
+    </ul>
+    <div id="total-tax">{{calculateTax() | currency}}</div>
+  </div>
+  <div id='subtotal-amount'>{{calculateTotal() | currency}}</div>
+</div>
+<div id="total-amount" class="filler total">{{calculateTotal() | currency}}</div>
+<footer>
+  <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
+  <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>
+</footer>
