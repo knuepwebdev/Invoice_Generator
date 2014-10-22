@@ -20,12 +20,12 @@
       <div class="overlap">
         <div>ATTN: Accounts Payable</div>
         <div class="form-group">
-          <div class="col-sm-8">
+          <div class="col-sm-8" nrs-show-errors>
             <input class="form-control"
-                   name="name" 
+                   name="input-hospital-name"
+                   required
                    placeholder="Hospital"
                    ng-model="invoice.invoice.client.name"
-                   required
                    ng-change="getData({
                                 key: 'name',
                                 value: invoice.invoice.client.name,
@@ -34,8 +34,10 @@
         </div>
         <!-- begin ng-repeat -->
         <div ng-repeat="attr in attrs.client.contact" class="form-group">
-          <div class="col-sm-8">
+          <div class="col-sm-8" nrs-show-errors>
             <input class="form-control"
+                   name="input-{{attr}}"
+                   required
                    placeholder={{attr}}
                    ng-model="invoice.invoice.client.contact[attr]",
                    ng-change="getData({
@@ -58,8 +60,10 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-3">
+          <div class="col-sm-3" nrs-show-errors>
             <input class="form-control"
+                   name="input-zipcode"
+                   required
                    placeholder="Zipcode"
                    ng-model="invoice.invoice.client.contact.zipcode",
                    ng-change="getData({
@@ -72,8 +76,10 @@
       <h3>shipped to:</h3>
       <div class="overlap">
         <div ng-repeat="attr in attrs.client.fields" class="form-group">
-          <div class="col-sm-6">
+          <div class="col-sm-6" nrs-show-errors>
             <input class="form-control"
+                   name="input-{{attr}}"
+                   required
                    placeholder={{spacerize(attr)}}
                    ng-model="invoice.invoice.client[attr]",
                    ng-change="getData({
@@ -138,44 +144,64 @@
     <div class="filler quantity"></div>
     <div class="filler list-number"></div>
     <div class="filler description">
-    <input class="small form-control"
-           placeholder='Service Report Number'
-           ng-model="invoice.invoice.service_report.number"
-           ng-change="getData({
-                        key: 'number',
-                        value: invoice.invoice.service_report.number,
-                        path: invoice.invoice.service_report })" />
-    <my-datepicker type="text"
-                   id="service-report-date"
-                   ng-model="invoice.invoice.service_report.date"></my-datepicker>    
-    <input class="small form-control"
-           placeholder='Machine Make'
-           ng-model="invoice.invoice.service_report.machine_make"
-           ng-change="getData({
-                        key: 'machine_make',
-                        value: invoice.invoice.service_report.machine_make,
-                        path: invoice.invoice.service_report })" />
-    <input class="small form-control"
-           placeholder='Machine Model'
-           ng-model="invoice.invoice.service_report.machine_model"
-           ng-change="getData({
-                        key: 'machine_model',
-                        value: invoice.invoice.service_report.machine_model,
-                        path: invoice.invoice.service_report })" />
-    <input class="small form-control"
-           placeholder='Labor Time'
-           ng-model="invoice.invoice.service_report.labor"
-           ng-change="getData({
-                        key: 'labor',
-                        value: invoice.invoice.service_report.labor,
-                        path: invoice.invoice.service_report })" />
-    <input class="small form-control"
-           placeholder='Hourly Rate'
-           ng-model="invoice.invoice.service_report.labor_rate"
-           ng-change="getData({
-                        key: 'labor_rate',
-                        value: invoice.invoice.service_report.labor_rate,
-                        path: invoice.invoice.service_report })" />                                                     
+      <div nrs-show-errors>      
+        <input class="small form-control"
+               name="input-service-report-number"
+               required
+               placeholder='Service Report Number'
+               ng-model="invoice.invoice.service_report.number"
+               ng-change="getData({
+                            key: 'number',
+                            value: invoice.invoice.service_report.number,
+                            path: invoice.invoice.service_report })" />
+      </div>
+      <my-datepicker type="text"
+                     id="service-report-date"
+                     ng-model="invoice.invoice.service_report.date"></my-datepicker> 
+      <div nrs-show-errors>                              
+        <input class="small form-control"
+               name="input-machine-make"
+               required
+               placeholder='Machine Make'
+               ng-model="invoice.invoice.service_report.machine_make"
+               ng-change="getData({
+                            key: 'machine_make',
+                            value: invoice.invoice.service_report.machine_make,
+                            path: invoice.invoice.service_report })" />
+      </div>      
+      <div nrs-show-errors>
+        <input class="small form-control"
+               name="input-machine-model"
+               required
+               placeholder='Machine Model'
+               ng-model="invoice.invoice.service_report.machine_model"
+               ng-change="getData({
+                            key: 'machine_model',
+                            value: invoice.invoice.service_report.machine_model,
+                            path: invoice.invoice.service_report })" />
+      </div>
+      <div nrs-show-errors>                            
+        <input class="small form-control"
+               name="input-labor"
+               required
+               placeholder='Labor Time'
+               ng-model="invoice.invoice.service_report.labor"
+               ng-change="getData({
+                            key: 'labor',
+                            value: invoice.invoice.service_report.labor,
+                            path: invoice.invoice.service_report })" />
+      </div>
+      <div nrs-show-errors>                           
+        <input class="small form-control"
+               name="input-labor-rate"
+               required
+               placeholder='Hourly Rate'
+               ng-model="invoice.invoice.service_report.labor_rate"
+               ng-change="getData({
+                            key: 'labor_rate',
+                            value: invoice.invoice.service_report.labor_rate,
+                            path: invoice.invoice.service_report })" />        
+      </div>                                               
       <div>
         <label for="select_travel">Travel?</label>
         <select ng-model="travel_included"
@@ -246,7 +272,7 @@
         </div>
 
       </div>
-    </div>
+    </div><!-- .filler.description -->
     <div class="filler subtotal"></div>
     <div class="filler total"></div>
     <footer>
