@@ -1,5 +1,5 @@
 <div ng-controller='InvoicesCtrl as ctrl'>
-  <form class='form-horizontal'>
+  <form novalidate class='form-horizontal' name="invoice_form">
     <div id="left-column">
       <section id="company-info">    
         <h2 id="logo" class="bold">{{formData.company.name}}</h2>
@@ -24,6 +24,7 @@
             <input class="form-control"
                    placeholder="Hospital"
                    ng-model="invoice.invoice.client.name"
+                   required
                    ng-change="getData({
                                 key: 'name',
                                 value: invoice.invoice.client.name,
@@ -88,7 +89,10 @@
           <div class="col-sm-6">
             <input class="form-control"
                    placeholder='#'
-                   ng-model="invoice.invoice.number",
+                   ng-model="invoice.invoice.number"
+                   required
+                   ng-minlength=4
+                   ng-maxlength=4
                    ng-change="getData({
                                 key: 'number',
                                 value: invoice.invoice.number,
@@ -247,6 +251,7 @@
       <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
       <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>
     </footer>
-    <button ng-click="save(invoice)" id='save'>Save</button>        
+    <button ng-click="save(invoice)"
+            id='save'>Save</button>        
   </form>
 </div>
