@@ -7,7 +7,7 @@
   #container {
     width: 900px;
   }
-  body, #container, #left-column, #right-column, #invoice, #invoice-number, #notice, .page, .date, #po-number, #terms, #reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
+  body, #container, #left-column, #right-column, #invoice, #invoice-number, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
     float: left;
   }
   body {
@@ -95,7 +95,7 @@
     padding: .5em 0 .75em 0;
   }
   #right-column div:nth-child(2) {
-    height: 1.25em;
+    height: 2em;
     padding: 0 .25em;
     border: 1px solid #000;
     border-top: 0;
@@ -109,16 +109,16 @@
     float: left;
     border: none;
   }
-  .date div#date-input-container {
-    height: 2em;
-  }
-  .page, #po-number {
+  .page, .po-number {
     width: 60%;
+  }
+  .date {
+    width: 40%;
   }
   .date h3 {
     padding-bottom:;
   }
-  #terms, #reference-number {
+  .terms, .reference-number {
     width: 100%;
   }
   #date {
