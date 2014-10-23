@@ -10,43 +10,43 @@
     <!-- <div id="client-info"></div> -->
     <div class="overlap">
       <div>ATTN: Accounts Payable</div>
-      <div>{{invoice.invoice.client.name}}</div>
-      <div>{{clientStreet}}</div>
-      <div>{{clientCityStateZip}}</div>
+      <div>{{invoice.data.client.name}}</div>
+      <div>{{invoice.data.client.contact.street}}</div>
+      <div>{{invoice.data.client.contact.city}}, {{invoice.data.client.contact.state.abbreviation}} {{invoice.data.client.contact.zipcode}}</div>
     </div>
     <h3>shipped to:</h3>
     <!-- <div id="shipping-info">{{shipping_date}}</div> -->
     <div class="overlap">
-      <div>{{hospitalDepartment}}</div>
-      <div>{{hospitalRoom}}</div>
+      <div>{{invoice.data.client.hospital_department}}</div>
+      <div>{{invoice.data.client.hospital_room}}</div>
     </div>
   </div>
   <div id="right-column">
-    <h1>Invoice {{invoiceNumber}}</h1>
+    <h1>Invoice {{invoice.data.number}}</h1>
     <p>Please indicate invoice numbers on all remittances</p>
     <div class="page">
       <h3>Page</h3>
-      <div><!-- {{page}} --></div>
+      <div>{{formData.numberOfPages}} of {{formData.numberOfPages}}</div>
     </div>
     <div class="date">
       <h3>Date</h3>
-      <div>{{invoiceDate}}</div>
+      <div>{{invoice.data.date}}</div>
     </div>
     <div class="po-number">
       <h3>Your Purchase Order</h3>
-      <div><!-- {{PO number}} --></div>
+      <div></div>
     </div>
     <div class="date">
       <h3>Date</h3>
-      <div><!-- {{date}} --></div>
+      <div></div>
     </div>
     <div class="terms">
       <h3>Terms of Payment: 30 Days Net</h3>
-      <div><!-- {{terms}} --></div>
+      <div></div>
     </div>
     <div class="reference-number">
       <h3>Our Reference Number</h3>
-      <div><!-- {{referenceNumber}} --></div>
+      <div></div>
     </div>
   </div>
   <div id="extra-fields">
@@ -101,15 +101,15 @@
   </div>
   <div class="filler list-number">
     <ul toggler='parts_included' id='part-numbers'>
-      <li ng-repeat="part in parts" id="part-number-{{$index + 1}}">{{part.number}}</li>
+      <li ng-repeat="part in parts" id="part-number-{{$index + 1}}">{{invoice.data.parts[$index]['number']}}</li>
     </ul>
   </div>
   <div class="filler description">
-    <div>Service Report: #{{serviceReportNumber}}, {{serviceReportDate}}</div>
-    <div>{{machineMake}} {{machineModel}}</div>
-    <div id='labor'>Labor: {{labor}} hours at ${{laborHourlyRate}}/hour</div>
-    <div toggler='travel_included' id='travel'>Travel: {{travel}} hours at ${{travelHourlyRate}}/hour</div>
-    <div toggler='mileage_included' id='mileage'>Mileage: {{mileage}} miles at ${{mileageRate}}/mile</div>
+    <div>Service Report: #{{invoice.data.service_report.number}}, {{invoice.data.service_report.date}}</div>
+    <div>{{invoice.data.service_report.machine_make}} {{invoice.data.service_report.machine_model}}</div>
+    <div id='labor'>Labor: {{invoice.data.service_report.labor}} hours at ${{invoice.data.service_report.labor_rate}}/hour</div>
+    <div toggler='travel_included' id='travel'>Travel: {{invoice.data.service_report.travel}} hours at ${{invoice.data.service_report.travel_rate}}/hour</div>
+    <div toggler='mileage_included' id='mileage'>Mileage: {{invoice.data.service_report.mileage}} miles at ${{invoice.data.service_report.mileage_rate}}/mile</div>
     <div toggler='parts_included'>
       <h1>parts:</h1>
       <ul>
