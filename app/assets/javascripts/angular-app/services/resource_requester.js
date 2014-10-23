@@ -4,7 +4,7 @@ angular.module('invoice')
       all: Restangular.all('invoices').getList,
       save: function(invoice) {
         Restangular.all('invoices').post(invoice).then(function(newInvoice) {
-          $location.path("/invoices/" + newInvoice.id).replace();
+          $location.path("/invoices/" + newInvoice.id);
         });
       }
     };
