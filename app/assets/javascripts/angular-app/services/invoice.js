@@ -20,7 +20,7 @@ angular.module('invoice')
 
     var Invoice = {
       setProperty: setProperty,
-      invoice: {
+      data: {
         parts: [{quantity: '', price: ''}]
       }
     };

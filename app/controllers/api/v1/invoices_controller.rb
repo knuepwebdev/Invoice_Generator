@@ -15,7 +15,7 @@ module Api
 
       private
       def invoice_creator_params
-        params.require(:invoice).permit(
+        params.require(:data).permit(
           :number,
           :date,
           client: [

@@ -40,12 +40,12 @@ angular.module('invoice')
     };
 
     $scope.addPart = function() {
-      if ($scope.invoice.invoice.parts.length < 3) { 
-        $scope.invoice.invoice.parts.push({});
+      if ($scope.invoice.data.parts.length < 3) { 
+        $scope.invoice.data.parts.push({});
       }
     };
     $scope.removePart = function(index) {
-      $scope.invoice.invoice.parts.splice(index, 1);
+      $scope.invoice.data.parts.splice(index, 1);
     };
     $scope.calculateLabor = function() {
       return (isNaN($scope.labor * $scope.laborHourlyRate) ? 0 : $scope.labor * $scope.laborHourlyRate);
