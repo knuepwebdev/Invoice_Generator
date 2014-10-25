@@ -2,7 +2,7 @@ class CreateServiceReports < ActiveRecord::Migration
   def change
     create_table :service_reports do |t|
       t.string :number
-      t.date :date
+      t.string :date
       t.string :machine_make
       t.string :machine_model
       t.integer :labor

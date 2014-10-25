@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20141021171223) do
   create_table "invoices", force: true do |t|
     t.integer  "service_report_id"
     t.string   "number"
-    t.date     "date"
+    t.string   "date"
     t.decimal  "total"
     t.integer  "number_of_pages"
     t.datetime "created_at"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20141021171223) do
 
   create_table "service_reports", force: true do |t|
     t.string   "number"
-    t.date     "date"
+    t.string   "date"
     t.string   "machine_make"
     t.string   "machine_model"
     t.integer  "labor"

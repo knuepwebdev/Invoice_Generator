@@ -15,11 +15,9 @@ angular.module("invoice").directive('myDatepicker', function ($parse) {
          return function (scope, element, attrs, controller) {
 
             var processChange = function () {
-               var date = new Date(element.datepicker("getDate"));
-
+               $.datepicker.formatDate( "mm-dd-yy", new Date(element.datepicker("getDate")));
                scope.$apply(function (scope) {
-                  // Change bound variable
-                  modelAccessor.assign(scope, date);
+                  modelAccessor.assign(scope, $.datepicker.formatDate( "mm-dd-yy", new Date(element.datepicker("getDate"))));
                });
             };
 
