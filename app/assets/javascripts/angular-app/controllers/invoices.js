@@ -7,8 +7,8 @@ angular.module('invoice')
   .controller('InvoicesCtrl', ['$scope', 'formData', 'Invoice', 'invoiceAttributes', 'UnitedStates', 'Address', 'ResourceRequester',function($scope, formData, Invoice, invoiceAttributes, UnitedStates, Address, ResourceRequester) {
     $scope.hospitalState = Address.state;
     $scope.options = ['No', 'Yes'];
-    $scope.parts_included = 'No';
     $scope.travel_included = 'No';
+    $scope.parts_included = 'No';
     $scope.mileage_included = 'No';
     $scope.formData = formData;
     $scope.attrs = invoiceAttributes;
@@ -21,6 +21,13 @@ angular.module('invoice')
       return capitalized.join(' ');
     };
     $scope.invoice = Invoice;
+    $scope.showData = function(key) {
+      if ($scope.invoice.data.service_report[key] != undefined) {
+        return 'Yes';
+      } else {
+        return 'No';
+      }
+    };
     $scope.unitedStates = UnitedStates;
     $scope.save = function(invoice) {
       console.log('save');
@@ -40,12 +47,6 @@ angular.module('invoice')
     };
     $scope.removePart = function(index) {
       $scope.invoice.data.parts.splice(index, 1);
-    };
-    $scope.calculateTravel = function() {
-      return (isNaN($scope.travel * $scope.travelHourlyRate) ? 0 : $scope.travel * $scope.travelHourlyRate);
-    };
-    $scope.calculateMileage = function() {
-      return (isNaN($scope.mileage * $scope.mileageRate) ? 0 : $scope.mileage * $scope.mileageRate);
     };
     $scope.calculateParts = function() {
       var sum = 0;

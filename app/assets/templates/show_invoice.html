@@ -108,8 +108,8 @@
     <div>Service Report: #{{invoice.data.service_report.number}}, {{invoice.data.service_report.date}}</div>
     <div>{{invoice.data.service_report.machine_make}} {{invoice.data.service_report.machine_model}}</div>
     <div id='labor'>Labor: {{invoice.data.service_report.labor}} hours at ${{invoice.data.service_report.labor_rate}}/hour</div>
-    <div toggler='travel_included' id='travel'>Travel: {{invoice.data.service_report.travel}} hours at ${{invoice.data.service_report.travel_rate}}/hour</div>
-    <div toggler='mileage_included' id='mileage'>Mileage: {{invoice.data.service_report.mileage}} miles at ${{invoice.data.service_report.mileage_rate}}/mile</div>
+    <div toggler='showData("travel");' id='travel'>Travel: {{invoice.data.service_report.travel}} hours at ${{invoice.data.service_report.travel_rate}}/hour</div>
+    <div toggler='showData("mileage");' id='mileage'>Mileage: {{invoice.data.service_report.mileage}} miles at ${{invoice.data.service_report.mileage_rate}}/mile</div>
     <div toggler='parts_included'>
       <h1>parts:</h1>
       <ul>
@@ -123,10 +123,10 @@
   </div>
   <div id="subtotal-column" class="filler subtotal">
     <div id='subtotal-labor'>{{ invoice.calculateLabor() | currency}}</div>
-    <div toggler="travel_included" id='subtotal-travel'>
-      {{ calculateTravel() | currency}}</div>
-    <div toggler="mileage_included" id='subtotal-mileage'>
-      {{ calculateMileage() | currency}}</div>
+    <div toggler='showData("travel");' id='subtotal-travel'>
+      {{ invoice.calculateTravel() | currency}}</div>
+    <div toggler='showData("mileage");' id='subtotal-mileage'>
+      {{ invoice.calculateMileage() | currency}}</div>
     <div toggler="parts_included">
       <ul id='subtotal-parts'>
         <li ng-repeat="part in parts track by $index"
