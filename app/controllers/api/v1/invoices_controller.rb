@@ -9,8 +9,10 @@ module Api
 
       def create
         invoice_creator = InvoiceCreator.new(invoice_creator_params)
-        invoice = invoice_creator.create
-        respond_with :api, :v1, invoice
+        service_report = invoice_creator.create
+        respond_to do |format|
+          format.json { render json: service_report.to_json(include: [:invoice, :hospital, :parts]) }
+        end
       end
 
       private

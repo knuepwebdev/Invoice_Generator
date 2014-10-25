@@ -47,9 +47,6 @@ angular.module('invoice')
     $scope.removePart = function(index) {
       $scope.invoice.data.parts.splice(index, 1);
     };
-    $scope.calculateLabor = function() {
-      return (isNaN($scope.labor * $scope.laborHourlyRate) ? 0 : $scope.labor * $scope.laborHourlyRate);
-    };
     $scope.calculateTravel = function() {
       return (isNaN($scope.travel * $scope.travelHourlyRate) ? 0 : $scope.travel * $scope.travelHourlyRate);
     };
@@ -70,13 +67,13 @@ angular.module('invoice')
       });
       return (isNaN(tax) ? 0 : tax);
     };
-    $scope.calculateTotal = function() {
-      return $scope.calculateLabor() +
-             $scope.calculateTravel() +
-             $scope.calculateMileage() +
-             $scope.calculateParts() +
-             $scope.calculateTax();
-    };
+    // $scope.calculateTotal = function() {
+    //   return $scope.calculateLabor() +
+    //          $scope.calculateTravel() +
+    //          $scope.calculateMileage() +
+    //          $scope.calculateParts() +
+    //          $scope.calculateTax();
+    // };
     $scope.updateParts = function() {
       if ($scope.parts_included === 'No') {
         clearParts();

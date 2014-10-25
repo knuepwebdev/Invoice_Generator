@@ -122,7 +122,7 @@
     </div>
   </div>
   <div id="subtotal-column" class="filler subtotal">
-    <div id='subtotal-labor'>{{ calculateLabor() | currency}}</div>
+    <div id='subtotal-labor'>{{ invoice.calculateLabor() | currency}}</div>
     <div toggler="travel_included" id='subtotal-travel'>
       {{ calculateTravel() | currency}}</div>
     <div toggler="mileage_included" id='subtotal-mileage'>
@@ -136,9 +136,9 @@
       </ul>
       <div id="total-tax">{{calculateTax() | currency}}</div>
     </div>
-    <div id='subtotal-amount'>{{calculateTotal() | currency}}</div>
+    <div id='subtotal-amount'><!--{{calculateTotal() | currency}}--></div>
   </div>
-  <div id="total-amount" class="filler total">{{calculateTotal() | currency}}</div>
+  <div id="total-amount" class="filler total"><!--{{calculateTotal() | currency}}--></div>
   <footer>
     <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
     <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>
