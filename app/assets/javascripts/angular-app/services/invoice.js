@@ -1,16 +1,6 @@
 angular.module('invoice')
   .factory('Invoice', function() {    
-    function setProperty(data) {
-      console.log('path: ' + data.path);
-      console.log('key: ' + data.key);
-      console.log('value: ' + data.value);
 
-      // data.path[data.key] = data.value;
-      // path[key] = value;
-      console.log('Invoice service');
-      console.log(Invoice);
-      console.log('*END Invoice service');
-    };
 
     var data = { parts: [{quantity: '', price: ''}] }
 
@@ -27,7 +17,6 @@ angular.module('invoice')
     };
 
     var Invoice = {
-      setProperty: setProperty,
       setServiceReport: setServiceReport,
       data: data,
       calculateLabor: calculateLabor 

@@ -22,12 +22,6 @@ angular.module('invoice')
     };
     $scope.invoice = Invoice;
     $scope.unitedStates = UnitedStates;
-    $scope.getData = function(data) {
-      console.log('$scope.getData');
-      Invoice.setProperty(data);
-      console.log('end $scope.getData');
-    };
-
     $scope.save = function(invoice) {
       console.log('save');
       console.log(invoice);
