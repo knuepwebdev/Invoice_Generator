@@ -39,10 +39,10 @@ angular.module('invoice')
       return (isNaN(sum) ? 0 : sum); 
     };            
     function hasParts() {
-      if (data.service_report.parts[0].hasOwnProperty('name')) {
-        return 'Yes';
-      } else {
+      if (data.service_report.parts[0].name === null) {
         return 'No';
+      } else {
+        return 'Yes';
       }
     }
 

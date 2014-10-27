@@ -2,11 +2,12 @@ angular.module('invoice')
   .directive('nrsAlignElement', function() {
     function link(scope, element, attrs) {
       function align() {
-        var top = $('#' + attrs.nrsAlignElement).offset().top;
-        element.offset({ top: (top + attrs.verticalOffset) });
+        var distance = $('#' + attrs.nrsAlignElement).offset().top;
+        var newTop = distance + attrs.verticalOffset;
+        element.offset({ top: newTop });
       }      
 
-      scope.$watch(attrs.nrsAlignData, function(value) {
+      scope.$watch(attrs.nrsAlignElement, function(value) {
         align();
       });
     }
