@@ -93,7 +93,7 @@
   <div class="filler item"></div>
   <div class="filler quantity">
     <ul toggler="parts_included">
-      <li ng-repeat="part in parts track by $index"
+      <li ng-repeat="part in invoice.data.parts track by $index"
           id="part-quantity-{{$index + 1}}">
         {{part.quantity}}
       </li>
@@ -144,9 +144,11 @@
       </ul>
       <div id="total-tax">{{invoice.calculateTax() | currency}}</div>
     </div>
-    <div id='subtotal-amount'><!--{{calculateTotal() | currency}}--></div>
+    <div id='subtotal-amount'>{{invoice.calculateTotal() | currency}}</div>
   </div>
-  <div id="total-amount" class="filler total"><!--{{calculateTotal() | currency}}--></div>
+  <div id="total-amount"
+       nrs-align-data='subtotal-amount'
+       class="filler total">{{invoice.calculateTotal() | currency}}</div>
   <footer>
     <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
     <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>

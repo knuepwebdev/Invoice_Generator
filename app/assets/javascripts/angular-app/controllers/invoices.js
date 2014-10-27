@@ -46,20 +46,6 @@ angular.module('invoice')
     $scope.removePart = function(index) {
       $scope.invoice.data.parts.splice(index, 1);
     };
-    $scope.calculateParts = function() {
-      var sum = 0;
-      angular.forEach($scope.parts, function(part, index) {
-        sum += (part.quantity * part.price);
-      });
-      return (isNaN(sum) ? 0 : sum); 
-    };
-    // $scope.calculateTotal = function() {
-    //   return $scope.calculateLabor() +
-    //          $scope.calculateTravel() +
-    //          $scope.calculateMileage() +
-    //          $scope.calculateParts() +
-    //          $scope.calculateTax();
-    // };
     $scope.updateParts = function() {
       if ($scope.parts_included === 'No') {
         clearParts();

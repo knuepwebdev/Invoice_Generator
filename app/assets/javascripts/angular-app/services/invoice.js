@@ -18,17 +18,26 @@ angular.module('invoice')
       return (isNaN(data.service_report.mileage * data.service_report.mileage_rate) ? 0 : data.service_report.mileage * data.service_report.mileage_rate);
     };
     function calculateTax() {
-      console.log('calculateTax');
-      console.log('data.service_report.parts...');
-      console.log(data.service_report.parts);
       var tax = 0;
       angular.forEach(data.service_report.parts, function(part, index) {
-        console.log('in forEach');
         tax += (part.quantity * part.price * data.service_report.sales_tax * 0.01);
       });
-      console.log('returning ' + (isNaN(tax) ? 0 : tax));
       return (isNaN(tax) ? 0 : tax);
-    };    
+    };
+    function calculateTotal() {
+      return calculateLabor() +
+             calculateTravel() +
+             calculateMileage() +
+             calculateParts() +
+             calculateTax();
+    };
+    function calculateParts() {
+      var sum = 0;
+      angular.forEach(data.service_report.parts, function(part, index) {
+        sum += (part.quantity * part.price);
+      });
+      return (isNaN(sum) ? 0 : sum); 
+    };            
     function hasParts() {
       if (data.service_report.parts[0].hasOwnProperty('name')) {
         return 'Yes';
@@ -43,11 +52,10 @@ angular.module('invoice')
       calculateLabor: calculateLabor,
       calculateTravel: calculateTravel,
       calculateMileage: calculateMileage,
-      calculateTax: calculateTax, 
+      calculateTax: calculateTax,
+      calculateTotal: calculateTotal,
       hasParts: hasParts
     };
 
-    console.log('returning Invoice');
-    console.log(Invoice);
     return Invoice;
   }); 
