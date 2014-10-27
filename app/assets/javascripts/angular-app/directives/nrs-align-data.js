@@ -1,12 +1,18 @@
 angular.module('invoice')
   .directive('nrsAlignData', function() {
-    console.log('nrsAlignData');
     function link(scope, element, attrs) {
-      console.log('labor .offset().top');
-      console.log($('#' + attrs.nrsAlignData).offset().top);
-      var top = $('#' + attrs.nrsAlignData).offset().top;
-      $('#subtotal-labor').offset({top: $('#labor').offset().top});
+      // console.log('labor .offset().top');
+      // console.log($('#labor').offset().top);
+      
 
+    function alignLabor() {
+      var top = $('#labor').offset().top;
+      element.offset({ top: top });
+    }      
+
+      scope.$watch(attrs.nrsAlignData, function(value) {
+        alignLabor();
+      });
     }
 
     return {
