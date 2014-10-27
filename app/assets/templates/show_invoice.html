@@ -128,7 +128,9 @@
          id='subtotal-travel'
          nrs-align-data='travel'>
       {{ invoice.calculateTravel() | currency}}</div>
-    <div toggler='showData("mileage");' id='subtotal-mileage'>
+    <div toggler='showData("mileage");'
+         id='subtotal-mileage'
+         nrs-align-data='mileage'>
       {{ invoice.calculateMileage() | currency}}</div>
     <div toggler="parts_included">
       <ul id='subtotal-parts'>
