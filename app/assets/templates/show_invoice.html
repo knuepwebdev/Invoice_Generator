@@ -125,14 +125,17 @@
   </div>
   <div id="subtotal-column" class="filler subtotal">
     <div id='subtotal-labor'
-         nrs-align-data='labor'>{{ invoice.calculateLabor() | currency}}</div>
+         nrs-align-element='labor'
+         vertical-offset=0>{{ invoice.calculateLabor() | currency}}</div>
     <div toggler='showData("travel");'
          id='subtotal-travel'
-         nrs-align-data='travel'>
+         nrs-align-element='travel'
+         vertical-offset=0>
       {{ invoice.calculateTravel() | currency}}</div>
     <div toggler='showData("mileage");'
          id='subtotal-mileage'
-         nrs-align-data='mileage'>
+         nrs-align-element='mileage'
+         vertical-offset=0>
       {{ invoice.calculateMileage() | currency}}</div>
     <div toggler='invoice.hasParts();'>
       <ul id='subtotal-parts'>
@@ -146,9 +149,11 @@
     </div>
     <div id='subtotal-amount'>{{invoice.calculateTotal() | currency}}</div>
   </div>
-  <div id="total-amount"
-       nrs-align-data='subtotal-amount'
-       class="filler total">{{invoice.calculateTotal() | currency}}</div>
+  <div id='total-column' class="filler total">
+    <div id="total-amount"
+         nrs-align-element='subtotal-amount'
+         vertical-offset=100>{{invoice.calculateTotal() | currency}}</div>
+  </div>
   <footer>
     <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
     <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>
