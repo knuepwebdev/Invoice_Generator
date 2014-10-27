@@ -30,8 +30,6 @@ angular.module('invoice')
     };
     $scope.unitedStates = UnitedStates;
     $scope.save = function(invoice) {
-      console.log('save');
-      console.log(invoice);
       $scope.$broadcast('show-errors-check-validity');
       if ($scope.invoiceForm.$invalid) {
         console.log('**FORM IS INVALID***');
@@ -54,13 +52,6 @@ angular.module('invoice')
         sum += (part.quantity * part.price);
       });
       return (isNaN(sum) ? 0 : sum); 
-    };
-    $scope.calculateTax = function() {
-      var tax = 0;
-      angular.forEach($scope.parts, function(part, index) {
-        tax += (part.quantity * part.price * $scope.taxRate * 0.01);
-      });
-      return (isNaN(tax) ? 0 : tax);
     };
     // $scope.calculateTotal = function() {
     //   return $scope.calculateLabor() +
