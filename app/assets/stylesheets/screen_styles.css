@@ -26,13 +26,16 @@
   .has-error .form-control {
     border-width: 3px;
   }
+  ul {
+    list-style: none;
+  }
   /*HEADER*/
   #company-info {
     line-height: 110%;
     text-transform: none;
   }
   h1 {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
   /*LEFT COLUMN*/
   #left-column {
@@ -96,7 +99,7 @@
   }
   #right-column div:nth-child(2) {
     height: 2em;
-    padding: 0 .25em;
+    padding: .25em;
     border: 1px solid #000;
     border-top: 0;
     border-right: 0;
@@ -179,9 +182,23 @@
   .item, .quantity {
     width: 7.5%;
   }
+  th.list-number {
+    padding: 1em 3em;
+  }
+  th.description {
+    padding: 1em 11em;
+  }
   .list-number, .subtotal, .total {
     width: 15%;
   }
+  .filler.list-number, .filler.description, .filler.total {
+    padding: 1em;
+  }
+
+  .filler.quantity ul li, .filler.list-number ul li {
+    margin: 0 0 0 2.25em;
+  }
+
   .description {
     width: 40%;
   }
@@ -211,6 +228,9 @@
     -webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   }
+  #parts-section {
+    margin: .5em 0;
+  }
   #btn-remove-part {
     width: 9%;
   }
@@ -233,6 +253,12 @@
   #sales-tax {
     width: 20%;
     margin: .75em .75em .75em 2.5em;    
+  }
+  #subtotal-column {
+    padding: 1em;
+  }
+  #subtotal-labor, #subtotal-travel, #subtotal-mileage, #subtotal-parts li, #total-tax, #subtotal-amount {
+    margin: 0 0 0 1.25em;
   }
   #btn-add-part {
     margin: .75em .25em;

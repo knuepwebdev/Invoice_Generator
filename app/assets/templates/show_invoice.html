@@ -92,7 +92,7 @@
   <!-- empty divs with borders -->
   <div class="filler item"></div>
   <div class="filler quantity">
-    <ul toggler="parts_included">
+    <ul toggler='invoice.hasParts();'>
       <li ng-repeat="part in invoice.data.parts track by $index"
           id="part-quantity-{{$index + 1}}">
         {{part.quantity}}
@@ -112,7 +112,8 @@
     <div id='labor'>Labor: {{invoice.data.service_report.labor}} hours at ${{invoice.data.service_report.labor_rate}}/hour</div>
     <div toggler='showData("travel");' id='travel'>Travel: {{invoice.data.service_report.travel}} hours at ${{invoice.data.service_report.travel_rate}}/hour</div>
     <div toggler='showData("mileage");' id='mileage'>Mileage: {{invoice.data.service_report.mileage}} miles at ${{invoice.data.service_report.mileage_rate}}/mile</div>
-    <div toggler='invoice.hasParts();'>
+    <div toggler='invoice.hasParts();'
+         id='parts-section'>
       <h1>parts:</h1>
       <ul>
         <li ng-repeat="part in invoice.data.parts track by $index"
