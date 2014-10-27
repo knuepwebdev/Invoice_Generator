@@ -6,7 +6,7 @@ angular.module('invoice')
       
 
     function alignLabor() {
-      var top = $('#labor').offset().top;
+      var top = $('#' + attrs.nrsAlignData).offset().top;
       element.offset({ top: top });
     }      
 
