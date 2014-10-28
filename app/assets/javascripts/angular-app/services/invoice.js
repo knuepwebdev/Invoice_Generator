@@ -1,7 +1,7 @@
 angular.module('invoice')
   .factory('Invoice', function() {    
     var data = { parts: [{quantity: '', price: ''}] }
-    
+
     function setServiceReport(serviceReport) {
       data = {};
       data.service_report = serviceReport;

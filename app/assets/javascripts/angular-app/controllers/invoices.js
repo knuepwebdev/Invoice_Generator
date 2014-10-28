@@ -10,6 +10,8 @@ angular.module('invoice')
     $scope.travel_included = 'No';
     $scope.parts_included = 'No';
     $scope.mileage_included = 'No';
+    $scope.invoice = Invoice;
+    $scope.allInvoices = ResourceRequester.allInvoices;
     $scope.formData = formData;
     $scope.attrs = invoiceAttributes;
     $scope.spacerize = function(attr) {
@@ -20,7 +22,7 @@ angular.module('invoice')
       });
       return capitalized.join(' ');
     };
-    $scope.invoice = Invoice;
+
     $scope.showData = function(key) {
       if ($scope.invoice.data.service_report[key] != undefined) {
         return 'Yes';
@@ -29,6 +31,7 @@ angular.module('invoice')
       }
     };
     $scope.unitedStates = UnitedStates;
+    
     $scope.save = function(invoice) {
       $scope.$broadcast('show-errors-check-validity');
       if ($scope.invoiceForm.$invalid) {

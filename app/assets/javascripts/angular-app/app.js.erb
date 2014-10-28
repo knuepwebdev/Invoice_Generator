@@ -1,11 +1,16 @@
 //= depend_on_asset 'dashboard.html'
 //= depend_on_asset 'new_invoice.html'
 //= depend_on_asset 'show_invoice.html'
+//= depend_on_asset 'invoices_index.html'
 
 angular.module('nrs', ['ngRoute', 'invoice', 'restangular'])
   .config(['$routeProvider', '$locationProvider', '$httpProvider', 'RestangularProvider',
     function($routeProvider, $locationProvider, $httpProvider, RestangularProvider) {
       $routeProvider
+        .when('/invoices', {
+          templateUrl: "<%= asset_path('invoices_index.html') %>",
+          controller: 'InvoicesCtrl'
+        })
         .when('/invoices/new', {
           templateUrl: "<%= asset_path('new_invoice.html') %>",
           controller: 'InvoicesCtrl'
@@ -16,7 +21,7 @@ angular.module('nrs', ['ngRoute', 'invoice', 'restangular'])
         })                
         .when('/', {
           templateUrl: "<%= asset_path('dashboard.html') %>",
-          controller: 'DashboardCtrl'
+          controller: 'InvoicesCtrl'
         })
         .otherwise({
           redirectTo: '/'
@@ -25,45 +30,5 @@ angular.module('nrs', ['ngRoute', 'invoice', 'restangular'])
       $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = 
         $("meta[name=\"csrf-token\"]").attr("content");
       RestangularProvider.setBaseUrl('/api/v1/');
-      // RestangularProvider.setExtraFields(['name']);
-      // RestangularProvider.setResponseExtractor(function(response, operation) {
-      //     return response.data;
-      // });
-
-      // RestangularProvider.addElementTransformer('accounts', false, function(element) {
-      //    element.accountName = 'Changed';
-      //    return element;
-      // });
-
-      // RestangularProvider.setDefaultHttpFields({cache: true});
-      // RestangularProvider.setMethodOverriders(["put", "patch"]);
-
-      // // In this case we are mapping the id of each element to the _id field.
-      // // We also change the Restangular route.
-      // // The default value for parentResource remains the same.
-      // RestangularProvider.setRestangularFields({
-      //   id: "_id",
-      //   route: "restangularRoute",
-      //   selfLink: "self.href"
-      // });
-
-      // RestangularProvider.setRequestSuffix('.json');
-
-      // // Use Request interceptor
-      // RestangularProvider.setRequestInterceptor(function(element, operation, route, url) {
-      //   delete element.name;
-      //   return element;
-      // });
-
-      // // ..or use the full request interceptor, setRequestInterceptor's more powerful brother!
-      // RestangularProvider.setFullRequestInterceptor(function(element, operation, route, url, headers, params, httpConfig) {
-      //   delete element.name;
-      //   return {
-      //     element: element,
-      //     params: _.extend(params, {single: true}),
-      //     headers: headers,
-      //     httpConfig: httpConfig
-      //   };
-      // });  
     }
   ]);

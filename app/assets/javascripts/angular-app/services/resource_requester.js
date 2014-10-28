@@ -1,7 +1,15 @@
 angular.module('invoice')
-  .factory('ResourceRequester', ['Restangular', 'Invoice', '$location', function(Restangular, Invoice, $location) {
+  .factory('ResourceRequester', ['Restangular', '$rootScope', 'Invoice', '$location', function(Restangular, $rootScope, Invoice, $location) {
+  
+    function allInvoices() {
+      Restangular.all('invoices').getList().then(function(invoices) {
+        $rootScope.invoices = invoices;
+        $location.path('/invoices');
+      });
+    }
+
     var ResourceRequester = {
-      all: Restangular.all('invoices').getList,
+      allInvoices: allInvoices,
       save: function(invoice) {
         Restangular.all('invoices').post(invoice).then(function(serviceReport) {
           Invoice.setServiceReport(serviceReport);
