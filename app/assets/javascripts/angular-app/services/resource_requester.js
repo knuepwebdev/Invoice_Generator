@@ -2,8 +2,8 @@ angular.module('invoice')
   .factory('ResourceRequester', ['Restangular', '$rootScope', 'Invoice', '$location', function(Restangular, $rootScope, Invoice, $location) {
   
     function allInvoices() {
-      Restangular.all('invoices').getList().then(function(invoices) {
-        $rootScope.invoices = invoices;
+      Restangular.all('invoices').getList().then(function(serviceReports) {
+        $rootScope.serviceReports = serviceReports;
         $location.path('/invoices');
       });
     }

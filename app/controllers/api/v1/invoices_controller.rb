@@ -4,7 +4,10 @@ module Api
       respond_to :json
 
       def index
-        respond_with Invoice.all
+        service_reports = ServiceReport.all
+        respond_to do |format|
+          format.json { render json: service_reports.as_json(include: [:invoice, {hospital: {include: :contact}}, :parts]) }
+        end
       end 
 
       def create

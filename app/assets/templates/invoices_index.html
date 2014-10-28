@@ -1,7 +1,8 @@
 <h1>All Invoices</h1>
-{{invoices}}
+{{serviceReports[0]}}
 <ul>
-  <li ng-repeat='invoice in invoices'>
-    <span>{{invoice.number}}</span>
+  <li ng-repeat='serviceReport in serviceReports'>
+    <span>{{serviceReport.invoice.date}}</span>
+    <span><a href='invoices/{{serviceReport.invoice.id}}'>{{serviceReport.invoice.number}}</a></span>
   </li>
 </ul>
