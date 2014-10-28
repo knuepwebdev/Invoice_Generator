@@ -1,9 +1,16 @@
 angular.module('invoice')
   .factory('Invoice', function() {    
-    var data = { parts: [{quantity: '', price: ''}] }
+    var data = { 
+      serviceReport: {
+        parts: [{quantity: '', price: ''}]
+      }
+    };
     function setData(newData) {
       data = {};
       data.serviceReport = newData;
+    }
+    function setTotal() {
+      data.total = calculateTotal();
     }
 
     function calculateLabor() {
@@ -48,6 +55,7 @@ angular.module('invoice')
     var Invoice = {
       data: data,
       setData: setData,
+      setTotal: setTotal,
       calculateLabor: calculateLabor,
       calculateTravel: calculateTravel,
       calculateMileage: calculateMileage,

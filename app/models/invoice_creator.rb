@@ -29,7 +29,7 @@ class InvoiceCreator
     )
 
 
-    @invoice['parts'].each_index do |index|
+    @invoice['serviceReport']['parts'].each_index do |index|
       service_report.parts.new(
         quantity: invoice_format.part_quantity(index),
         price: invoice_format.part_price(index),
@@ -40,7 +40,8 @@ class InvoiceCreator
     
     service_report.invoice = Invoice.new(
       number: invoice_format.number,
-      date: invoice_format.date
+      date: invoice_format.date,
+      total: invoice_format.total
     )
       # Hospital.find_or_create_by(name: ...)
     service_report.hospital = Hospital.new(

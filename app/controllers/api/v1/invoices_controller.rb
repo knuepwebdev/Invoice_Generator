@@ -4,7 +4,7 @@ module Api
       respond_to :json
 
       def index
-        service_reports = ServiceReport.all
+        service_reports = ServiceReport.includes(:invoice, {hospital: :contact}, :parts)
         respond_to do |format|
           format.json { render json: service_reports.as_json(include: [:invoice, {hospital: {include: :contact}}, :parts]) }
         end
@@ -23,6 +23,7 @@ module Api
         params.require(:data).permit(
           :number,
           :date,
+          :total,
           client: [
             :name,
             :hospital_room,
@@ -37,7 +38,7 @@ module Api
               ]
             ]
           ],
-          service_report: [
+          serviceReport: [
             :number,
             :date,
             :machine_make,
@@ -48,9 +49,9 @@ module Api
             :travel_rate,
             :mileage,
             :mileage_rate,
-            :sales_tax                        
-          ],
-          parts: [:quantity, :price, :number, :name]
+            :sales_tax,
+            parts: [:quantity, :price, :number, :name]                        
+          ]
         )
       end 
     end

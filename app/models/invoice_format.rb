@@ -8,6 +8,9 @@ class InvoiceFormat
   def date
     @invoice_format['date']
   end
+  def total
+    @invoice_format['total']
+  end
   def hospital_name
     @invoice_format['client']['name']
   end
@@ -30,48 +33,48 @@ class InvoiceFormat
     @invoice_format['client']['contact']['zipcode']
   end
   def service_report_number
-    @invoice_format['service_report']['number']
+    @invoice_format['serviceReport']['number']
   end
   def service_report_date
-    @invoice_format['service_report']['date']
+    @invoice_format['serviceReport']['date']
   end
   def machine_make
-    @invoice_format['service_report']['machine_make']
+    @invoice_format['serviceReport']['machine_make']
   end
   def machine_model
-    @invoice_format['service_report']['machine_model']
+    @invoice_format['serviceReport']['machine_model']
   end
   def labor
-    @invoice_format['service_report']['labor']
+    @invoice_format['serviceReport']['labor']
   end
   def labor_rate
-    @invoice_format['service_report']['labor_rate']
+    @invoice_format['serviceReport']['labor_rate']
   end
   def travel
-    @invoice_format['service_report']['travel']
+    @invoice_format['serviceReport']['travel']
   end
   def travel_rate
-    @invoice_format['service_report']['travel_rate']
+    @invoice_format['serviceReport']['travel_rate']
   end
   def mileage
-    @invoice_format['service_report']['mileage']
+    @invoice_format['serviceReport']['mileage']
   end
   def mileage_rate
-    @invoice_format['service_report']['mileage_rate']
+    @invoice_format['serviceReport']['mileage_rate']
   end                
   def part_quantity(index)
-    @invoice_format['parts'][index]['quantity']
+    @invoice_format['serviceReport']['parts'][index]['quantity']
   end
   def part_price(index)
-    @invoice_format['parts'][index]['price']
+    @invoice_format['serviceReport']['parts'][index]['price']
   end
   def part_name(index)
-    @invoice_format['parts'][index]['name']
+    @invoice_format['serviceReport']['parts'][index]['name']
   end
   def part_number(index)
-    @invoice_format['parts'][index]['number']
+    @invoice_format['serviceReport']['parts'][index]['number']
   end     
   def sales_tax
-    @invoice_format['service_report']['sales_tax']
+    @invoice_format['serviceReport']['sales_tax']
   end    
 end

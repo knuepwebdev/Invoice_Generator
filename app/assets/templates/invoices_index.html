@@ -1,8 +1,20 @@
 <h1>All Invoices</h1>
-{{serviceReports[0]}}
-<ul>
-  <li ng-repeat='serviceReport in serviceReports'>
-    <span>{{serviceReport.invoice.date}}</span>
-    <span><a href='invoices/{{serviceReport.invoice.id}}'>{{serviceReport.invoice.number}}</a></span>
-  </li>
-</ul>
+<table id='invoices-table' class='table table-bordered'>
+  <tr>
+    <th class='row-invoice-number'>Invoice Number</th>
+    <th class='row-invoice-date'>Date</th>
+    <th class='row-invoice-hospital'>Hospital</th>
+    <th class='row-invoice-total'>Total</th>
+  </tr>
+  <tr ng-repeat="serviceReport in serviceReports | orderBy:'invoice.number':true">
+    <td  class='row-invoice-number'>
+      <a href='invoices/{{serviceReport.invoice.id}}'
+         ng-click='setServiceReport(serviceReport);'>
+          {{serviceReport.invoice.number}}
+      </a>
+    </td>
+    <td class='row-invoice-date'>{{serviceReport.invoice.date}}</td>
+    <td class='row-invoice-hospital'>{{serviceReport.hospital.name}}</td>
+    <td class='row-invoice-total'>{{serviceReport.invoice.total | currency}}</td>
+  </tr>
+</table>

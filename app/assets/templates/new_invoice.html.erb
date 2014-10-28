@@ -1,4 +1,4 @@
-<div ng-controller='InvoicesCtrl as ctrl'>
+<div ng-controller='InvoicesCtrl'>
   <form novalidate class='form-horizontal' name="invoiceForm">
     <div id="left-column">
       <section id="company-info">    
@@ -125,38 +125,38 @@
                name="input-service-report-number"
                required
                placeholder='Service Report Number'
-               ng-model="invoice.data.service_report.number" />
+               ng-model="invoice.data.serviceReport.number" />
       </div>
       <my-datepicker type="text"
                      id="service-report-date"
-                     ng-model="invoice.data.service_report.date"></my-datepicker> 
+                     ng-model="invoice.data.serviceReport.date"></my-datepicker> 
       <div nrs-show-errors>                              
         <input class="small form-control"
                name="input-machine-make"
                required
                placeholder='Machine Make'
-               ng-model="invoice.data.service_report.machine_make" />
+               ng-model="invoice.data.serviceReport.machine_make" />
       </div>      
       <div nrs-show-errors>
         <input class="small form-control"
                name="input-machine-model"
                required
                placeholder='Machine Model'
-               ng-model="invoice.data.service_report.machine_model" />
+               ng-model="invoice.data.serviceReport.machine_model" />
       </div>
       <div nrs-show-errors>                            
         <input class="small form-control"
                name="input-labor"
                required
                placeholder='Labor Time'
-               ng-model="invoice.data.service_report.labor" />
+               ng-model="invoice.data.serviceReport.labor" />
       </div>
       <div nrs-show-errors>                           
         <input class="small form-control"
                name="input-labor-rate"
                required
                placeholder='Hourly Rate'
-               ng-model="invoice.data.service_report.labor_rate" />        
+               ng-model="invoice.data.serviceReport.labor_rate" />        
       </div>                                               
       <div>
         <label for="select_travel">Travel?</label>
@@ -168,7 +168,7 @@
         </select>
         <div toggler="travel_included">
           <input ng-repeat="attr in formData.travel"
-                 ng-model="invoice.data.service_report[attr.field]"
+                 ng-model="invoice.data.serviceReport[attr.field]"
                  class="small form-control"
                  placeholder="{{attr.field}}">    
         </div>    
@@ -183,7 +183,7 @@
         </select>         
         <div toggler="mileage_included">              
           <input ng-repeat="attr in formData.mileage"
-                 ng-model="invoice.data.service_report[attr.field]"
+                 ng-model="invoice.data.serviceReport[attr.field]"
                  class="small form-control"
                  placeholder="{{attr.field}}">              
         </div>    
@@ -198,28 +198,28 @@
       </div>     
       <div toggler="parts_included">    
         <ul>
-          <li ng-repeat="part in invoice.data.parts track by $index"
+          <li ng-repeat="part in invoice.data.serviceReport.parts track by $index"
               class="part-row">
             <button type="button" id="btn-remove-part" class="btn btn-danger"ng-click="removePart($index);">-</button>
             <input type="text"
-                   ng-model="invoice.data.parts[$index]['number']"
+                   ng-model="invoice.data.serviceReport.parts[$index]['number']"
                    class="part-number"
                    placeholder="Part Number"/>
             <input type="text"
-                   ng-model="invoice.data.parts[$index]['name']"
+                   ng-model="invoice.data.serviceReport.parts[$index]['name']"
                    class="part-name"
                    placeholder="Part Name"/>
             <input type="text"
-                   ng-model="invoice.data.parts[$index]['quantity']"
+                   ng-model="invoice.data.serviceReport.parts[$index]['quantity']"
                    class="part-quantity"
                    placeholder="Quantity"/>                   
             <input type="text"
-                   ng-model="invoice.data.parts[$index]['price']"
+                   ng-model="invoice.data.serviceReport.parts[$index]['price']"
                    class="part-price"
                    placeholder="Price"/>
           </li>
         </ul>
-        <input type="text" ng-model="invoice.data.service_report.sales_tax" id="sales-tax" placeholder="Tax Rate"/> %        
+        <input type="text" ng-model="invoice.data.serviceReport.sales_tax" id="sales-tax" placeholder="Tax Rate"/> %        
         <div>
           <button type="button"
                   id="btn-add-part"

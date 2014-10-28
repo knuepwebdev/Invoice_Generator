@@ -4,7 +4,7 @@ angular.module('invoice')
       state: 'CA'
     };
   })
-  .controller('InvoicesCtrl', ['$scope', 'formData', 'Invoice', 'invoiceAttributes', 'UnitedStates', 'Address', 'ResourceRequester',function($scope, formData, Invoice, invoiceAttributes, UnitedStates, Address, ResourceRequester) {
+  .controller('InvoicesCtrl', ['$scope', '$rootScope', 'formData', 'Invoice', 'invoiceAttributes', 'UnitedStates', 'Address', 'ResourceRequester',function($scope, $rootScope, formData, Invoice, invoiceAttributes, UnitedStates, Address, ResourceRequester) {
     $scope.hospitalState = Address.state;
     $scope.options = ['No', 'Yes'];
     $scope.travel_included = 'No';
@@ -30,6 +30,10 @@ angular.module('invoice')
         return 'No';
       }
     };
+    $scope.setServiceReport = function(serviceReport) {
+      Invoice.setData(serviceReport);
+      $rootScope.serviceReport = serviceReport;
+    };
     $scope.unitedStates = UnitedStates;
     
     $scope.save = function(invoice) {
@@ -38,6 +42,7 @@ angular.module('invoice')
         console.log('**FORM IS INVALID***');
         return;  //don't save because form is invalid
       }
+      invoice.setTotal();
       ResourceRequester.save(invoice);
     };
 

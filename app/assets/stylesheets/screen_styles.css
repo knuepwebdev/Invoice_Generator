@@ -267,7 +267,7 @@
     border-right: 0;
   }
   .filler {
-    height: 600px;
+    height: 700px;
   }
   #subtotal-amount {
     border-top: 1px solid #000;
@@ -277,6 +277,14 @@
     padding-bottom: 1.5em;
   }
   /*END LINE ITEMS*/
+  /* INVOICES INDEX */
+  .row-invoice-number, .row-invoice-date, .row-invoice-total {
+    width: 20%;
+  }
+  .row-invoice-hospital {
+    width: 40%;
+  }
+  /* END INVOICES INDEX */  
   /*FOOTER*/
   footer {
     padding: 1em 0;
