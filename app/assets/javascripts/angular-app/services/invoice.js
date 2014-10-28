@@ -1,26 +1,25 @@
 angular.module('invoice')
   .factory('Invoice', function() {    
     var data = { parts: [{quantity: '', price: ''}] }
-
-    function setServiceReport(serviceReport) {
+    function setData(newData) {
       data = {};
-      data.service_report = serviceReport;
+      data.serviceReport = newData;
     }
 
     function calculateLabor() {
-      return (isNaN(data.service_report.labor * data.service_report.labor_rate) ? 0 : data.service_report.labor * data.service_report.labor_rate);
+      return (isNaN(data.serviceReport.labor * data.serviceReport.labor_rate) ? 0 : data.serviceReport.labor * data.serviceReport.labor_rate);
     };
 
     function calculateTravel() {
-      return (isNaN(data.service_report.travel * data.service_report.travel_rate) ? 0 : data.service_report.travel * data.service_report.travel_rate);
+      return (isNaN(data.serviceReport.travel * data.serviceReport.travel_rate) ? 0 : data.serviceReport.travel * data.serviceReport.travel_rate);
     };
     function calculateMileage() {
-      return (isNaN(data.service_report.mileage * data.service_report.mileage_rate) ? 0 : data.service_report.mileage * data.service_report.mileage_rate);
+      return (isNaN(data.serviceReport.mileage * data.serviceReport.mileage_rate) ? 0 : data.serviceReport.mileage * data.serviceReport.mileage_rate);
     };
     function calculateTax() {
       var tax = 0;
-      angular.forEach(data.service_report.parts, function(part, index) {
-        tax += (part.quantity * part.price * data.service_report.sales_tax * 0.01);
+      angular.forEach(data.serviceReport.parts, function(part, index) {
+        tax += (part.quantity * part.price * data.serviceReport.sales_tax * 0.01);
       });
       return (isNaN(tax) ? 0 : tax);
     };
@@ -33,13 +32,13 @@ angular.module('invoice')
     };
     function calculateParts() {
       var sum = 0;
-      angular.forEach(data.service_report.parts, function(part, index) {
+      angular.forEach(data.serviceReport.parts, function(part, index) {
         sum += (part.quantity * part.price);
       });
       return (isNaN(sum) ? 0 : sum); 
     };            
     function hasParts() {
-      if (data.service_report.parts[0].name === null) {
+      if (data.serviceReport.parts[0].name === null) {
         return 'No';
       } else {
         return 'Yes';
@@ -47,8 +46,8 @@ angular.module('invoice')
     }
 
     var Invoice = {
-      setServiceReport: setServiceReport,
       data: data,
+      setData: setData,
       calculateLabor: calculateLabor,
       calculateTravel: calculateTravel,
       calculateMileage: calculateMileage,

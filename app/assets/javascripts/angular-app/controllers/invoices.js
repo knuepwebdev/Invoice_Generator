@@ -24,7 +24,7 @@ angular.module('invoice')
     };
 
     $scope.showData = function(key) {
-      if ($scope.invoice.data.service_report[key] != undefined) {
+      if ($scope.serviceReport[key] != undefined) {
         return 'Yes';
       } else {
         return 'No';

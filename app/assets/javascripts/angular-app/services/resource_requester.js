@@ -8,14 +8,17 @@ angular.module('invoice')
       });
     }
 
+    function save(invoice) {
+      Restangular.all('invoices').post(invoice).then(function(serviceReport) {
+        $rootScope.serviceReport = serviceReport;
+        Invoice.setData(serviceReport);
+        $location.path("/invoices/" + serviceReport.id);
+      });
+    }
+
     var ResourceRequester = {
       allInvoices: allInvoices,
-      save: function(invoice) {
-        Restangular.all('invoices').post(invoice).then(function(serviceReport) {
-          Invoice.setServiceReport(serviceReport);
-          $location.path("/invoices/" + serviceReport.invoice.id);
-        });
-      }
+      save: save
     };
     
     return ResourceRequester;

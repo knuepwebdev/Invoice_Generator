@@ -14,7 +14,7 @@ module Api
         invoice_creator = InvoiceCreator.new(invoice_creator_params)
         service_report = invoice_creator.create
         respond_to do |format|
-          format.json { render json: service_report.to_json(include: [:invoice, :hospital, :parts]) }
+          format.json { render json: service_report.as_json(include: [:invoice, {hospital: {include: :contact}}, :parts]) }
         end
       end
 
