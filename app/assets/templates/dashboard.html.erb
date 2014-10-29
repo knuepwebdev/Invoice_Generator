@@ -1,8 +1,8 @@
 <div ng-controller='InvoicesCtrl'>
   <nrs-header></nrs-header>
   <h1 class='nrs-header'>Dashboard</h1>
-  <ul>
+  <ul id='dashboard-links'>
       <li><a href='/invoices/new'>New Invoice</a></li>
-      <li><button ng-click="allInvoices();">All Invoices</button></li>
+      <li><button ng-click="allInvoices();" class='dashboard-btn'>All Invoices</button></li>
   </ul>
 </div>

@@ -8,7 +8,7 @@
     width: 100%;
     padding: 0 1em;
   }
-  body, #container, header, #header-logo, nav, nav ul, nav ul li, nav ul li a, #left-column, #right-column, #invoice, #invoice-number, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
+  body, #container, header, #header-logo, nav, nav ul, nav ul li, nav ul li a, #dashboard-links, #dashboard-links li, #dashboard-links li a, #left-column, #right-column, #invoice, #invoice-number, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
     float: left;
   }
   body {
@@ -330,6 +330,28 @@
   .row-invoice-hospital {
     width: 40%;
   }
+  /*DASHBOARD*/
+  #dashboard-links li {
+    width: 100%;
+    margin: 0.75em 0;
+  }
+  #dashboard-links li a {
+    padding: 1em;
+    background: #00604b;
+    color: #fff;
+    font-size: 0.97em;
+  }
+  #dashboard-links li a:hover {
+    text-decoration: none;
+  }
+  .dashboard-btn {
+    padding: 0.85em;
+    background: #00604b;
+    color: #fff;
+    font-size: 0.97em;
+    text-transform: uppercase;
+  }
+  /*END DASHBOARD*/
   /* END INVOICES INDEX */  
   /*FOOTER*/
   footer {
