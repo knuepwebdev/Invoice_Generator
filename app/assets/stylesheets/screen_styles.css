@@ -88,7 +88,7 @@
   }
   #left-column h3 {
     font-size: .75em;
-    padding: 1em .5em 0 3em;
+    padding: 2em .5em 0 0;
     color: #00604b;
   }
   #logo {
@@ -105,9 +105,9 @@
   #client-info {
     position: absolute;
     width: 424px;
-    height: 124px;
-    top: 657px;
-    left: 56px;
+    height: 103px;
+    top: 199px;
+    left: 41px;
   }
   #shipping-info {
     position: absolute;
@@ -124,7 +124,7 @@
     width: 426px;
     background-color:white;
     border-radius: 25px;
-    padding: 1em;
+    padding: .5em 1em 1em 0;
   }
   /*END LEFT COLUMN*/
   /*RIGHT COLUMN*/
