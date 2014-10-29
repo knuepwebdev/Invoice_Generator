@@ -48,9 +48,12 @@
   #header-logo a {
     color: #fff;  
   }
+  #header-logo a:hover {
+    text-decoration: none;
+  }
   nav {
     width: 75%;
-    padding: 1.5em 1em 1.5em .5em;
+    padding: 1em 1em 1.5em .5em;
   }
   nav ul {
     width: 50%;
@@ -60,6 +63,12 @@
   }
   nav ul li a {
     color: #fff;
+    padding: 0.65em;
+  }
+  nav ul li a:hover {
+    background-color: #341f05;
+    color: #fff;
+    text-decoration: none;
   }
   /*END HEADER*/
   /*LEFT COLUMN*/
