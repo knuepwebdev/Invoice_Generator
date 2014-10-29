@@ -1,5 +1,8 @@
-<h1>Dashboard</h1>
-<ul>
-    <li><a href='/invoices/new'>New Invoice</a></li>
-    <li><button ng-click="allInvoices();">All Invoices</button></li>
-</ul>
+<div ng-controller='InvoicesCtrl'>
+  <nrs-header></nrs-header>
+  <h1 class='nrs-header'>Dashboard</h1>
+  <ul id='dashboard-links'>
+      <li><a href='/invoices/new'>New Invoice</a></li>
+      <li><button ng-click="allInvoices();" class='dashboard-btn'>All Invoices</button></li>
+  </ul>
+</div>

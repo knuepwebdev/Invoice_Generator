@@ -5,9 +5,10 @@
           box-sizing: border-box;
   }
   #container {
-    width: 900px;
+    width: 100%;
+    padding: 0 1em;
   }
-  body, #container, #left-column, #right-column, #invoice, #invoice-number, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
+  body, #container, header, #header-logo, nav, nav ul, nav ul li, nav ul li a, #dashboard-links, #dashboard-links li, #dashboard-links li a, #left-column, #right-column, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
     float: left;
   }
   body {
@@ -29,22 +30,66 @@
   ul {
     list-style: none;
   }
+  .nrs-header {
+    width: 12%;
+    font-weight: bold;
+    margin: 0 auto 1em auto;
+  }
   /*HEADER*/
+  header {
+    width: 1100px;
+    margin: 0 0 1.5em 0;
+    background: #00604b;
+  }
+  #header-logo {
+    width: 25%;
+    font-size: 1.5em;
+    padding: 0.95em 0 0.95em 1.5em;
+  }
+  #header-logo a {
+    color: #fff;  
+  }
+  #header-logo a:hover {
+    text-decoration: none;
+  }
+  nav {
+    width: 75%;
+    padding: 1em 1em 1.5em .5em;
+  }
+  nav ul {
+    width: 50%;
+  }
+  nav ul li {
+    width: 33.33%;
+  }
+  nav ul li a {
+    color: #fff;
+    padding: 0.65em;
+  }
+  nav ul li a:hover {
+    background-color: #341f05;
+    color: #fff;
+    text-decoration: none;
+  }
+  /*END HEADER*/
+  /*LEFT COLUMN*/
   #company-info {
+    color: #00604b;
     line-height: 110%;
     text-transform: none;
   }
   h1 {
     font-size: 1.25em;
-  }
-  /*LEFT COLUMN*/
+    color: #00604b;
+  }  
   #left-column {
     width: 58%;
-    padding: 1.25em 3em 1em 4em;
+    padding: 1.25em 3em 1em 2em;
   }
   #left-column h3 {
     font-size: .75em;
-    padding: 1em .5em 0 3em;
+    padding: 2em .5em 0 0;
+    color: #00604b;
   }
   #logo {
     margin: 0 0 .25em 0;
@@ -60,9 +105,9 @@
   #client-info {
     position: absolute;
     width: 424px;
-    height: 124px;
-    top: 657px;
-    left: 56px;
+    height: 103px;
+    top: 199px;
+    left: 41px;
   }
   #shipping-info {
     position: absolute;
@@ -79,7 +124,7 @@
     width: 426px;
     background-color:white;
     border-radius: 25px;
-    padding: 1em;
+    padding: .5em 1em 1em 0;
   }
   /*END LEFT COLUMN*/
   /*RIGHT COLUMN*/
@@ -95,28 +140,43 @@
     padding: 1em 0;
   }
   #right-column h3, #extra-fields h3 {
+    color: #00604b;
     padding: .5em 0 .75em 0;
   }
   #right-column div:nth-child(2) {
-    height: 2em;
-    padding: .25em;
+    height: 2.25em;
+    padding: 0.25em;
     border: 1px solid #000;
     border-top: 0;
     border-right: 0;
   }
   #invoice-date {
     width: 50%;
+    margin: 0 0 0.5em 0.25em;
   }
-  div#invoice-number.form-group {
-    width: 60%;
-    float: left;
+  #invoice {
+    width: 30%;
+    display: inline-block;
+  }
+  #right-column div#invoice-number {
+    display: inline-block;
+    width: 69%;
+    float: none;
     border: none;
+  }
+  #input-invoice-number {
+    width: 25%;
+    height: 34px;
+    padding: 6px 12px;
   }
   .page, .po-number {
     width: 60%;
   }
   .date {
     width: 40%;
+  }
+  #date-input-container {
+    padding: 0.25em 0 0.5em 0;
   }
   .date h3 {
     padding-bottom:;
@@ -176,6 +236,7 @@
     width: 100%;
   }
   #line-items th {
+    color: #00604b;
     height: 2em;
     padding: 1em;
   }
@@ -193,6 +254,15 @@
   }
   .filler.list-number, .filler.description, .filler.total {
     padding: 1em;
+  }
+  .filler.description label {
+    color: #00604b;
+    font-weight: bold;
+    margin: .5em 0;
+  }
+  .filler.description select {
+    width: 20%;
+    margin: 0 0 .5em 0;
   }
 
   .filler.quantity ul li, .filler.list-number ul li {
@@ -267,7 +337,7 @@
     border-right: 0;
   }
   .filler {
-    height: 700px;
+    height: 800px;
   }
   #subtotal-amount {
     border-top: 1px solid #000;
@@ -278,20 +348,63 @@
   }
   /*END LINE ITEMS*/
   /* INVOICES INDEX */
+  #invoices-table th {
+    color: #00604b;
+    text-align: center;
+    font-weight: bold;
+  }
+  #invoices-table td {
+    text-align: center;
+  }    
+  #invoices-table td a {
+    color: #00604b;
+  }  
   .row-invoice-number, .row-invoice-date, .row-invoice-total {
     width: 20%;
   }
   .row-invoice-hospital {
     width: 40%;
   }
+  /*DASHBOARD*/
+  #dashboard-links li {
+    width: 100%;
+    margin: 0.75em 0;
+  }
+  #dashboard-links li a {
+    padding: 1em;
+    background: #00604b;
+    color: #fff;
+    font-size: 0.97em;
+  }
+  #dashboard-links li a:hover {
+    text-decoration: none;
+  }
+  .dashboard-btn {
+    padding: 0.85em;
+    background: #00604b;
+    color: #fff;
+    font-size: 0.97em;
+    text-transform: uppercase;
+  }
+  /*END DASHBOARD*/
   /* END INVOICES INDEX */  
   /*FOOTER*/
   footer {
+    width: 100%;
     padding: 1em 0;
   }
   footer p {
+    color: #00604b;
     padding: 1em 0;
   }
   /*END FOOTER*/
+  #save {
+    float: right;
+    margin: 2em 5em 2em 0;
+    padding: 0.75em 2em;
+    background: #00604b;
+    color: #fff;
+    text-transform: uppercase;
+  }
   /*FORM VALIDATIONS*/
 }

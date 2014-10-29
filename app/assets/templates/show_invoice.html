@@ -1,10 +1,12 @@
 <div ng-controller='InvoicesCtrl as ctrl'>
+  <nrs-header></nrs-header>
   <div id="left-column">
     <section id="company-info">    
       <h2 id="logo" class="bold">{{formData.company.name}}</h2>
       <div>{{formData.company.tagline}}</div>
       <div>{{formData.company.street}}</div>
       <div>{{formData.company.city}}, {{formData.company.state}} {{formData.company.zip_code}}</div>
+      <div>Phone {{formData.company.phone}} &bull; {{formData.company.fax}}</div>
     </section>
     <h3>sold to:</h3>
     <!-- <div id="client-info"></div> -->
@@ -121,7 +123,7 @@
           {{part.name}}
         </li>
       </ul>
-      <div id="input-tax">Sales Tax {{service_report.sales_tax}}%</div>
+      <div id="input-tax">Sales Tax {{serviceReport.sales_tax}}%</div>
     </div>
   </div>
   <div id="subtotal-column" class="filler subtotal">
