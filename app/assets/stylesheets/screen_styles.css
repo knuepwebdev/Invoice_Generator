@@ -6,8 +6,9 @@
   }
   #container {
     width: 100%;
+    padding: 0 1em;
   }
-  body, #container, nav, nav ul, nav ul li, nav ul li a, #left-column, #right-column, #invoice, #invoice-number, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
+  body, #container, header, #header-logo, nav, nav ul, nav ul li, nav ul li a, #left-column, #right-column, #invoice, #invoice-number, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
     float: left;
   }
   body {
@@ -30,30 +31,50 @@
     list-style: none;
   }
   /*HEADER*/
-  #company-info {
-    line-height: 110%;
-    text-transform: none;
+  header {
+    width: 100%;
+    background: #00604b;
   }
-  h1 {
-    font-size: 1.25em;
+  #header-logo {
+    width: 25%;
+    font-size: 1.5em;
+    padding: 0.95em 0 0.95em 1.5em;
+  }
+  #header-logo a {
+    color: #fff;  
   }
   nav {
-    width: 100%;
+    width: 75%;
+    padding: 1.5em 1em 1.5em .5em;
   }
   nav ul {
     width: 50%;
   }
   nav ul li {
-    width: 33.33;
+    width: 33.33%;
   }
+  nav ul li a {
+    color: #fff;
+  }
+  /*END HEADER*/
   /*LEFT COLUMN*/
+  #company-info {
+    color: #00604b;
+    line-height: 110%;
+    text-transform: none;
+  }
+  h1 {
+    font-size: 1.25em;
+    color: #00604b;
+  }  
   #left-column {
     width: 58%;
-    padding: 1.25em 3em 1em 4em;
+    padding: 1.25em 3em 1em 2em;
   }
   #left-column h3 {
     font-size: .75em;
     padding: 1em .5em 0 3em;
+    color: #00604b;
   }
   #logo {
     margin: 0 0 .25em 0;
@@ -104,6 +125,7 @@
     padding: 1em 0;
   }
   #right-column h3, #extra-fields h3 {
+    color: #00604b;
     padding: .5em 0 .75em 0;
   }
   #right-column div:nth-child(2) {
@@ -185,6 +207,7 @@
     width: 100%;
   }
   #line-items th {
+    color: #00604b;
     height: 2em;
     padding: 1em;
   }
@@ -299,6 +322,7 @@
     padding: 1em 0;
   }
   footer p {
+    color: #00604b;
     padding: 1em 0;
   }
   /*END FOOTER*/
