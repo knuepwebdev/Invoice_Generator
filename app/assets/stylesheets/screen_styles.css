@@ -32,11 +32,12 @@
   }
   .nrs-header {
     width: 11%;
-    margin: 0 auto;
+    margin: 0 auto 1em auto;
   }
   /*HEADER*/
   header {
     width: 1100px;
+    margin: 0 0 1.5em 0;
     background: #00604b;
   }
   #header-logo {
