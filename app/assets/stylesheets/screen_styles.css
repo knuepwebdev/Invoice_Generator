@@ -31,7 +31,8 @@
     list-style: none;
   }
   .nrs-header {
-    width: 11%;
+    width: 12%;
+    font-weight: bold;
     margin: 0 auto 1em auto;
   }
   /*HEADER*/
@@ -324,6 +325,17 @@
   }
   /*END LINE ITEMS*/
   /* INVOICES INDEX */
+  #invoices-table th {
+    color: #00604b;
+    text-align: center;
+    font-weight: bold;
+  }
+  #invoices-table td {
+    text-align: center;
+  }    
+  #invoices-table td a {
+    color: #00604b;
+  }  
   .row-invoice-number, .row-invoice-date, .row-invoice-total {
     width: 20%;
   }
