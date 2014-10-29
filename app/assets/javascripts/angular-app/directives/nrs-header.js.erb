@@ -1,0 +1,9 @@
+//= depend_on_asset 'header.html'
+
+angular.module('invoice')
+  .directive('nrsHeader', function() {
+    return {
+      restrict: 'E',
+      templateUrl: "<%= asset_path('header.html') %>",
+    };
+  });
