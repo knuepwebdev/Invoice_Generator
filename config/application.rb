@@ -15,6 +15,11 @@ module NrsInvoices
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)
     require 'ext/string'
+    # bootstrap-sass asset paths
+    root.join('vendor/assets/bower_components/bootstrap-sass/assets').tap do |path|
+      config.sass.load_paths << path.join('stylesheets')
+      config.assets.paths += %w(javascripts fonts images).map(&path.method(:join))
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

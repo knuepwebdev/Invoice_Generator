@@ -4,7 +4,8 @@
     "dependencies": {
       "angular": "latest",
       "angular-route": "latest",
-      "restangular": "latest"
+      "restangular": "latest",
+      "bootstrap-sass-official": "latest"
     }
   },
   "vendor": {
