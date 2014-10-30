@@ -144,25 +144,39 @@
     padding: .5em 0 .75em 0;
   }
   #right-column div:nth-child(2) {
-    height: 2em;
-    padding: .25em;
+    height: 2.25em;
+    padding: 0.25em;
     border: 1px solid #000;
     border-top: 0;
     border-right: 0;
   }
   #invoice-date {
     width: 50%;
+    margin: 0 0 0.5em 0.25em;
+  }
+  #invoice {
+    width: 30%;
+    display: inline-block;
   }
   #right-column div#invoice-number {
-    width: 60%;
+    display: inline-block;
+    width: 69%;
     float: none;
     border: none;
+  }
+  #input-invoice-number {
+    width: 25%;
+    height: 34px;
+    padding: 6px 12px;
   }
   .page, .po-number {
     width: 60%;
   }
   .date {
     width: 40%;
+  }
+  #date-input-container {
+    padding: 0.25em 0 0.5em 0;
   }
   .date h3 {
     padding-bottom:;

@@ -104,8 +104,9 @@
     <div id="right-column">
       <h1 id='invoice'>Invoice</h1>
         <div id="invoice-number">
-          <div class="col-sm-6" nrs-show-errors>
-            <input placeholder='#'
+          <div nrs-show-errors>
+            <input id='input-invoice-number'
+                   placeholder='#'
                    name="invoiceNumber"
                    ng-model="invoice.data.number"
                    required
@@ -124,7 +125,7 @@
           <my-datepicker type="text" id="invoice-date" ng-model="invoice.data.date"></my-datepicker>
         </div>
       </div>
-      <div ng-repeat="field in formData.rightColumn" id="{{field.id}}">
+      <div ng-repeat="field in formData.rightColumn" class="{{field.id}}">
         <h3>{{ field.heading }}</h3>
         <div></div>
       </div>
