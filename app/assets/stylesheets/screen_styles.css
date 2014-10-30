@@ -337,7 +337,7 @@
     border-right: 0;
   }
   .filler {
-    height: 700px;
+    height: 800px;
   }
   #subtotal-amount {
     border-top: 1px solid #000;
@@ -400,8 +400,8 @@
   /*END FOOTER*/
   #save {
     float: right;
-    margin: .5em 7.5em .5em 0;
-    padding: .5em .75em;
+    margin: 2em 5em 2em 0;
+    padding: 0.75em 2em;
     background: #00604b;
     color: #fff;
     text-transform: uppercase;

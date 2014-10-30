@@ -47,8 +47,8 @@ angular.module('invoice')
     };
 
     $scope.addPart = function() {
-      if ($scope.invoice.data.parts.length < 3) { 
-        $scope.invoice.data.parts.push({});
+      if ($scope.invoice.data.serviceReport.parts.length < 3) { 
+        $scope.invoice.data.serviceReport.parts.push({});
       }
     };
     $scope.removePart = function(index) {
