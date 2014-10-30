@@ -30,6 +30,14 @@ angular.module('invoice')
         return 'No';
       }
     };
+    $scope.clearInvoiceData = function() {
+      console.log('clearInvoiceData');
+      Invoice.data = { 
+        serviceReport: {
+          parts: [{quantity: '', price: ''}]
+        }
+      };
+    }    
     $scope.setServiceReport = function(serviceReport) {
       Invoice.setData(serviceReport);
       $rootScope.serviceReport = serviceReport;
