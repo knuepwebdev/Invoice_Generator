@@ -71,41 +71,12 @@
         </div>        
       </div>
     </div>
-<!-- SHOW INVOICES -->
-<!--   <div id="right-column">
-    <h1>Invoice {{serviceReport.invoice.number}}</h1>
-    <p>Please indicate invoice numbers on all remittances</p>
-    <div class="page">
-      <h3>Page</h3>
-      <div>{{formData.numberOfPages}} of {{formData.numberOfPages}}</div>
-    </div>
-    <div class="date">
-      <h3>Date</h3>
-      <div>{{serviceReport.invoice.date}}</div>
-    </div>
-    <div class="po-number">
-      <h3>Your Purchase Order</h3>
-      <div></div>
-    </div>
-    <div class="date">
-      <h3>Date</h3>
-      <div></div>
-    </div>
-    <div class="terms">
-      <h3>Terms of Payment: 30 Days Net</h3>
-      <div></div>
-    </div>
-    <div class="reference-number">
-      <h3>Our Reference Number</h3>
-      <div></div>
-    </div>
-  </div> -->
-<!-- END SHOW INVOICES -->
     <div id="right-column">
       <h1 id='invoice'>Invoice</h1>
         <div id="invoice-number">
           <div nrs-show-errors>
-            <input id='input-invoice-number'
+            <input class='form-control'
+                   id='input-invoice-number'
                    placeholder='#'
                    name="invoiceNumber"
                    ng-model="invoice.data.number"
