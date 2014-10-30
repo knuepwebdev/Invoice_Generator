@@ -390,6 +390,7 @@
   /* END INVOICES INDEX */  
   /*FOOTER*/
   footer {
+    width: 100%;
     padding: 1em 0;
   }
   footer p {
@@ -397,5 +398,13 @@
     padding: 1em 0;
   }
   /*END FOOTER*/
+  #save {
+    float: right;
+    margin: .5em 7.5em .5em 0;
+    padding: .5em .75em;
+    background: #00604b;
+    color: #fff;
+    text-transform: uppercase;
+  }
   /*FORM VALIDATIONS*/
 }
