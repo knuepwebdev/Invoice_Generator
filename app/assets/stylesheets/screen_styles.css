@@ -255,6 +255,15 @@
   .filler.list-number, .filler.description, .filler.total {
     padding: 1em;
   }
+  .filler.description label {
+    color: #00604b;
+    font-weight: bold;
+    margin: .5em 0;
+  }
+  .filler.description select {
+    width: 20%;
+    margin: 0 0 .5em 0;
+  }
 
   .filler.quantity ul li, .filler.list-number ul li {
     margin: 0 0 0 2.25em;
