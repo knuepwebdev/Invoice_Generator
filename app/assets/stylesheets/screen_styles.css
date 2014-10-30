@@ -35,6 +35,13 @@
     font-weight: bold;
     margin: 0 auto 1em auto;
   }
+  .nrs-error-message {
+    color: #a94442;
+    font-size: 0.85em;
+  }
+  .nrs-error-message.invoice-number {
+    padding: 0 0 0 11em;
+  }
   /*HEADER*/
   header {
     width: 1100px;
@@ -133,7 +140,7 @@
     padding: 6em 0 1em 3.25em;
   }
   #right-column h1 {
-    padding: 0 0 2.75em 0;
+    padding: 0 0 0.5em 0;
     font-size: 2em;
   }
   #right-column p {

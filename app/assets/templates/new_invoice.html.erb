@@ -84,6 +84,11 @@
                    ng-minlength=4
                    ng-maxlength=4 />
           </div>
+        </div>
+        <div ng-show='invoiceForm.invoiceNumber.$invalid && 
+                      invoiceForm.invoiceNumber.$dirty'
+             class='nrs-error-message invoice-number'>
+          *Must be 4 digits long
         </div>      
       <p>Please indicate invoice numbers on all remittances</p>
       <div class="page">
@@ -124,14 +129,21 @@
     <div class="filler description">
       <div nrs-show-errors>      
         <input class="small form-control"
-               name="input-service-report-number"
+               name="inputServiceReportNumber"
                required
+               ng-minlength=4
+               ng-maxlength=4
                placeholder='Service Report Number'
                ng-model="invoice.data.serviceReport.number" />
       </div>
       <my-datepicker type="text"
                      id="service-report-date"
-                     ng-model="invoice.data.serviceReport.date"></my-datepicker> 
+                     ng-model="invoice.data.serviceReport.date"></my-datepicker>
+      <div ng-show='invoiceForm.inputServiceReportNumber.$invalid && 
+                    invoiceForm.inputServiceReportNumber.$dirty'
+             class='nrs-error-message'>
+          *Must be 4 digits long
+        </div>                            
       <div nrs-show-errors>                              
         <input class="small form-control"
                name="input-machine-make"
