@@ -31,7 +31,6 @@ angular.module('invoice')
       }
     };
     $scope.clearInvoiceData = function() {
-      console.log('clearInvoiceData');
       Invoice.data = { 
         serviceReport: {
           parts: [{quantity: '', price: ''}]
@@ -60,7 +59,7 @@ angular.module('invoice')
       }
     };
     $scope.removePart = function(index) {
-      $scope.invoice.data.parts.splice(index, 1);
+      $scope.invoice.data.serviceReport.parts.splice(index, 1);
     };
     $scope.updateParts = function() {
       if ($scope.parts_included === 'No') {
@@ -80,27 +79,4 @@ angular.module('invoice')
         $scope.mileage = 0; 
       }
     }
-  }])
-  .directive('toggler', [function() {
-    function link(scope, element, attrs) {
-      function showElement() {
-        element.removeClass('hidden');
-      }
-
-      function hideElement() {
-        element.addClass('hidden');
-      }
-
-      scope.$watch(attrs.toggler, function(value) {
-        if (value === 'No') {
-          hideElement();
-        } else {
-          showElement();
-        }
-      });
-    }
-
-    return {
-      link: link
-    };
   }]);

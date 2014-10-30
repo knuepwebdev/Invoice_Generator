@@ -180,7 +180,7 @@
                 id="select_travel"
                 class="form-control">
         </select>
-        <div toggler="travel_included">
+        <div nrs-toggler="travel_included">
           <input ng-repeat="attr in formData.travel"
                  ng-model="invoice.data.serviceReport[attr.field]"
                  class="small form-control"
@@ -195,7 +195,7 @@
                 id="select_mileage"
                 class="form-control">
         </select>         
-        <div toggler="mileage_included">              
+        <div nrs-toggler="mileage_included">              
           <input ng-repeat="attr in formData.mileage"
                  ng-model="invoice.data.serviceReport[attr.field]"
                  class="small form-control"
@@ -210,7 +210,7 @@
                 id="select_parts"
                 class="form-control"></select>
       </div>     
-      <div toggler="parts_included">    
+      <div nrs-toggler="parts_included">    
         <ul>
           <li ng-repeat="part in invoice.data.serviceReport.parts track by $index"
               class="part-row">
