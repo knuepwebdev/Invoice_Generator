@@ -3,6 +3,7 @@ angular.module('invoice')
     return {
       restrict: 'A',
       require:  '^form',
+      scope: {},
       link: function (scope, el, attrs, formCtrl) {
         // find the text box element, which has the 'name' attribute
         var inputEl   = el[0].querySelector("[name]");
