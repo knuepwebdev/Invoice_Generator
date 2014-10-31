@@ -1,4 +1,4 @@
-angular.module("invoice").directive('myDatepicker', ['$parse', function ($parse) {
+angular.module("invoice").directive('nrsDatepicker', ['$parse', function ($parse) {
    return {
       restrict: "E",
       replace: true,
