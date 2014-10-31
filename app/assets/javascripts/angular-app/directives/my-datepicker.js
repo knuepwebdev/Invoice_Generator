@@ -1,4 +1,4 @@
-angular.module("invoice").directive('myDatepicker', function ($parse) {
+angular.module("invoice").directive('myDatepicker', ['$parse', function ($parse) {
    return {
       restrict: "E",
       replace: true,
@@ -29,4 +29,4 @@ angular.module("invoice").directive('myDatepicker', function ($parse) {
          };
       }
    };
-});
+}]);
