@@ -15,3 +15,5 @@ production:
   encoding: unicode
   database: nrs_invoices_production
   pool: 5
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
