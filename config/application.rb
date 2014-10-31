@@ -16,9 +16,11 @@ module NrsInvoices
     config.autoload_paths += %W(#{config.root}/lib)
     require 'ext/string'
     # bootstrap-sass asset paths
-    root.join('vendor/assets/bower_components/bootstrap-sass/assets').tap do |path|
+    root.join('lib/assets/bower_components/bootstrap-sass/assets').tap do |path|
       config.sass.load_paths << path.join('stylesheets')
       config.assets.paths += %w(javascripts fonts images).map(&path.method(:join))
+      # include Bower components in compiled assets
+      config.assets.paths << Rails.root.join('lib', 'assets', 'bower_components')
     end
 
     # via https://github.com/sstephenson/sprockets/issues/347#issuecomment-25543201
