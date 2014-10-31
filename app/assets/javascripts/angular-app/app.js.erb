@@ -26,7 +26,10 @@ angular.module('nrs', ['ngRoute', 'invoice', 'restangular'])
         .otherwise({
           redirectTo: '/'
         });
-      $locationProvider.html5Mode(true);
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+      });
       $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = 
         $("meta[name=\"csrf-token\"]").attr("content");
       RestangularProvider.setBaseUrl('/api/v1/');
