@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/datepicker
-//= require bootstrap-sass-official
+//= require bootstrap/dist/js/bootstrap.min.js
 //= require angular
 //= require angular-route
 //= require lodash

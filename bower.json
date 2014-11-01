@@ -9,7 +9,7 @@
       "angular": "latest",
       "angular-route": "latest",
       "restangular": "latest",
-      "bootstrap-sass-official": "latest"
+      "bootstrap": "latest"
     }
   }
 }
