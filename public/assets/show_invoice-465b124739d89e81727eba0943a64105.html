@@ -1,0 +1,164 @@
+<div ng-controller='InvoicesCtrl as ctrl'>
+  <nrs-header></nrs-header>
+  <div id="left-column">
+    <section id="company-info">    
+      <h2 id="logo" class="bold">{{formData.company.name}}</h2>
+      <div>{{formData.company.tagline}}</div>
+      <div>{{formData.company.street}}</div>
+      <div>{{formData.company.city}}, {{formData.company.state}} {{formData.company.zip_code}}</div>
+      <div>Phone {{formData.company.phone}} &bull; {{formData.company.fax}}</div>
+    </section>
+    <h3>sold to:</h3>
+    <!-- <div id="client-info"></div> -->
+    <div class="overlap">
+      <div>ATTN: Accounts Payable</div>
+      <div>{{serviceReport.hospital.name}}</div>
+      <div>{{serviceReport.hospital.contact.street}}</div>
+      <div>{{serviceReport.hospital.contact.city}}, {{serviceReport.hospital.contact.state.abbreviation}} {{serviceReport.hospital.contact.zipcode}}</div>
+    </div>
+    <h3>shipped to:</h3>
+    <!-- <div id="shipping-info">{{shipping_date}}</div> -->
+    <div class="overlap">
+      <div>{{serviceReport.hospital.department}}</div>
+      <div>{{serviceReport.hospital.room}}</div>
+    </div>
+  </div>
+  <div id="right-column">
+    <h1>Invoice {{serviceReport.invoice.number}}</h1>
+    <p>Please indicate invoice numbers on all remittances</p>
+    <div class="page">
+      <h3>Page</h3>
+      <div>{{formData.numberOfPages}} of {{formData.numberOfPages}}</div>
+    </div>
+    <div class="date">
+      <h3>Date</h3>
+      <div>{{serviceReport.invoice.date}}</div>
+    </div>
+    <div class="po-number">
+      <h3>Your Purchase Order</h3>
+      <div></div>
+    </div>
+    <div class="date">
+      <h3>Date</h3>
+      <div></div>
+    </div>
+    <div class="terms">
+      <h3>Terms of Payment: 30 Days Net</h3>
+      <div></div>
+    </div>
+    <div class="reference-number">
+      <h3>Our Reference Number</h3>
+      <div></div>
+    </div>
+  </div>
+  <div id="extra-fields">
+    <div id="fob-point">
+      <h3>f.o.b. point</h3>
+      <div></div>
+    </div>
+    <div id="carriers-name">
+      <h3>Carrier's name</h3>
+      <div></div>
+    </div>
+    <div id="shipped-via">
+      <h3>shipped via</h3>
+      <div></div>
+    </div>
+    <div id="freight-term"> 
+      <h3>freight term</h3>
+      <div></div>
+    </div>
+    <div id="st-tax"> 
+      <h3>st. tax for</h3>
+      <div></div>
+    </div>
+    <div id="pco">
+      <h3>pco</h3>
+      <div></div>
+    </div>
+    <div id="tax-determination">
+      <h3>tax determination</h3>
+      <div></div>
+    </div>
+  </div>
+  <table id="line-items">
+    <tr>
+      <th class="item">item no.</th>
+      <th class="quantity">quantity</th>
+      <th class="list-number">list number</th>
+      <th class="description">description/serial no.</th>
+      <th class="subtotal"></th>
+      <th class="total">total</th>
+    </tr>
+  </table>
+  <!-- empty divs with borders -->
+  <div class="filler item"></div>
+  <div class="filler quantity">
+    <ul toggler='invoice.hasParts();'>
+      <li ng-repeat="part in serviceReport.parts track by $index"
+          id="part-quantity-{{$index + 1}}">
+        {{part.quantity}}
+      </li>
+    </ul>
+  </div>
+  <div class="filler list-number">
+    <ul toggler='invoice.hasParts();' id='part-numbers'>
+      <li ng-repeat="part in serviceReport.parts track by $index"
+          id="part-number-{{$index + 1}}">
+          {{serviceReport.parts[$index]['number']}}</li>
+    </ul>
+  </div>
+  <div class="filler description">
+    <div>Service Report: #{{serviceReport.number}}, {{serviceReport.date}}</div>
+    <div>{{serviceReport.machine_make}} {{serviceReport.machine_model}}</div>
+    <div id='labor'>Labor: {{serviceReport.labor}} hours at ${{serviceReport.labor_rate}}/hour</div>
+    <div toggler='showData("travel");' id='travel'>Travel: {{serviceReport.travel}} hours at ${{serviceReport.travel_rate}}/hour</div>
+    <div toggler='showData("mileage");' id='mileage'>Mileage: {{serviceReport.mileage}} miles at ${{serviceReport.mileage_rate}}/mile</div>
+    <div toggler='invoice.hasParts();'
+         id='parts-section'>
+      <h1>parts:</h1>
+      <ul>
+        <li ng-repeat="part in serviceReport.parts track by $index"
+            id="part-name-{{$index + 1}}">
+          {{part.name}}
+        </li>
+      </ul>
+      <div id="input-tax">Sales Tax {{serviceReport.sales_tax}}%</div>
+    </div>
+  </div>
+  <div id="subtotal-column" class="filler subtotal">
+    <div id='subtotal-labor'
+         nrs-align-element='labor'
+         vertical-offset=0>{{ invoice.calculateLabor() | currency}}</div>
+    <div toggler='showData("travel");'
+         id='subtotal-travel'
+         nrs-align-element='travel'
+         vertical-offset=0>
+      {{ invoice.calculateTravel() | currency}}</div>
+    <div toggler='showData("mileage");'
+         id='subtotal-mileage'
+         nrs-align-element='mileage'
+         vertical-offset=0>
+      {{ invoice.calculateMileage() | currency}}</div>
+    <div toggler='invoice.hasParts();'>
+      <ul id='subtotal-parts'>
+        <li ng-repeat="part in serviceReport.parts track by $index"
+            nrs-align-parts=$index
+            id="part{{$index + 1}}-subtotal">
+          {{ (part.quantity * part.price) | currency}}
+        </li>
+      </ul>
+      <div id="total-tax">{{invoice.calculateTax() | currency}}</div>
+    </div>
+    <div id='subtotal-amount'>{{invoice.calculateTotal() | currency}}</div>
+  </div>
+  <div id='total-column' class="filler total">
+    <div id="total-amount"
+         nrs-align-element='subtotal-amount'
+         vertical-offset=200>{{invoice.calculateTotal() | currency}}</div>
+  </div>
+  <footer>
+    <p>Please remit to: <span class="bold">national radiographic systems, inc.</span></p>
+    <p>past due invoices are subject to a <span class="bold">service charge</span> of 1.5% per month, equal to 18% per year, where applicable</p>
+  </footer>
+</div>

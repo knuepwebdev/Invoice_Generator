@@ -1,0 +1,251 @@
+<div ng-controller='InvoicesCtrl'>
+  <nrs-header></nrs-header>
+  <h1 class='nrs-header'>New Invoice</h1>
+  <form novalidate class='form-horizontal' name="invoiceForm">
+    <div id="left-column">
+      <section id="company-info">    
+        <h2 id="logo" class="bold">{{formData.company.name}}</h2>
+        <div>{{formData.company.tagline}}</div>
+        <div>{{formData.company.street}}</div>
+        <div>
+          {{formData.company.city}}
+          {{formData.company.state}}
+          {{formData.company.zip_code}}
+        </div>
+        <div>
+          Phone {{formData.company.phone}}
+          &bull;
+          Fax {{formData.company.fax}}
+        </div>
+      </section>
+      <h3>sold to:</h3>
+      <div class="overlap">
+        <div class="form-group">
+          <div class="col-sm-8" nrs-show-errors>
+            <input class="form-control"
+                   name="input-hospital-name"
+                   required
+                   placeholder="Hospital"
+                   ng-model="invoice.data.client.name" />
+          </div>
+        </div>
+        <!-- begin ng-repeat -->
+        <div ng-repeat="attr in attrs.client.contact" class="form-group">
+          <div class="col-sm-8" nrs-show-errors>
+            <input class="form-control"
+                   name="input-{{attr}}"
+                   required
+                   placeholder={{attr}}
+                   ng-model="invoice.data.client.contact[attr]" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-3">
+            <select class="form-control"
+                   placeholder="State"
+                   ng-init="invoice.data.client.contact.state = invoice.data.client.contact.state || unitedStates[5]"
+                   ng-model="invoice.data.client.contact.state",
+                   ng-options="state.abbreviation for state in unitedStates" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-3" nrs-show-errors>
+            <input class="form-control"
+                   name="input-zipcode"
+                   required
+                   placeholder="Zipcode"
+                   ng-model="invoice.data.client.contact.zipcode" />
+          </div>
+        </div>
+      </div>
+      <h3>shipped to:</h3>
+      <div class="overlap">
+        <div ng-repeat="attr in attrs.client.fields" class="form-group">
+          <div class="col-sm-6" nrs-show-errors>
+            <input class="form-control"
+                   name="input-{{attr}}"
+                   required
+                   placeholder={{spacerize(attr)}}
+                   ng-model="invoice.data.client[attr]" />
+          </div>
+        </div>        
+      </div>
+    </div>
+    <div id="right-column">
+      <h1 id='invoice'>Invoice</h1>
+        <div id="invoice-number">
+          <div nrs-show-errors>
+            <input class='form-control'
+                   id='input-invoice-number'
+                   placeholder='#'
+                   name="invoiceNumber"
+                   ng-model="invoice.data.number"
+                   required
+                   ng-minlength=4
+                   ng-maxlength=4 />
+          </div>
+        </div>
+        <div ng-show='invoiceForm.invoiceNumber.$invalid && 
+                      invoiceForm.invoiceNumber.$dirty'
+             class='nrs-error-message invoice-number'>
+          *Must be 4 digits long
+        </div>      
+      <p>Please indicate invoice numbers on all remittances</p>
+      <div class="page">
+        <h3>Page</h3>
+        <div>{{formData.numberOfPages}} of {{formData.numberOfPages}}</div>
+      </div>
+      <div class="date">
+        <h3>Date</h3>
+        <div id='date-input-container'>
+          <nrs-datepicker type="text" id="invoice-date" ng-model="invoice.data.date"></nrs-datepicker>
+        </div>
+      </div>
+      <div ng-repeat="field in formData.rightColumn" class="{{field.id}}">
+        <h3>{{ field.heading }}</h3>
+        <div></div>
+      </div>
+    </div><!-- end #right-column -->
+    <div id="extra-fields">
+        <div ng-repeat="field in formData.extraFields" id="{{field.id}}">
+          <h3>{{field.heading}}</h3>
+          <div></div>
+        </div>
+    </div>
+    <table id="line-items">
+      <tr>
+        <th class="item">item no.</th>
+        <th class="quantity">quantity</th>
+        <th class="list-number">list number</th>
+        <th class="description">description/serial no.</th>
+        <th class="subtotal"></th>
+        <th class="total">total</th>
+      </tr>
+    </table>
+    <!-- empty divs with borders -->
+    <div class="filler item"></div>
+    <div class="filler quantity"></div>
+    <div class="filler list-number"></div>
+    <div class="filler description">
+      <div nrs-show-errors>      
+        <input class="small form-control"
+               name="inputServiceReportNumber"
+               required
+               ng-minlength=4
+               ng-maxlength=4
+               placeholder='Service Report Number'
+               ng-model="invoice.data.serviceReport.number" />
+      </div>
+      <nrs-datepicker type="text"
+                     id="service-report-date"
+                     ng-model="invoice.data.serviceReport.date"></nrs-datepicker>
+      <div ng-show='invoiceForm.inputServiceReportNumber.$invalid && 
+                    invoiceForm.inputServiceReportNumber.$dirty'
+             class='nrs-error-message'>
+          *Must be 4 digits long
+        </div>                            
+      <div nrs-show-errors>                              
+        <input class="small form-control"
+               name="input-machine-make"
+               required
+               placeholder='Machine Make'
+               ng-model="invoice.data.serviceReport.machine_make" />
+      </div>      
+      <div nrs-show-errors>
+        <input class="small form-control"
+               name="input-machine-model"
+               required
+               placeholder='Machine Model'
+               ng-model="invoice.data.serviceReport.machine_model" />
+      </div>
+      <div nrs-show-errors>                            
+        <input class="small form-control"
+               name="input-labor"
+               required
+               placeholder='Labor Time'
+               ng-model="invoice.data.serviceReport.labor" />
+      </div>
+      <div nrs-show-errors>                           
+        <input class="small form-control"
+               name="input-labor-rate"
+               required
+               placeholder='Hourly Rate'
+               ng-model="invoice.data.serviceReport.labor_rate" />        
+      </div>                                               
+      <div>
+        <label for="select_travel">Travel?</label>
+        <select ng-model="travel_included"
+                ng-change="clearTravel();"
+                ng-options="option for option in options"
+                id="select_travel"
+                class="form-control">
+        </select>
+        <div nrs-toggler="travel_included">
+          <input ng-repeat="attr in formData.travel"
+                 ng-model="invoice.data.serviceReport[attr.field]"
+                 class="small form-control"
+                 placeholder="{{attr.field}}">    
+        </div>    
+      </div>
+      <div>
+        <label for="select_mileage">Mileage?</label>
+        <select ng-model="mileage_included"
+                ng-options="option for option in options"
+                ng-change="clearMileage();"
+                id="select_mileage"
+                class="form-control">
+        </select>         
+        <div nrs-toggler="mileage_included">              
+          <input ng-repeat="attr in formData.mileage"
+                 ng-model="invoice.data.serviceReport[attr.field]"
+                 class="small form-control"
+                 placeholder="{{attr.field}}">              
+        </div>    
+      </div>          
+      <div>
+        <label for="select_parts">Parts?</label>
+        <select ng-model="parts_included"
+                ng-options="option for option in options"
+                ng-change="updateParts();"
+                id="select_parts"
+                class="form-control"></select>
+      </div>     
+      <div nrs-toggler="parts_included">    
+        <ul>
+          <li ng-repeat="part in invoice.data.serviceReport.parts track by $index"
+              class="part-row">
+            <button type="button" id="btn-remove-part" class="btn btn-danger"ng-click="removePart($index);">-</button>
+            <input type="text"
+                   ng-model="invoice.data.serviceReport.parts[$index]['number']"
+                   class="part-number"
+                   placeholder="Part Number"/>
+            <input type="text"
+                   ng-model="invoice.data.serviceReport.parts[$index]['name']"
+                   class="part-name"
+                   placeholder="Part Name"/>
+            <input type="text"
+                   ng-model="invoice.data.serviceReport.parts[$index]['quantity']"
+                   class="part-quantity"
+                   placeholder="Quantity"/>                   
+            <input type="text"
+                   ng-model="invoice.data.serviceReport.parts[$index]['price']"
+                   class="part-price"
+                   placeholder="Price"/>
+          </li>
+        </ul>
+        <input type="text" ng-model="invoice.data.serviceReport.sales_tax" id="sales-tax" placeholder="Tax Rate"/> %        
+        <div>
+          <button type="button"
+                  id="btn-add-part"
+                  class="btn btn-success"
+                  ng-click="addPart();">Add Part</button>
+        </div>
+
+      </div>
+    </div><!-- .filler.description -->
+    <div class="filler subtotal"></div>
+    <div class="filler total"></div>
+    <button ng-click="save(invoice)"
+            id='save'>Save</button>        
+  </form>
+</div>
