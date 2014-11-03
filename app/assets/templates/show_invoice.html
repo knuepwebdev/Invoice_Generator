@@ -11,7 +11,7 @@
     <h3>sold to:</h3>
     <!-- <div id="client-info"></div> -->
     <div class="overlap">
-      <div>ATTN: Accounts Payable</div>
+      <div class='capitalized'>ATTN: Accounts Payable</div>
       <div>{{serviceReport.hospital.name}}</div>
       <div>{{serviceReport.hospital.contact.street}}</div>
       <div>{{serviceReport.hospital.contact.city}}, {{serviceReport.hospital.contact.state.abbreviation}} {{serviceReport.hospital.contact.zipcode}}</div>
@@ -94,7 +94,7 @@
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td>Service Report: #{{serviceReport.number}}, {{serviceReport.date}}</td>
+      <td class='tall-cell'>Service Report: #{{serviceReport.number}}, {{serviceReport.date}}</td>
       <td></td><!--subtotal-->
       <td></td><!--total-->
     </tr>
@@ -110,8 +110,8 @@
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td id='labor'>Labor: {{serviceReport.labor}} hours at ${{serviceReport.labor_rate}}/hour</td>
-      <td>{{ invoice.calculateLabor() | currency}}</td><!--subtotal-->
+      <td id='labor' class='tall-cell'>Labor: {{serviceReport.labor}} hours at ${{serviceReport.labor_rate}}/hour</td>
+      <td class='tall-cell'>{{ invoice.calculateLabor() | currency}}</td><!--subtotal-->
       <td></td><!--total-->
     </tr>
     <tr nrs-toggler='showData("travel");'>
@@ -134,7 +134,7 @@
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td>PARTS</td><!-- description-->
+      <td class='tall-cell'><h1>Parts:</h1></td><!-- description-->
       <td></td><!--subtotal-->
       <td></td><!--total-->
     </tr>    

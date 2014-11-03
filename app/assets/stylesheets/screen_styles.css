@@ -8,7 +8,7 @@
     width: 100%;
     padding: 0 1em;
   }
-  body, #container, header, #header-logo, nav, nav ul, nav ul li, nav ul li a, #dashboard-links, #dashboard-links li, #dashboard-links li a, #left-column, #right-column, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer, footer p {
+  body, #container, header, #header-logo, nav, nav ul, nav ul li, nav ul li a, #dashboard-links, #dashboard-links li, #dashboard-links li a, #left-column, #right-column, #notice, .page, .date, .po-number, .terms, .reference-number, #date, #extra-fields, #line-items, #fob-point, #carriers-name, #shipped-via, #freight-term, #st-tax, #pco, #tax-determination, #preview, #save, .filler, footer {
     float: left;
   }
   body {
@@ -41,6 +41,9 @@
   }
   .nrs-error-message.invoice-number {
     padding: 0 0 0 11em;
+  }
+  .capitalized {
+    text-transform: uppercase;
   }
   /*HEADER*/
   header {
@@ -129,9 +132,11 @@
     top:-1px;
     left:-1px;
     width: 426px;
+    font: 1em Verdana, sans-serif;
     background-color:white;
     border-radius: 25px;
     padding: .5em 1em 1em 0;
+    text-transform: none;
   }
   /*END LEFT COLUMN*/
   /*RIGHT COLUMN*/
@@ -178,6 +183,9 @@
   }
   .page, .po-number {
     width: 60%;
+  }
+  .page div {
+    text-transform: none;
   }
   .date {
     width: 40%;
@@ -238,11 +246,31 @@
   /*LINE ITEMS*/
   #line-items {
     width: 100%;
+    border-bottom: 1px solid #000;
   }
   #line-items th {
     color: #00604b;
     height: 2em;
     padding: 1em;
+    text-align: center;
+  }
+  #line-items td {
+    padding: 0.25em;
+    border: 1px solid #000;
+    border-top: none;
+    border-bottom: none;
+    text-align: center;
+    text-transform: none;
+    font: 1.1em Verdana, sans-serif;
+  }
+  #line-items td:nth-child(1) {
+    border-left: none;
+  }
+  #line-items td:nth-child(6) {
+    border-right: none;
+  }  
+  #line-items .tall-cell {
+    padding-top: 2em;
   }
   .item, .quantity {
     width: 7.5%;
@@ -343,12 +371,15 @@
   .filler {
     height: 800px;
   }
-  #subtotal-amount {
+  #line-items #subtotal-amount {
     border-top: 1px solid #000;
     margin-top: 4em;
   }
   #total-tax {
     padding-bottom: 1.5em;
+  }
+  #line-items #total-amount {
+    padding-top: 3em;
   }
   /*END LINE ITEMS*/
   /* INVOICES INDEX */
@@ -399,7 +430,7 @@
   }
   footer p {
     color: #00604b;
-    padding: 1em 0;
+    padding: 0.5em 0;
   }
   /*END FOOTER*/
   #save {
