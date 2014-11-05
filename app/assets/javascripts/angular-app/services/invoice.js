@@ -6,27 +6,27 @@ angular.module('invoice')
       }
     };
     function setData(newData) {
-      data = {};
-      data.serviceReport = newData;
+      Invoice.data = {};
+      Invoice.data.serviceReport = newData;
     }
     function setTotal() {
-      data.total = calculateTotal();
+      Invoice.data.total = calculateTotal();
     }
 
     function calculateLabor() {
-      return (isNaN(data.serviceReport.labor * data.serviceReport.labor_rate) ? 0 : data.serviceReport.labor * data.serviceReport.labor_rate);
+      return (isNaN(Invoice.data.serviceReport.labor * Invoice.data.serviceReport.labor_rate) ? 0 : Invoice.data.serviceReport.labor * Invoice.data.serviceReport.labor_rate);
     };
 
     function calculateTravel() {
-      return (isNaN(data.serviceReport.travel * data.serviceReport.travel_rate) ? 0 : data.serviceReport.travel * data.serviceReport.travel_rate);
+      return (isNaN(Invoice.data.serviceReport.travel * Invoice.data.serviceReport.travel_rate) ? 0 : Invoice.data.serviceReport.travel * Invoice.data.serviceReport.travel_rate);
     };
     function calculateMileage() {
-      return (isNaN(data.serviceReport.mileage * data.serviceReport.mileage_rate) ? 0 : data.serviceReport.mileage * data.serviceReport.mileage_rate);
+      return (isNaN(Invoice.data.serviceReport.mileage * Invoice.data.serviceReport.mileage_rate) ? 0 : Invoice.data.serviceReport.mileage * Invoice.data.serviceReport.mileage_rate);
     };
     function calculateTax() {
       var tax = 0;
-      angular.forEach(data.serviceReport.parts, function(part, index) {
-        tax += (part.quantity * part.price * data.serviceReport.sales_tax * 0.01);
+      angular.forEach(Invoice.data.serviceReport.parts, function(part, index) {
+        tax += (part.quantity * part.price * Invoice.data.serviceReport.sales_tax * 0.01);
       });
       return (isNaN(tax) ? 0 : tax);
     };
@@ -39,13 +39,13 @@ angular.module('invoice')
     };
     function calculateParts() {
       var sum = 0;
-      angular.forEach(data.serviceReport.parts, function(part, index) {
+      angular.forEach(Invoice.data.serviceReport.parts, function(part, index) {
         sum += (part.quantity * part.price);
       });
       return (isNaN(sum) ? 0 : sum); 
     };            
     function hasParts() {
-      if (data.serviceReport.parts[0].name === null) {
+      if (Invoice.data.serviceReport.parts[0].name === null) {
         return 'No';
       } else {
         return 'Yes';
