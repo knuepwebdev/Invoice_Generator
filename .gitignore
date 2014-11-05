@@ -16,5 +16,4 @@ pickle-email-*.html
 .project
 .secret
 config/local_env.yml
-app/assets/images/*
 .env
