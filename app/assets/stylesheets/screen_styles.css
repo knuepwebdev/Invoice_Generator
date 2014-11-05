@@ -398,12 +398,26 @@
   #invoices-table td a {
     color: #00604b;
   }  
-  .row-invoice-number, .row-invoice-date, .row-invoice-total {
+  .row-invoice-number {
     width: 20%;
+  }
+  .row-invoice-date {
+    width: 15%;
+  }
+  .row-invoice-total {
+    width: 10%;
   }
   .row-invoice-hospital {
     width: 40%;
   }
+  .row-invoice-action {
+    width: 15%;
+  }
+  #delete-img {
+    width: 2em;
+    height: 2em;
+  }
+  /* END INVOICES INDEX */  
   /*DASHBOARD*/
   #dashboard-links li {
     width: 100%;
@@ -426,7 +440,6 @@
     text-transform: uppercase;
   }
   /*END DASHBOARD*/
-  /* END INVOICES INDEX */  
   /*FOOTER*/
   footer {
     width: 100%;

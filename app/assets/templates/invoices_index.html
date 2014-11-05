@@ -7,6 +7,7 @@
       <th class='row-invoice-date'>Date</th>
       <th class='row-invoice-hospital'>Hospital</th>
       <th class='row-invoice-total'>Total</th>
+      <th class='row-invoice-action'>Action</th>
     </tr>
     <tr ng-repeat="serviceReport in serviceReports | orderBy:'invoice.number':true">
       <td  class='row-invoice-number'>
@@ -18,6 +19,13 @@
       <td class='row-invoice-date'>{{serviceReport.invoice.date}}</td>
       <td class='row-invoice-hospital'>{{serviceReport.hospital.name}}</td>
       <td class='row-invoice-total'>{{serviceReport.invoice.total | currency}}</td>
+      <td class='row-invoice-action'>
+        <input type='image'
+               src='http://www.clker.com/cliparts/a/x/q/L/G/9/delete-icon-th.png' 
+               ng-really-message='Are you sure you want to delete this invoice?'
+               ng-really-click='deleteInvoice(serviceReport)'
+               id='delete-img'>
+      </td>
     </tr>
   </table>
 </div>
