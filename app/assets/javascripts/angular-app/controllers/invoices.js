@@ -52,6 +52,9 @@ angular.module('invoice')
       invoice.setTotal();
       ResourceRequester.save(invoice);
     };
+    $scope.deleteInvoice = function(serviceReport) {
+      ResourceRequester.removeInvoice(serviceReport);
+    }
 
     $scope.addPart = function() {
       if ($scope.invoice.data.serviceReport.parts.length < 3) { 

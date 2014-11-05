@@ -4,7 +4,7 @@ module Api
       respond_to :json
 
       def index
-        service_reports = ServiceReport.includes(:invoice, {hospital: :contact}, :parts)
+        service_reports = all_service_reports
         respond_to do |format|
           format.json { render json: service_reports.as_json(include: [:invoice, {hospital: {include: :contact}}, :parts]) }
         end
@@ -18,7 +18,19 @@ module Api
         end
       end
 
+      def destroy
+        ServiceReport.find(params[:id]).destroy
+        service_reports = all_service_reports
+        respond_to do |format|
+          format.json { render json: service_reports.as_json(include: [:invoice, {hospital: {include: :contact}}, :parts]) }
+        end
+      end
+
       private
+      def all_service_reports
+        ServiceReport.includes(:invoice, {hospital: :contact}, :parts)
+      end
+
       def invoice_creator_params
         params.require(:data).permit(
           :number,

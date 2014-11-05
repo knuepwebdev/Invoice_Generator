@@ -16,9 +16,17 @@ angular.module('invoice')
       });
     }
 
+    function removeInvoice(serviceReport) {
+      serviceReport.remove().then(function() {
+        $rootScope.serviceReports = _.without($rootScope.serviceReports, serviceReport);
+        $location.path('/invoices');    
+      });
+    }
+
     var ResourceRequester = {
       allInvoices: allInvoices,
-      save: save
+      save: save,
+      removeInvoice: removeInvoice
     };
     
     return ResourceRequester;
