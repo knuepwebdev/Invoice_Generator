@@ -5,7 +5,6 @@ class CreateInvoices < ActiveRecord::Migration
       t.string :number
       t.string :date
       t.decimal :total
-      t.integer :number_of_pages
       t.timestamps
     end
   end
