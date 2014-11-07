@@ -12,19 +12,19 @@
     <!-- <div id="client-info"></div> -->
     <div class="overlap">
       <div>ATTN: Accounts Payable</div>
-      <div>{{serviceReport.hospital.name}}</div>
-      <div>{{serviceReport.hospital.contact.street}}</div>
-      <div>{{serviceReport.hospital.contact.city}}, {{serviceReport.hospital.contact.state}} {{serviceReport.hospital.contact.zipcode}}</div>
+      <div>{{serviceReport.data.hospital.name}}</div>
+      <div>{{serviceReport.data.hospital.contact.street}}</div>
+      <div>{{serviceReport.data.hospital.contact.city}}, {{serviceReport.data.hospital.contact.state}} {{serviceReport.data.hospital.contact.zipcode}}</div>
     </div>
     <h3>shipped to:</h3>
     <!-- <div id="shipping-info">{{shipping_date}}</div> -->
     <div class="overlap">
-      <div>{{serviceReport.hospital.department}}</div>
-      <div>{{serviceReport.hospital.room}}</div>
+      <div>{{serviceReport.data.hospital.department}}</div>
+      <div>{{serviceReport.data.hospital.room}}</div>
     </div>
   </div>
   <div id="right-column">
-    <h1>Invoice {{serviceReport.invoice.number}}</h1>
+    <h1>Invoice {{serviceReport.data.invoice.number}}</h1>
     <p>Please indicate invoice numbers on all remittances</p>
     <div class="page">
       <h3>Page</h3>
@@ -32,7 +32,7 @@
     </div>
     <div class="date">
       <h3>Date</h3>
-      <div>{{serviceReport.invoice.date}}</div>
+      <div>{{serviceReport.data.invoice.date}}</div>
     </div>
     <div class="po-number">
       <h3>Your Purchase Order</h3>
@@ -94,7 +94,7 @@
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td class='tall-cell'>Service Report: #{{serviceReport.number}}, {{serviceReport.date}}</td>
+      <td class='tall-cell'>Service Report: #{{serviceReport.data.number}}, {{serviceReport.data.date}}</td>
       <td></td><!--subtotal-->
       <td></td><!--total-->
     </tr>
@@ -102,7 +102,7 @@
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td>{{serviceReport.machine_make}} {{serviceReport.machine_model}}</td>
+      <td>{{serviceReport.data.machine_make}} {{serviceReport.data.machine_model}}</td>
       <td></td><!--subtotal-->
       <td></td><!--total-->
     </tr>
@@ -110,27 +110,27 @@
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td id='labor' class='tall-cell'>Labor: {{serviceReport.labor}} hours at ${{serviceReport.labor_rate}}/hour</td>
-      <td class='tall-cell'>{{ invoice.calculateLabor() | currency}}</td><!--subtotal-->
+      <td id='labor' class='tall-cell'>Labor: {{serviceReport.data.labor}} hours at ${{serviceReport.data.labor_rate}}/hour</td>
+      <td class='tall-cell'>{{ serviceReport.calculateLabor() | currency}}</td><!--subtotal-->
       <td></td><!--total-->
     </tr>
     <tr nrs-toggler='showData("travel");'>
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td id='travel'>Travel: {{serviceReport.travel}} hours at ${{serviceReport.travel_rate}}/hour</td>
-      <td>{{ invoice.calculateTravel() | currency}}</td><!--subtotal-->
+      <td id='travel'>Travel: {{serviceReport.data.travel}} hours at ${{serviceReport.data.travel_rate}}/hour</td>
+      <td>{{ serviceReport.calculateTravel() | currency}}</td><!--subtotal-->
       <td></td><!--total-->
     </tr>
     <tr nrs-toggler='showData("mileage");'>
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td id='mileage'>Mileage: {{serviceReport.mileage}} miles at ${{serviceReport.mileage_rate}}/mile</td>
-      <td>{{ invoice.calculateMileage() | currency}}</td><!--subtotal-->
+      <td id='mileage'>Mileage: {{serviceReport.data.mileage}} miles at ${{serviceReport.data.mileage_rate}}/mile</td>
+      <td>{{ serviceReport.calculateMileage() | currency}}</td><!--subtotal-->
       <td></td><!--total-->
     </tr>
-    <tr nrs-toggler='invoice.hasParts();'>
+    <tr nrs-toggler='serviceReport.haveParts();'>
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
@@ -138,8 +138,8 @@
       <td></td><!--subtotal-->
       <td></td><!--total-->
     </tr>    
-    <tr nrs-toggler='invoice.hasParts();'
-        ng-repeat="part in serviceReport.parts track by $index">
+    <tr nrs-toggler='serviceReport.haveParts();'
+        ng-repeat="part in serviceReport.data.parts track by $index">
       <td></td><!-- item no-->
       <td id="part-quantity-{{$index + 1}}">{{part.quantity}}</td><!-- quantity-->
       <td>{{part.number}}</td><!-- list number-->
@@ -147,12 +147,12 @@
       <td>{{ (part.quantity * part.price) | currency}}</td><!--subtotal-->
       <td></td><!--total-->
     </tr>
-    <tr nrs-toggler='invoice.hasParts();'>
+    <tr nrs-toggler='serviceReport.haveParts();'>
       <td></td><!-- item no-->
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
-      <td id="input-tax">Sales Tax {{serviceReport.sales_tax}}%</td><!-- description-->
-      <td id="total-tax">{{invoice.calculateTax() | currency}}</td><!--subtotal-->
+      <td id="input-tax">Sales Tax {{serviceReport.data.sales_tax}}%</td><!-- description-->
+      <td id="total-tax">{{serviceReport.calculateTax() | currency}}</td><!--subtotal-->
       <td></td><!--total-->
     </tr>                       
     <tr>
@@ -160,7 +160,7 @@
       <td></td><!-- quantity-->
       <td></td><!-- list number-->
       <td></td><!-- description-->
-      <td id='subtotal-amount'>{{invoice.calculateTotal() | currency}}</td><!--subtotal-->
+      <td id='subtotal-amount'>{{serviceReport.calculateTotal() | currency}}</td><!--subtotal-->
       <td></td><!--total-->
     </tr>
     <tr>
@@ -169,7 +169,7 @@
       <td></td><!-- list number-->
       <td></td><!-- description-->
       <td></td><!--subtotal-->
-      <td id="total-amount">{{invoice.calculateTotal() | currency}}</td><!--total-->
+      <td id="total-amount">{{serviceReport.data.invoice.total | currency}}</td><!--total-->
     </tr>         
   </table>
   <footer>

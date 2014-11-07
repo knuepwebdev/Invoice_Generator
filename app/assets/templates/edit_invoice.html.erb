@@ -1,6 +1,6 @@
 <div ng-controller='InvoicesCtrl'>
   <nrs-header></nrs-header>
-  <h1 class='nrs-header'>New Invoice</h1>
+  <h1 class='nrs-header'>Edit Invoice</h1>
   <form novalidate class='form-horizontal' name="invoiceForm">
     <div id="left-column">
       <section id="company-info">    
@@ -45,7 +45,7 @@
                    placeholder="State"
                    ng-init="serviceReport.data.hospital_attributes.contact_attributes.state = serviceReport.data.hospital_attributes.contact_attributes.state || unitedStates[5]"
                    ng-model="serviceReport.data.hospital_attributes.contact_attributes.state",
-                   ng-options="state for state in unitedStates" />
+                   ng-options="state for state in unitedStates" />                   
           </div>
         </div>
         <div class="form-group">
@@ -63,8 +63,7 @@
         <div class="form-group">
           <div class="col-sm-6" nrs-show-errors>
             <input class="form-control"
-                   name="input-hospital-department"
-                   placeholder="Hospital Department"
+                   name="input-{{attr}}"
                    required
                    ng-model="serviceReport.data.hospital_attributes.department" />
           </div>
@@ -74,8 +73,7 @@
         <div class="form-group">
           <div class="col-sm-6" nrs-show-errors>
             <input class="form-control"
-                   name="input-hospital-room"
-                   placeholder="Hospital Room"
+                   name="input-{{attr}}"
                    required
                    ng-model="serviceReport.data.hospital_attributes.room" />
           </div>
@@ -223,23 +221,23 @@
       </div>     
       <div nrs-toggler="parts_included">    
         <ul>
-          <li ng-repeat="part in serviceReport.data.parts track by $index"
+          <li ng-repeat="part in serviceReport.data.parts_attributes track by $index"
               class="part-row">
             <button type="button" id="btn-remove-part" class="btn btn-danger"ng-click="removePart($index);">-</button>
             <input type="text"
-                   ng-model="serviceReport.data.parts[$index]['number']"
+                   ng-model="serviceReport.data.parts_attributes[$index]['number']"
                    class="part-number"
                    placeholder="Part Number"/>
             <input type="text"
-                   ng-model="serviceReport.data.parts[$index]['name']"
+                   ng-model="serviceReport.data.parts_attributes[$index]['name']"
                    class="part-name"
                    placeholder="Part Name"/>
             <input type="text"
-                   ng-model="serviceReport.data.parts[$index]['quantity']"
+                   ng-model="serviceReport.data.parts_attributes[$index]['quantity']"
                    class="part-quantity"
                    placeholder="Quantity"/>                   
             <input type="text"
-                   ng-model="serviceReport.data.parts[$index]['price']"
+                   ng-model="serviceReport.data.parts_attributes[$index]['price']"
                    class="part-price"
                    placeholder="Price"/>
           </li>
@@ -256,7 +254,7 @@
     </div><!-- .filler.description -->
     <div class="filler subtotal"></div>
     <div class="filler total"></div>
-    <button ng-click="save(serviceReport);"
-            id='save'>Save</button>        
+    <button ng-click="updateInvoice();"
+            id='save'>Save Changes</button>        
   </form>
 </div>

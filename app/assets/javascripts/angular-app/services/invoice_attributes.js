@@ -3,8 +3,8 @@ angular.module('invoice')
     var InvoiceAttrs = {
       client: {
         fields: [
-          'hospital_department',
-          'hospital_room'
+          'department',
+          'room'
         ],
         contact: [
           'street',

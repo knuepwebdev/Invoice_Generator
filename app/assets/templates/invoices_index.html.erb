@@ -20,9 +20,11 @@
       <td class='row-invoice-hospital'>{{serviceReport.hospital.name}}</td>
       <td class='row-invoice-total'>{{serviceReport.invoice.total | currency}}</td>
       <td class='row-invoice-action'>
-        <input type='image'
-               src="<%= asset_path('edit.png') %>"
-               id='edit-img'>
+        <a href='invoices/{{serviceReport.invoice.id}}/edit'
+           ng-click='formatServiceReport(serviceReport);'>
+          <img src="<%= asset_path('edit.png') %>"
+             id='edit-img'>
+        </a>
         <input type='image'
                src='http://www.clker.com/cliparts/a/x/q/L/G/9/delete-icon-th.png' 
                ng-really-message='Are you sure you want to delete this invoice?'
