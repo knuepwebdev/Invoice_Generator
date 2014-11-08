@@ -109,7 +109,7 @@
       <div class="date">
         <h3>Date</h3>
         <div id='date-input-container'>
-          <nrs-datepicker type="text" id="invoice-date" ng-model="invoice.data.date"></nrs-datepicker>
+          <nrs-datepicker type="text" id="invoice-date" ng-model="serviceReport.data.invoice_attributes.date"></nrs-datepicker>
         </div>
       </div>
       <div ng-repeat="field in formData.rightColumn" class="{{field.id}}">
@@ -149,7 +149,7 @@
       </div>
       <nrs-datepicker type="text"
                      id="service-report-date"
-                     ng-model="invoice.data.serviceReport.date"></nrs-datepicker>
+                     ng-model="serviceReport.data.date"></nrs-datepicker>
       <div ng-show='invoiceForm.inputServiceReportNumber.$invalid && 
                     invoiceForm.inputServiceReportNumber.$dirty'
              class='nrs-error-message'>
