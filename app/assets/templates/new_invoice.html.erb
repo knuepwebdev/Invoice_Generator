@@ -30,15 +30,24 @@
           </div>
         </div>
         <!-- begin ng-repeat -->
-        <div ng-repeat="attr in attrs.client.contact" class="form-group">
+        <div class="form-group">
           <div class="col-sm-8" nrs-show-errors>
             <input class="form-control"
-                   name="input-{{attr}}"
+                   name="input-street"
                    required
-                   placeholder={{attr}}
-                   ng-model="serviceReport.data.hospital_attributes.contact_attributes[attr]" />
+                   placeholder='Street'
+                   ng-model="serviceReport.data.hospital_attributes.contact_attributes.street" />
           </div>
         </div>
+        <div class="form-group">
+          <div class="col-sm-8" nrs-show-errors>
+            <input class="form-control"
+                   name="input-city"
+                   required
+                   placeholder='City'
+                   ng-model="serviceReport.data.hospital_attributes.contact_attributes.city" />
+          </div>
+        </div>        
         <div class="form-group">
           <div class="col-sm-3">
             <select class="form-control"

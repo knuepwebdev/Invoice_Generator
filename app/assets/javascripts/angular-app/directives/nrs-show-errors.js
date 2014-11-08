@@ -12,7 +12,6 @@ angular.module('invoice')
         // get the name on the text box so we know the property to check
         // on the form controller
         var inputName = inputNgEl.attr('name');
-
         // only apply the has-error class after the user leaves the text box
         inputNgEl.bind('blur', function() {
           el.toggleClass('has-error', formCtrl[inputName].$invalid);
